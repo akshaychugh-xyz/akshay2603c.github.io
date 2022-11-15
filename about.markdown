@@ -4,12 +4,12 @@ title: about me
 permalink: /about/
 ---
 
-## Work: 
+### Work: 
 - Growth
 - Product Management
 - Web3
 
-## Other interests:
+### Other interests:
 
 - Life thoughts:
 - Books I have read and loved:

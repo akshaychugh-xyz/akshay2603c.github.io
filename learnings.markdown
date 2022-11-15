@@ -1,7 +1,7 @@
 ---
 layout: page
-title: personal learnings
-permalink: /personal learnings/
+title: learnings
+permalink: /learnings/
 ---
 
 ### What have I learnt outside of work

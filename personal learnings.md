@@ -4,7 +4,7 @@ title: personal learnings
 permalink: /personal learnings/
 ---
 
-### What have I learnt outside of your work
+### What have I learnt outside of work
 
 - A
 - B

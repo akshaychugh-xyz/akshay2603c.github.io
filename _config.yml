@@ -28,7 +28,7 @@ twitter_username: akshay2603c
 github_username:  akshay2603c
 
 # Build settings
-theme: architect
+#theme: architect
 remote_theme: pages-themes/architect@v0.2.0
 plugins:
   - jekyll-feed

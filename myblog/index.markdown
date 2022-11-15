@@ -4,3 +4,8 @@
 
 layout: home
 ---
+
+Hi, I am Akshay Chugh.
+I use this website to capture interesting things in my life - be it work or otherwise!
+
+See you around!

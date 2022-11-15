@@ -1,7 +1,7 @@
 ---
 layout: page
 title: about me
-permalink: /about-me/
+permalink: /about me/
 ---
 
 ### Work: 
@@ -13,9 +13,5 @@ permalink: /about-me/
 
 - Life thoughts:
 - Books I have read and loved:
-- Fitness:
-  - Cycling
-  - Squash
-  - Running
-  - Strength training
+- Fitness and nutrition:
 - Things I use:

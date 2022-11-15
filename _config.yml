@@ -28,7 +28,7 @@ twitter_username: akshay2603c
 github_username:  akshay2603c
 
 # Build settings
-theme: minima
+theme: architect
 plugins:
   - jekyll-feed
 

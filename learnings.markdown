@@ -1,10 +1,10 @@
 ---
 layout: page
-title: learnings
-permalink: /learnings/
+title: writings
+permalink: /writings/
 ---
 
-### Writing about
+### writing about my learnings in
 
 - product and growth
 - web3

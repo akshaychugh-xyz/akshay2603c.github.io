@@ -9,10 +9,10 @@ Links to navigate this site:
 - now
 - uses this
 - [have written about](/writings)
-  - [product & growth](/p&g)
-  - [web3](/web3)
-  - [fitness](/fitness)
-  - [life in general](/life)
+  - [product & growth](/writings/p&g)
+  - [web3](/writings/web3)
+  - [fitness](/writings/fitness)
+  - [life in general](/writings/life)
 - [book summaries](/books/)
 
 

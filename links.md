@@ -13,4 +13,4 @@ Links to navigate to interesting stuff:
   - web3
   - life
   - fitness
-- [book summaries]{site.books}
+- [book summaries]{https://akshay2603c.github.io/books/}

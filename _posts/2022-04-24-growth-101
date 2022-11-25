@@ -1,0 +1,191 @@
+---
+layout: page
+title: 'Growth 101 - what is it and why is it important'
+permalink: /writing/p&g/growth-101
+---
+
+The two stages for any company
+------------------------------
+
+Every company has to go through 2 phases -
+
+1.  **Stage 1:** **Finding the elusive Product Market Fit (PMF)**
+    
+    Having confidence on three core things:
+    
+    1.  There exists an audience which has a problem
+        
+    2.  You have built a product that works
+        
+    3.  Your products solve the problem for the audience
+        
+2.  **Stage 2:** **Finding the correct distribution for your product**
+    
+    Important because no matter what people _(incl. Naval)_ say, If you build they will come only works if people have infinite and eternal willingness to test all products.
+    
+
+> ⚠️ _Not true in the real world for mortals!_
+> 
+> [
+> 
+> ![Twitter avatar for @naval](https://substackcdn.com/image/twitter_name/w_96/naval.jpg)
+> 
+> Naval @naval
+> 
+> You’re doing sales because you failed at marketing. You’re doing marketing because you failed at product.
+> 
+> ](https://twitter.com/naval/status/1505668279678824448?s=20&t=pDG3Zw8pSaMVIeN9Gpu2Kw)[
+> 
+> 10:11 PM ∙ Mar 20, 2022
+> 
+> * * *
+> 
+> 22,907Likes2,833Retweets
+> 
+> 
+> 
+> ](https://twitter.com/naval/status/1505668279678824448?s=20&t=pDG3Zw8pSaMVIeN9Gpu2Kw)
+
+As Andrew Chen writes in his recent book **"The Cold Start Problem"** -
+
+> Startup advice says, all that matters is to build a great product - after all, _**that's what Apple does**_. But why has it also been so critical to launch products in the right way? To get your product in the hands of influencers, or high school students, or aspirational technology companies - if B2B - if all that matters is the product!
+
+This stage 2 is what we call **Growth** and will be the focus area for this newsletter**.**
+
+Note these 2 stages are iterative and don't always have to happen sequentially. E.g. you can start thinking about your growth model as you are close to finding PMF. But for most companies, it is wise to think about Growth only after or near close to PMF. Because as [Elena Verna](https://www.linkedin.com/in/elenaverna/) _(Head of Growth @ Amplitude)_ cautions -
+
+> _If you don't have a PMF, what are you really growing!_
+
+* * *
+
+What then is growth really?
+---------------------------
+
+Finding the growth model best suited for your company essentially means answering these three questions:
+
+1.  What is my **acquisition** model - how do I get more users on the product?
+    
+2.  What is my **retention** model - how do I retain the users that I have acquired?
+    
+3.  What is my **monetization** model - (eventually or right off) how do I make money from the users that are using my product?
+    
+
+A more comprehensive growth funnel looks like something below -
+
+[
+
+![](https://bucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com/public/images/23cc9c2f-09d3-4374-ab46-e71b194319bb_1682x254.png)
+
+
+
+](https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F23cc9c2f-09d3-4374-ab46-e71b194319bb_1682x254.png)
+
+#### Isn't Growth just a fancier word for Marketing, how are they different?
+
+As users move through the growth funnel, they typically do so through any of the 3-4 levers existent today - Marketing, Sales, Product or Community.
+
+So for example, a product can be Marketing led in Acquisition, Sales led in Retention and Product led in Monetization or in today's Product-led-growth world, the entire funnel can be led through product. Or more typically, for e.g., marketing takes care of the awareness and acquisition part of the funnel, through organic or inorganic means.
+
+**A strong growth model ==** _**predictable, sustainable and defensible strategies that help achieve maximum distribution in the market.**_ 
+
+It is made up of 2 key parts:
+
+1.  **Growth levers** - ways to impact revenue by making changes to your customer journey (e.g. acquisition, retention, monetization)
+    
+2.  **Growth motion** - describing which team or tactic is accountable for a successful outcome for a particular growth lever (e.g. product-led, sales-led etc.)
+    
+
+A [sample growth model](https://miro.com/app/board/o9J_lmREpH0=/) shared by Elena Verna is a fantastic place to get inspiration for your brainstorming:
+
+[
+
+![](https://bucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com/public/images/de4d4b6e-879b-4e00-a451-71442368e6b0_987x450.jpeg)
+
+
+
+](https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fde4d4b6e-879b-4e00-a451-71442368e6b0_987x450.jpeg)
+
+A sample growth model across acquisition, retention and monetization
+
+#### Why is growth important?
+
+A lot of founders like to think that sales and/or marketing led thinking should be enough for their products. I recommend thinking of a holistic growth model thinking because apart from the obvious benefits of being wholesome in your approach, growth adds a third data set in the library of learnings in any company:
+
+*   Quantitative - what is happening _(multiple tools like Mixpanel, Segment etc.)_
+    
+*   Qualitative - why is it happening _(user interviews, surveys etc.)_
+    
+*   Experimental - correlate b/w the what and the why _(experiments, A/B tests, iteration)_
+    
+
+* * *
+
+What does a growth team look like?
+----------------------------------
+
+There are mainly three kinds of growth people:
+
+1.  The **Innovator** - always focused on finding the next growth loop, traction, channel, tactic
+    
+2.  The **Builder** - build processes on existing hypothesis, build on top of existing channels, scale channels
+    
+3.  The **Optimizer** - squeeze the last 5% of any channel, hard core experimentation (e.g. SEO specialists)
+    
+
+Typically, the founder/CEO is the _**innovator**_ of the growth team - hypothesizing the first few growth models. Then come in the _**builders**_ to test and scale the hypothesis, followed by the _**optimizers.**_
+
+Having said that, **what does an ideal growth team look like?** While this will obviously differ from company to company and for different stages of a company, an established growth team consists of three different departments: _(h/t to Elena for a [great starting structure](https://miro.com/miroverse/growth-team-structure/))_
+
+1.  **Growth Marketing**
+    
+    1.  Acquisition marketer - organic as well as paid
+        
+    2.  Website marketer - personalization, scaling, load speed etc.
+        
+    3.  Retention marketer - lifecycle messaging, retargeting
+        
+    4.  Marketing infra PM - attribution, intent scoring, notification setting, frequency etc.
+        
+2.  **Growth Product**
+    
+    1.  Viral Loops PM - invitation, team expansion, content loops
+        
+    2.  Monetization PM - paid conversion, renewal, expansion, resurrection
+        
+    3.  Activation PM - set up, Aha moments
+        
+    4.  Engagement PM - ongoing onboarding, habit loops
+        
+    5.  Growth Infra PM - pricing, personalization, propensity scoring
+        
+3.  **Analytics**
+    
+    1.  Marketing analysts - channel, attribution, lifecycle
+        
+    2.  Product analysts - product features
+        
+    3.  Growth analysts - user journey, experiments
+        
+    4.  Data science analyst - predictive scoring
+        
+    5.  Data engineering
+        
+    6.  BI
+        
+
+> Growth Marketing and Product teams need full support of Design, Engineering, QA, User Research and Content teams - some of them might report to them, and some might work in partial capacity.
+
+* * *
+
+Interesting growth tit-bit
+--------------------------
+
+#### Know your customer well!
+
+When Facebook launched in the Japan market, they realized they weren't growing faster than the local competition as compared to their trajectories in other geographies. After some trend analysis, realization hit that one of their most important growth levers - the **INVITE YOUR FRIENDS** button wasn't being used at all by the Japanese public.
+
+Interviews with the local people helped them realize that in Japan, it is considered rude to "invite" your friends and show-off about something you have.
+
+What they did - changed **INVITE** to **ANNOUNCEMENTS**. So, instead of you as the user inviting your friends, you let Facebook announce to your friends that you have joined. And voila, people were absolutely okay with this change and their growth trajectory resume!
+
+* * *

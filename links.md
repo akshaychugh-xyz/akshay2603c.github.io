@@ -8,11 +8,11 @@ Links to navigate this site:
 
 - now
 - uses this
-- have written about
-  - product & growth
-  - web3
-  - life
-  - fitness
+- [have written about](/writings)
+  - [product & growth](/p&g)
+  - [web3](/web3)
+  - [fitness](/fitness)
+  - [life in general](/life)
 - [book summaries](/books/)
 
 

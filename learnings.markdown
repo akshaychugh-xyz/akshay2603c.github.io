@@ -4,8 +4,9 @@ title: learnings
 permalink: /learnings/
 ---
 
-### What have I learnt outside of work
+### Writing about
 
-- A
-- B
-- C
+- product and growth
+- web3
+- fitness
+- life learnings

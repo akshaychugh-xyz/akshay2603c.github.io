@@ -1,15 +1,17 @@
 ---
 layout: page
-title: Dopamine Nation: Finding Balance in the Age of Indulgence
+title: 'Dopamine Nation: Finding Balance in the Age of Indulgence'
 permalink: /books/dopamine-nation
 rating: 2-star
 ---
 
-Disclaimer: This post is mainly my reflections from the book (ideas that I found interesting, stuff that I know but need constant reminding etc.). Check out my [Goodreads profile](https://www.goodreads.com/user/show/47835814-akshay-chugh) for all my book recommendations (maintained since 2021 Jan)
+> Disclaimer: This post is mainly my reflections from the book (ideas that I found interesting, stuff that I know but need constant reminding etc.). 
+> 
+> Check out my [Goodreads profile](https://www.goodreads.com/user/show/47835814-akshay-chugh) for all my book recommendations (maintained since 2021 Jan).
 
 ### Book: [Dopamine Nation: Finding Balance in the Age of Indulgence](https://www.goodreads.com/book/show/59045417-dopamine-nation)
 ### Author: Anna Lembke
-### Rating: 2 star
+#### *Rating: 2 star*
 
 * Biggest learning: A lot of our problems can be solved by choosing pain over pleasure in the short term. Be it any activity or subset of life. Fitness, eating, etc. Any activity that produces pleasure leads to dopamine induced pain/regret later on, and vice verse. Therefore, solve to get pain in the short term and your dopamine will reward you with pleasure later on. E.g. Ice bath. Therefore, life mantra: PAIN over PLEASURE
     * Don’t constantly look for ways to please yourself. You don’t need that amazon order!

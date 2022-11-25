@@ -1,6 +1,6 @@
 ---
 layout: page
-title: navigate easily
+title: links
 permalink: /links/
 ---
 
@@ -13,4 +13,4 @@ Links to navigate to interesting stuff:
   - web3
   - life
   - fitness
-- book summaries
+- [book summaries]{site.books}

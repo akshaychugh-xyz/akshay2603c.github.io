@@ -2,7 +2,8 @@
 layout: page
 title: 'Dopamine Nation: Finding Balance in the Age of Indulgence'
 permalink: /books/dopamine-nation
-rating: 2-star
+tag: 2-star
+category: books
 ---
 
 > Disclaimer: This post is mainly my reflections from the book (ideas that I found interesting, stuff that I know but need constant reminding etc.). 

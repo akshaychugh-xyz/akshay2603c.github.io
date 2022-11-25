@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Welcome to Akshay's sample blog!"
-categories: sample
-permalink: /sample/
+permalink: /blog/life
 ---
 
 # Hi

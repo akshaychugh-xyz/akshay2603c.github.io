@@ -16,7 +16,7 @@ permalink: /writings/
 #### A list of all my writings on product and growth. 
 
 <ul>
-  {% for post in site.categories.writings AND post in site.categories.png %}
+  {% for post in site.categories.png %}
     <li>
     	<a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
     </li>
@@ -26,7 +26,7 @@ permalink: /writings/
 #### A list of all my writings on Web3. 
 
 <ul>
-  {% for post in site.categories.writings AND post in site.categories./web3 %}
+  {% for post in site.categories./web3 %}
     <li>
     	<a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
     </li>
@@ -36,7 +36,7 @@ permalink: /writings/
 #### A list of all my writings on fitness. 
 
 <ul>
-  {% for post in site.categories.writings AND post in site.categories.fitness %}
+  {% for post in site.categories.fitness %}
     <li>
     	<a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
     </li>
@@ -46,7 +46,7 @@ permalink: /writings/
 #### A list of all my writings on life in general. 
 
 <ul>
-  {% for post in site.categories.writings AND post in site.categories.life %}
+  {% for post in site.categories.life %}
     <li>
     	<a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
     </li>

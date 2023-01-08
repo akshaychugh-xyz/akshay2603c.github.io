@@ -6,7 +6,7 @@ layout: home
 
 I use this space to document my life learnings - be it work _(growth and product for web2 and web3)_, fitness _(triathlon, weights, squash, nutrition)_ or just shower thoughts about life in general. 
 
-Head to the [links](https://akshaychugh.xyz/links/) section to navigate to a topic of your choice! (Recommended readings coming shortly)
+Head to the [links](https://akshaychugh.xyz/links/) section to navigate to a topic of your choice! (recommended readings coming shortly).
 
 See you around!
 

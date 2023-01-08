@@ -2,7 +2,7 @@
 layout: page
 ---
 
-👋 Hello visitor, I am Akshay Chugh, and thank you for checking out my website!
+👋 Hola amigo, I am Akshay Chugh, and thank you for checking out my website!
   
     
       

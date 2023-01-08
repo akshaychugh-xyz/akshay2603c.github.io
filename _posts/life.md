@@ -1,0 +1,15 @@
+---
+layout: page
+title: product and growth writings
+permalink: /writings/life
+---
+
+#### A list of all my writings on life in general. 
+
+<ul>
+  {% for post in site.categories.writings AND post in site.categories.life %}
+    <li>
+    	<a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
+    </li>
+  {% endfor %}
+</ul>

@@ -7,7 +7,7 @@ permalink: /links/
 Links to navigate this site:
 
 - now
-- uses this
+- [uses this](/uses_this)
 - [have written about](/writings)
   - [product & growth](/writings/p&g)
   - [web3](/writings/web3)

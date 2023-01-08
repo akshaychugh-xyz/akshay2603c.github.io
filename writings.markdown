@@ -25,7 +25,7 @@ permalink: /writings/
   {% endfor %}
 </ul> -->
 
-#### A list of all my writings on fitness. 
+<!-- #### A list of all my writings on fitness. 
 
 <ul>
   {% for post in site.categories.fitness %}
@@ -33,9 +33,9 @@ permalink: /writings/
     	<a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
     </li>
   {% endfor %}
-</ul>
+</ul> -->
 
-#### A list of all my writings on life in general. 
+<!-- #### A list of all my writings on life in general. 
 
 <ul>
   {% for post in site.categories.life %}
@@ -43,7 +43,7 @@ permalink: /writings/
     	<a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
     </li>
   {% endfor %}
-</ul>
+</ul> -->
 
 -----
 

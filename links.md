@@ -9,7 +9,7 @@ Links to navigate this site:
 - now
 - [uses this](/uses this)
 - [have written about](/writings)
-  - [product & growth](/writings/p&g)
+  - [product & growth](/writings/png)
   - [web3](/writings/web3)
   - [fitness](/writings/fitness)
   - [life in general](/writings/life)

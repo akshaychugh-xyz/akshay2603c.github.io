@@ -45,13 +45,13 @@ category: books
    * Not being committed
       * Until one is committed, there is hesitancy, the chance to daw back, ineffectiveness, ignore etc. If you don’t commit, nothing will ever move you forward. 
       * A regular pay check is like cocaine. More you work for others, more you blunt your desire to take risks. And it is the ability to take risk and live with them is what will set you apart from the world.
-        
+    
 * **About how you think about your job:**
    * Your job is not your life. It’s a launch pad. 
    * You are not part of a “team”. You are doing what you do to succeed in your mission. Do everything with that mindset. Look for ideas, understand how business works, get great at execution, develop great people skills, network etc. But not because you are part of a family. Everyone is looking out for themselves, you should too!
    * Working for others is a reconnaissance expedition - a means and not an end to itself. It is an apprenticeship and not a goal.
    * Don’t ever use “team spirit” as an excuse for not doing!
-    
+
 * **About where should you think about starting your business:**
    * Don’t be attracted by glamour. Growing industry is great, whether or not it is glamourous. Similarly, new or rapidly developing industries are better. More risk capital, ignore, and power of a rising tide.
    *  Three factors: inclination, aptitude and fate. 
@@ -60,7 +60,6 @@ category: books
       * Fate: seize the opportunity when it presents itself. Luck is prep multiplied by opportunity.
    * Be okay with emulating or stealing ideas. Execution is what matters. The original doesn’t have to be the greatest. Don’t be obsessed with proving that your idea is right. You don’t have to have new original great ideas in your life, just become skilled at seeking out ideas and executing them. Make the ideas work, that is the name of the game.
     * Just don’t give up - keep looking, keep trying. You don’t have to be a wage slave!
-
 
 * **Concluding thoughts and quotes:**
    * Think big, act small!! - this is the only thing you need to remember. Ownership is important - act and get ownership.

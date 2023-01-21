@@ -21,11 +21,11 @@ category: books
 * You did not come into life to be average. Your decisions will decide if you remain average however.
 
 *** So what is really required to be rich:**
-    * Just believing in yourself, and trying. You won’t know until you know. 
-    * And then the typical that we know - tunnel vision, persistence, never give up
-    * Execution!!!! If the execution is perfect, it sometimes barely matters what the idea is. Don’t sit around and wait for inspiration to strike. Get doing
-        * A lot of people just idle away waiting for a big idea to strike. Do small, get building, most big companies started off small, the founder didn’t have an epiphany one day.
-    * If you don’t believe in yourself, no one ever will.
+      * Just believing in yourself, and trying. You won’t know until you know. 
+      * And then the typical that we know - tunnel vision, persistence, never give up
+      * Execution!!!! If the execution is perfect, it sometimes barely matters what the idea is. Don’t sit around and wait for inspiration to strike. Get doing
+      * A lot of people just idle away waiting for a big idea to strike. Do small, get building, most big companies started off small, the founder didn’t have an epiphany one day.
+      * If you don’t believe in yourself, no one ever will.
 
 *** And what you should you watch out for:**
     * Excuses galore at every stage. Young - lack of exp and capital, middle age - title and salary and advancement and opportunity cost, senior - life’s responsibilities and risks etc. People have made it in all these stages. Don’t fool yourself with excuses.

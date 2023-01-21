@@ -20,7 +20,7 @@ category: books
     * Making money is a knack. The best part is that it can be acquired!
 * You did not come into life to be average. Your decisions will decide if you remain average however.
 
-*** So what is really required to be rich:**
+* **So what is really required to be rich:**
    * Just believing in yourself, and trying. You won’t know until you know. 
    * And then the typical that we know - tunnel vision, persistence, never give up
    * Execution!!!! If the execution is perfect, it sometimes barely matters what the idea is. Don’t sit around and wait for inspiration to strike. Get doing

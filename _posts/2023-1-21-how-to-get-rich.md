@@ -19,12 +19,14 @@ category: books
 * Understand that people who have “made” it in life are very similar to you and have gone through the same journey as you. They just made a decision, and committed. What’s stopping you?
     * Making money is a knack. The best part is that it can be acquired!
 * You did not come into life to be average. Your decisions will decide if you remain average however.
+
 *** So what is really required to be rich:**
     * Just believing in yourself, and trying. You won’t know until you know. 
     * And then the typical that we know - tunnel vision, persistence, never give up
     * Execution!!!! If the execution is perfect, it sometimes barely matters what the idea is. Don’t sit around and wait for inspiration to strike. Get doing
         * A lot of people just idle away waiting for a big idea to strike. Do small, get building, most big companies started off small, the founder didn’t have an epiphany one day.
     * If you don’t believe in yourself, no one ever will.
+
 *** And what you should you watch out for:**
     * Excuses galore at every stage. Young - lack of exp and capital, middle age - title and salary and advancement and opportunity cost, senior - life’s responsibilities and risks etc. People have made it in all these stages. Don’t fool yourself with excuses.
         * The earlier you take the risk, the better. You have less to lose, and everything to gain. Play the odds.
@@ -43,11 +45,13 @@ category: books
     * Not being committed
         * Until one is committed, there is hesitancy, the chance to daw back, ineffectiveness, ignore etc. If you don’t commit, nothing will ever move you forward. 
         * A regular pay check is like cocaine. More you work for others, more you blunt your desire to take risks. And it is the ability to take risk and live with them is what will set you apart from the world.
+        
 *** About how you think about your job:**
     * Your job is not your life. It’s a launch pad. 
     * You are not part of a “team”. You are doing what you do to succeed in your mission. Do everything with that mindset. Look for ideas, understand how business works, get great at execution, develop great people skills, network etc. But not because you are part of a family. Everyone is looking out for themselves, you should too!
     * Working for others is a reconnaissance expedition - a means and not an end to itself. It is an apprenticeship and not a goal.
     * Don’t ever use “team spirit” as an excuse for not doing!
+    
 *** About where should you think about starting your business:**
     * Don’t be attracted by glamour. Growing industry is great, whether or not it is glamourous. Similarly, new or rapidly developing industries are better. More risk capital, ignore, and power of a rising tide.
     *  Three factors: inclination, aptitude and fate. 

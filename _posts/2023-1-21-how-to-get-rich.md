@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: 'How to get rich'
 permalink: /books/how-to-get-rich
 tag: 5-star

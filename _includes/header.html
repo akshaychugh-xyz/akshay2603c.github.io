@@ -1,0 +1,17 @@
+<header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    <nav class="site-nav">
+      <button class="menu-icon" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="menu-items">
+        <a href="{{ "/writings" | relative_url }}">Writings</a>
+        <a href="{{ "/books" | relative_url }}">Books</a>
+        <a href="{{ "/uses-this" | relative_url }}">Uses This</a>
+      </div>
+    </nav>
+  </div>
+</header>

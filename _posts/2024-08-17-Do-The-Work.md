@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: 'Do The Work'
 permalink: /books/do-the-work
 tag: 5-star

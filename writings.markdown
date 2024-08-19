@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: writings
 permalink: /writings/
 ---
@@ -18,7 +18,7 @@ permalink: /writings/
 <!-- #### A list of all my writings on Web3. 
 
 <ul>
-  {% for post in site.categories./web3 %}
+  {% for post in site.categories.web3 %}
     <li>
     	<a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
     </li>

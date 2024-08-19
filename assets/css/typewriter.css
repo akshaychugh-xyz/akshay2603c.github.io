@@ -1,0 +1,369 @@
+body {
+    font-family: 'Courier Prime', monospace;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #FCF6E3;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Courier Prime', monospace;
+    font-weight: bold;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  h1 { font-size: 2em; border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+  h2 { font-size: 1.75em; border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+  h3 { font-size: 1.5em; }
+  h4 { font-size: 1.25em; }
+  h5 { font-size: 1em; }
+  h6 { font-size: 0.875em; }
+  
+  a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .site-header {
+    position: relative;
+    padding: 1rem 0;
+  }
+  
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .site-title {
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 54px;
+    margin-bottom: 0;
+    margin: 0;
+  }
+  
+  .site-nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu-icon {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+
+  @media screen and (max-width: 600px) {
+    .site-nav {
+      position: static;
+    }
+
+    .menu-icon {
+      display: block;
+    }
+
+    .menu-items {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #FCF6E3;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    .menu-items.active {
+      display: block;
+    }
+
+    .site-nav a {
+      display: block;
+      margin: 10px 0;
+    }
+
+    .menu-icon.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .menu-icon.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-icon.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  }
+  
+  .site-footer {
+    border-top: 1px solid #e8e8e8;
+    padding: 20px 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-text {
+    margin: 0;
+    text-align: center;
+  }
+  
+  .footer-heading {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .footer-col-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .footer-col {
+    flex: 1;
+  }
+  
+  .one-half {
+    width: 50%;
+  }
+  
+  /* Blockquotes */
+  blockquote {
+    border-left: 4px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+    font-style: italic;
+  }
+
+  blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+
+  blockquote p {
+    display: inline;
+  }
+
+  /* Code blocks */
+  pre, code {
+    font-family: 'Courier Prime', monospace;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 2px 4px;
+  }
+
+  pre {
+    padding: 8px 12px;
+    overflow-x: auto;
+  }
+
+  pre > code {
+    border: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* Lists */
+  ul, ol {
+    margin-left: 1.5em;
+    padding-left: 1.5em;
+  }
+
+  li {
+    margin-bottom: 0.5em;
+  }
+
+  /* Nested lists */
+  ul ul, ul ol, ol ul, ol ol {
+    margin-top: 0.5em;
+  }
+
+  /* Horizontal Rule */
+  hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+  }
+
+  /* Tables */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f0f0f0;
+  }
+
+  /* Images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Emphasis */
+  em {
+    font-style: italic;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  /* Strikethrough */
+  del {
+    text-decoration: line-through;
+  }
+
+  /* Task Lists */
+  ul.task-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .task-list-item input {
+    margin-right: 0.5em;
+  }
+
+  /* Definition Lists */
+  dl {
+    margin-bottom: 1em;
+  }
+
+  dt {
+    font-weight: bold;
+  }
+
+  dd {
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  /* Footnotes */
+  .footnotes {
+    border-top: 1px solid #ccc;
+    padding-top: 1em;
+    font-size: 0.875em;
+  }
+
+  p {
+    margin-bottom: 1em;
+    line-height: 1.6;
+  }
+
+  .container > * + * {
+    margin-top: 1em;
+  }
+
+  .menu-icon {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+
+  @media screen and (max-width: 600px) {
+    .site-nav {
+      position: static;
+    }
+
+    .menu-icon {
+      display: block;
+    }
+
+    .menu-items {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #FCF6E3;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    .menu-items.active {
+      display: block;
+    }
+
+    .site-nav a {
+      display: block;
+      margin: 10px 0;
+    }
+
+    .menu-icon.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .menu-icon.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-icon.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  }
+
+  .site-nav .menu-items a {
+    margin-left: 20px;
+    padding: 5px 10px;
+  }
+
+  .site-nav .menu-items a:first-child {
+    margin-left: 0;
+  }

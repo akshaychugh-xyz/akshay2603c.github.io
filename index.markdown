@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 ---
 
 👋 Hola amigo, I am Akshay Chugh, and thank you for checking out my website!

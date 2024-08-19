@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ "/assets/css/typewriter.css" | relative_url }}">
+  {% seo %}
+</head>
+<body>
+  {% include header.html %}
+  <div class="container">
+    {{ content }}
+  </div>
+  {% include footer.html %}
+  <script src="{{ "/assets/js/script.js" | relative_url }}"></script>
+</body>
+</html>

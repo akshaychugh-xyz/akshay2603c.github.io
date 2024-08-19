@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: 'Dopamine Nation: Finding Balance in the Age of Indulgence'
 permalink: /books/dopamine-nation
 tag: 2-star

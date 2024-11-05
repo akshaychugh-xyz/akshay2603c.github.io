@@ -4,7 +4,7 @@ title: book summaries
 permalink: /books/
 ---
 
-#### A list of all my book summaries, starting 2022 Nov. 
+## A list of all my book summaries, starting 2022 Nov. 
 
 > Disclaimer: These posts are mainly my reflections from the books that I have read (ideas that I found interesting, stuff that I know but need constant reminding etc.). 
 > 

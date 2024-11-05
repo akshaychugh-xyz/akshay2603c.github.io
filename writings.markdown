@@ -3,53 +3,29 @@ layout: default
 title: writings
 permalink: /writings/
 ---
-## All articles:
-
-#### A list of all my writings on product and growth. 
+## All articles
 
 <ul>
-  {% for post in site.categories.png %}
+  {% assign empty_array = "" | split: "," %}
+  {% assign all_posts = empty_array %}
+  {% if site.categories.png %}{% assign all_posts = all_posts | concat: site.categories.png %}{% endif %}
+  {% if site.categories.fitness %}{% assign all_posts = all_posts | concat: site.categories.fitness %}{% endif %}
+  {% if site.categories.life %}{% assign all_posts = all_posts | concat: site.categories.life %}{% endif %}
+  {% if site.categories.web3 %}{% assign all_posts = all_posts | concat: site.categories.web3 %}{% endif %}
+  {% assign all_posts = all_posts | sort: 'date' | reverse %}
+  {% for post in all_posts %}
     <li>
-    	<a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
-    </li>
-  {% endfor %}
-</ul>
-
-<!-- #### A list of all my writings on Web3. 
-
-<ul>
-  {% for post in site.categories.web3 %}
-    <li>
-    	<a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
-    </li>
-  {% endfor %}
-</ul> -->
-
-#### A list of all my writings on fitness. 
-
-<ul>
-  {% for post in site.categories.fitness %}
-    <li>
-    	<a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
-    </li>
-  {% endfor %}
-</ul>
-
-#### A list of all my writings on life in general. 
-
-<ul>
-  {% for post in site.categories.life %}
-    <li>
-    	<a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
+      <a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
+      <small><i>(<a href="/writings/{{ post.categories[1] }}">{% if post.categories[1] == "png" %}product & growth{% else %}{{ post.categories[1] }}{% endif %}</a>)</i></small>
     </li>
   {% endfor %}
 </ul>
 
 -----
 
-### Quicklinks:
+#### Quicklinks:
 
-- [product and growth](/writings/png)
+- [product & growth](/writings/png)
 - [web3](/writings/web3)
 - [fitness](/writings/fitness)
 - [just life in general](/writings/life)

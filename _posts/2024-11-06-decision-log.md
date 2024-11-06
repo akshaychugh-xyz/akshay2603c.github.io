@@ -5,7 +5,7 @@ permalink: /writings/png/decision-log
 categories: [writings, png]
 ---
 
-### Why a decision log?
+### Maintain a decision log?
 
 The goal of a good product/business person should be to **improve product/business sense.**
 

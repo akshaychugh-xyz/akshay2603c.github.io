@@ -5,6 +5,7 @@ permalink: /writings/png/decision-log
 categories: [writings, png]
 ---
 
+<small>{{ page.date | date_to_string }}</small>
 ### Maintain a decision log
 
 The goal of a good product/business person should be to **improve product/business sense.**

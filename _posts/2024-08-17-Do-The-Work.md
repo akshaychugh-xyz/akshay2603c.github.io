@@ -5,6 +5,7 @@ permalink: /books/do-the-work
 tag: 5-star
 category: books
 ---
+<small>{{ page.date | date_to_string }}</small>
 
 > Disclaimer: This post is mainly my reflections from the book (ideas that I found interesting, stuff that I know but need constant reminding etc.). 
 > 

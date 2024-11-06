@@ -14,9 +14,12 @@ permalink: /writings/
   {% if site.categories.web3 %}{% assign all_posts = all_posts | concat: site.categories.web3 %}{% endif %}
   {% assign all_posts = all_posts | sort: 'date' | reverse %}
   {% for post in all_posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
-      <small><i>(<a href="/writings/{{ post.categories[1] }}">{% if post.categories[1] == "png" %}product & growth{% else %}{{ post.categories[1] }}{% endif %}</a>)</i></small>
+    <li style="margin-bottom: 0.5em;">
+      <a href="{{ post.url }}">{{ post.title }}</a>
+      <span style="float: right; color: #888;">
+        <small>{{ post.date | date_to_string }}</small>
+        <small><i>(<a href="/writings/{{ post.categories[1] }}" style="color: #888;">{% if post.categories[1] == "png" %}product & growth{% else %}{{ post.categories[1] }}{% endif %}</a>)</i></small>
+      </span>
     </li>
   {% endfor %}
 </ul>

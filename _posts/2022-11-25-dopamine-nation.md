@@ -5,7 +5,7 @@ permalink: /books/dopamine-nation
 tag: 2-star
 category: books
 ---
-
+<small>{{ page.date | date_to_string }}</small>
 > Disclaimer: This post is mainly my reflections from the book (ideas that I found interesting, stuff that I know but need constant reminding etc.). 
 > 
 > Check out my [Goodreads profile](https://www.goodreads.com/user/show/47835814-akshay-chugh) for all my book recommendations (maintained since 2021 Jan).

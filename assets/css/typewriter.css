@@ -1,3 +1,7 @@
+html {
+  font-size: clamp(14px, 2vw, 16px);
+}
+
 body {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
@@ -388,3 +392,38 @@ body {
   .site-footer {
     flex-shrink: 0;
   }
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+  
+  h1 { font-size: 1.75em; }
+  h2 { font-size: 1.5em; }
+  h3 { font-size: 1.25em; }
+  
+  .site-title { 
+    font-size: 20px;
+    line-height: 44px;
+  }
+  
+  .menu-items {
+    padding: 15px;
+  }
+  
+  .site-nav a {
+    padding: 8px 0;
+    font-size: 1.1em;
+  }
+}
+
+@media (hover: none) {
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .menu-icon {
+    padding: 12px;
+  }
+}

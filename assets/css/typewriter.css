@@ -540,12 +540,7 @@ body {
   }
 
   .site-nav .menu-items a {
-    margin-left: 20px;
     padding: 5px 10px;
-  }
-
-  .site-nav .menu-items a:first-child {
-    margin-left: 0;
   }
 
   html, body {

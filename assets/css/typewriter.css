@@ -1,13 +1,137 @@
+:root {
+  /* Light theme colors (Flexoki) */
+  --color-paper: #FFFCF0;
+  --color-base-50: #F2F0E5;
+  --color-base-100: #E6E4D9;
+  --color-base-200: #DAD8CE;
+  --color-base-300: #CECDC3;
+  --color-base-400: #B7B5AC;
+  --color-base-500: #9F9D94;
+  --color-base-600: #878580;
+  --color-base-700: #6F6E69;
+  --color-base-800: #575653;
+  --color-base-850: #403E3C;
+  --color-base-900: #2D2B28;
+  --color-base-950: #1C1B1A;
+  --color-black: #100F0F;
+  
+  /* Accent colors - light theme (400 level) */
+  --color-red: #D14D41;
+  --color-orange: #DA702C;
+  --color-yellow: #D0A215;
+  --color-green: #879A39;
+  --color-cyan: #3AA99F;
+  --color-blue: #4385BE;
+  --color-purple: #8B7EC8;
+  --color-magenta: #CE5D97;
+  
+  /* Theme-specific assignments */
+  --bg-primary: var(--color-paper);
+  --bg-secondary: var(--color-base-50);
+  --text-primary: var(--color-black);
+  --text-secondary: var(--color-base-700);
+  --accent-primary: var(--color-yellow);
+  --accent-secondary: var(--color-blue);
+  --accent-tertiary: var(--color-green);
+  --border-color: var(--color-base-200);
+  --hr-color: var(--color-base-300);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  /* Dark theme colors (Flexoki) */
+  --color-paper: #1C1B1A;
+  --color-base-50: #2D2B28;
+  --color-base-100: #403E3C;
+  --color-base-200: #575653;
+  --color-base-300: #6F6E69;
+  --color-base-400: #878580;
+  --color-base-500: #9F9D94;
+  --color-base-600: #B7B5AC;
+  --color-base-700: #CECDC3;
+  --color-base-800: #DAD8CE;
+  --color-base-850: #E6E4D9;
+  --color-base-900: #F2F0E5;
+  --color-base-950: #FFFCF0;
+  --color-black: #E6E4D9;
+  
+  /* Accent colors - dark theme (600 level) */
+  --color-red: #AF3029;
+  --color-orange: #BC5215;
+  --color-yellow: #AD8301;
+  --color-green: #66800B;
+  --color-cyan: #24837B;
+  --color-blue: #205EA6;
+  --color-purple: #5E409D;
+  --color-magenta: #A02F6F;
+  
+  /* Theme-specific assignments for dark mode */
+  --bg-primary: var(--color-paper);
+  --bg-secondary: var(--color-base-50);
+  --text-primary: var(--color-black);
+  --text-secondary: var(--color-base-600);
+  --accent-primary: var(--color-yellow);
+  --accent-secondary: #6BB6FF;
+  --accent-tertiary: var(--color-green);
+  --border-color: var(--color-base-200);
+  --hr-color: var(--color-base-300);
+  --shadow-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    /* Dark theme colors (Flexoki) */
+    --color-paper: #1C1B1A;
+    --color-base-50: #2D2B28;
+    --color-base-100: #403E3C;
+    --color-base-200: #575653;
+    --color-base-300: #6F6E69;
+    --color-base-400: #878580;
+    --color-base-500: #9F9D94;
+    --color-base-600: #B7B5AC;
+    --color-base-700: #CECDC3;
+    --color-base-800: #DAD8CE;
+    --color-base-850: #E6E4D9;
+    --color-base-900: #F2F0E5;
+    --color-base-950: #FFFCF0;
+    --color-black: #E6E4D9;
+    
+    /* Accent colors - dark theme (600 level) */
+    --color-red: #AF3029;
+    --color-orange: #BC5215;
+    --color-yellow: #AD8301;
+    --color-green: #66800B;
+    --color-cyan: #24837B;
+    --color-blue: #205EA6;
+    --color-purple: #5E409D;
+    --color-magenta: #A02F6F;
+    
+    /* Theme-specific assignments for dark mode */
+    --bg-primary: var(--color-paper);
+    --bg-secondary: var(--color-base-50);
+    --text-primary: var(--color-black);
+    --text-secondary: var(--color-base-600);
+    --accent-primary: var(--color-yellow);
+    --accent-secondary: #6BB6FF;
+    --accent-tertiary: var(--color-green);
+    --border-color: var(--color-base-200);
+    --hr-color: var(--color-base-300);
+    --shadow-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
 html {
-  font-size: clamp(14px, 2vw, 16px);
+  font-size: clamp(16px, 2vw, 18px);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 16px;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 18px;
     line-height: 1.7;
-    color: #333;
-    background-color: #FCF6E3;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   .container {
@@ -17,26 +141,44 @@ body {
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Source Code Pro', monospace;
-    font-weight: bold;
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-weight: 600;
+    margin-top: 1.8em;
+    margin-bottom: 0.6em;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
   }
 
-  h1 { font-size: 2em; border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
-  h2 { font-size: 1.75em; border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
-  h3 { font-size: 1.5em; }
-  h4 { font-size: 1.25em; }
-  h5 { font-size: 1em; }
-  h6 { font-size: 0.875em; }
+  h1 { font-size: 2.2em; }
+  h2 { font-size: 1.8em; }
+  h3 { font-size: 1.5em; color: var(--text-primary); }
+  h4 { font-size: 1.3em; color: var(--text-primary); }
+  h5 { font-size: 1.1em; color: var(--accent-tertiary); }
+  h6 { font-size: 1em; color: var(--accent-tertiary); }
   
   a {
-    color: #0066cc;
+    color: var(--accent-secondary);
     text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
   }
   
   a:hover {
+    color: var(--accent-primary);
     text-decoration: underline;
+  }
+
+  /* Remove underlines from navigation */
+  .site-nav a {
+    color: var(--text-primary);
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+  .site-nav a:hover {
+    color: var(--text-primary);
+    opacity: 0.7;
+    text-decoration: none;
   }
   
   .site-header {
@@ -54,17 +196,44 @@ body {
   }
   
   .site-title {
-    font-family: 'Source Code Pro', monospace;
-    font-size: 26px;
-    font-weight: bold;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 400;
     line-height: 54px;
     margin-bottom: 0;
     margin: 0;
+    color: var(--text-primary);
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
   }
   
   .site-nav {
     display: flex;
     align-items: center;
+    gap: 15px;
+  }
+
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    color: var(--text-primary);
+  }
+
+  .theme-toggle:hover {
+    background-color: var(--bg-secondary);
+  }
+
+  .theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
   }
   
   .menu-icon {
@@ -79,7 +248,7 @@ body {
     display: block;
     width: 25px;
     height: 3px;
-    background-color: #333;
+    background-color: var(--text-primary);
     margin: 5px 0;
     transition: 0.4s;
   }
@@ -99,9 +268,9 @@ body {
       top: 100%;
       left: 0;
       right: 0;
-      background-color: #FCF6E3;
+      background-color: var(--bg-primary);
       padding: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px var(--shadow-color);
       z-index: 1000;
     }
 
@@ -128,7 +297,7 @@ body {
   }
   
   .site-footer {
-    border-top: 1px solid #e8e8e8;
+    border-top: 1px solid var(--border-color);
     padding: 20px 0;
     font-size: 14px;
     line-height: 1.5;
@@ -165,7 +334,7 @@ body {
   
   /* Blockquotes */
   blockquote {
-    border-left: 4px solid #ccc;
+    border-left: 4px solid var(--border-color);
     margin: 1.5em 10px;
     padding: 0.5em 10px;
     quotes: "\201C""\201D""\2018""\2019";
@@ -173,7 +342,7 @@ body {
   }
 
   blockquote:before {
-    color: #ccc;
+    color: var(--text-secondary);
     content: open-quote;
     font-size: 4em;
     line-height: 0.1em;
@@ -188,10 +357,12 @@ body {
   /* Code blocks */
   pre, code {
     font-family: 'Source Code Pro', monospace;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--accent-primary);
+    border-radius: 4px;
     padding: 2px 4px;
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
   }
 
   pre {
@@ -223,8 +394,9 @@ body {
   /* Horizontal Rule */
   hr {
     border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
+    border-top: 1px solid var(--hr-color);
+    margin: 1.5em 0;
+    transition: border-color 0.3s ease;
   }
 
   /* Tables */
@@ -235,13 +407,15 @@ body {
   }
 
   th, td {
-    border: 1px solid #ccc;
-    padding: 8px;
+    border: 1px solid var(--accent-primary);
+    padding: 10px;
     text-align: left;
+    transition: border-color 0.3s ease;
   }
 
   th {
-    background-color: #f0f0f0;
+    background-color: var(--bg-secondary);
+    transition: background-color 0.3s ease;
   }
 
   /* Images */
@@ -290,9 +464,10 @@ body {
 
   /* Footnotes */
   .footnotes {
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--border-color);
     padding-top: 1em;
     font-size: 0.875em;
+    transition: border-color 0.3s ease;
   }
 
   p {
@@ -316,7 +491,7 @@ body {
     display: block;
     width: 25px;
     height: 3px;
-    background-color: #333;
+    background-color: var(--text-primary);
     margin: 5px 0;
     transition: 0.4s;
   }
@@ -336,9 +511,9 @@ body {
       top: 100%;
       left: 0;
       right: 0;
-      background-color: #FCF6E3;
+      background-color: var(--bg-primary);
       padding: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px var(--shadow-color);
       z-index: 1000;
     }
 
@@ -398,12 +573,13 @@ body {
     padding: 10px;
   }
   
-  h1 { font-size: 1.75em; }
-  h2 { font-size: 1.5em; }
-  h3 { font-size: 1.25em; }
+  h1 { font-size: 1.9em; }
+  h2 { font-size: 1.6em; }
+  h3 { font-size: 1.35em; }
+  h4 { font-size: 1.2em; }
   
   .site-title { 
-    font-size: 20px;
+    font-size: 22px;
     line-height: 44px;
   }
   

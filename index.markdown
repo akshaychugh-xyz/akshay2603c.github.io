@@ -8,7 +8,7 @@ I currently lead Product for Coinbase India and am obsessed with Claude Code on 
 
 Also find me at [Twitter/X](https://x.com/akshaychugh_xyz) and [LinkedIn](https://www.linkedin.com/in/chughakshay/). 
 
-## Favorite Side Projects
+### Favorite Side Projects
 
 - **[BlunderBuddy](https://blunderbuddy.pro/)** - AI-powered personalized chess insights that actually make sense.
 
@@ -16,7 +16,7 @@ Also find me at [Twitter/X](https://x.com/akshaychugh_xyz) and [LinkedIn](https:
 
 *[View all projects →](/side-projects/)*
 
-## Recent Writings
+### Recent Writings
 
 - [Difficult yet Simple](/writings/life/difficult-yet-simple) - *Aug 2025*
 

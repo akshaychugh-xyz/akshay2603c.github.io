@@ -18,6 +18,8 @@ Also find me at [Twitter/X](https://x.com/akshaychugh_xyz) and [LinkedIn](https:
 
 ## Recent Writings
 
+- [Difficult yet Simple](/writings/life/difficult-yet-simple) - *Aug 2025*
+
 - [How Zerodha grows](/writings/png/zerodha) - *July 2025*
 
 - [Granola AI - def a better note taker but not because of its AI](/writings/png/granola) - *February 2025*

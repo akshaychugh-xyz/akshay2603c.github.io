@@ -4,6 +4,11 @@ title: side projects
 permalink: /side-projects/
 ---
 
+- <a href="https://blunderbuddy.pro/" target="_blank" rel="noopener noreferrer">BlunderBuddy</a> <span style="float: right; color: #888;"><small>01 Jul 2025</small></span>
+  <div style="color: #666;">AI-powered personalized chess insights that actually make sense.</div>
+
+- <a href="https://simpleeval.com/" target="_blank" rel="noopener noreferrer">Simple Eval</a> <span style="float: right; color: #888;"><small>01 Jun 2025</small></span>
+  <div style="color: #666;">Connect your vibecoded app & get auto-suggest evals to improve performance.</div>
 
 - <a href="https://quickyap.akshaychugh.xyz/" target="_blank" rel="noopener noreferrer">quickyap</a> <span style="float: right; color: #888;"><small>01 Dec 2024</small></span>
   <div style="color: #666;">Get your computer to work at the speed of your thoughts. Just speak and get instant text in any app.</div>

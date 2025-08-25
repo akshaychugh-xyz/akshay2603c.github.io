@@ -18,13 +18,13 @@ Also find me at [Twitter/X](https://x.com/akshaychugh_xyz) and [LinkedIn](https:
 
 ### Recent Writings
 
+- [Scratch your own itches with Claude code](/writings/life/scratch-your-itches) - *Aug 2025*
+
 - [Difficult yet Simple](/writings/life/difficult-yet-simple) - *Aug 2025*
 
 - [How Zerodha grows](/writings/png/zerodha) - *July 2025*
 
 - [Granola AI - def a better note taker but not because of its AI](/writings/png/granola) - *February 2025*
-
-- [How I use Cursor](/writings/png/cursor) - *November 2024*
 
 *[View all writings →](/writings/)*
 

@@ -3,7 +3,6 @@ layout: default
 title: Difficult yet Simple
 permalink: /writings/life/difficult-yet-simple
 categories: [writings, life]
-image: /assets/images/png/zerodha-growth.png
 ---
 
 <small>{{ page.date | date_to_string }}</small>

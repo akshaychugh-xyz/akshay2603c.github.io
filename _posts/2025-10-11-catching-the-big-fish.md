@@ -7,7 +7,7 @@ category: books
 <small>{{ page.date | date_to_string }}</small>
 
 #### [Catching the Big Fish](https://www.goodreads.com/book/show/58169.Catching_the_Big_Fish)
-**Author: David Lynch**
+**Author: David Lynch**<br style="line-height: 0.5;">
 **Rating: 3 star**
 
 A book that doesn't really tell you anything but I just got this this feeling that the author is glowing from within. I don't know how to describe why I felt this, I just did. Essentially serves as a great sub-conscious pitch to try out Transcendental Meditation (TM) - i just booked an intro slot at a center near me.

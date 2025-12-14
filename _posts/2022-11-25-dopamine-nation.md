@@ -1,9 +1,9 @@
 ---
 layout: default
 title: 'Dopamine Nation: Finding Balance in the Age of Indulgence'
-permalink: /books/dopamine-nation
+permalink: /reflections/books/dopamine-nation
 tag: 2-star
-category: books
+categories: [reflections, books]
 ---
 <small>{{ page.date | date_to_string }}</small>
 > Disclaimer: This post is mainly my reflections from the book (ideas that I found interesting, stuff that I know but need constant reminding etc.). 

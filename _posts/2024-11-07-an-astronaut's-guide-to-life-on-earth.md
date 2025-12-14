@@ -1,9 +1,9 @@
 ---
 layout: default
 title: "An Astronaut's Guide to Life on Earth"
-permalink: /books/astronauts-guide-to-life-on-earth
+permalink: /reflections/books/astronauts-guide-to-life-on-earth
 tag: 4-star
-category: books
+categories: [reflections, books]
 ---
 <small>{{ page.date | date_to_string }}</small>
 

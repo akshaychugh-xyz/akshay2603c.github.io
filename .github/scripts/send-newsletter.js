@@ -15,9 +15,19 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Initialize Google Sheets
 async function getGoogleSheetsClient() {
-  const credentials = JSON.parse(
-    Buffer.from(process.env.GOOGLE_CREDENTIALS, 'base64').toString('utf-8')
-  );
+  // Handle both raw JSON and base64-encoded credentials
+  let credentials;
+  const credentialsEnv = process.env.GOOGLE_CREDENTIALS;
+
+  try {
+    // First try parsing as raw JSON
+    credentials = JSON.parse(credentialsEnv);
+  } catch {
+    // If that fails, try base64 decoding first
+    credentials = JSON.parse(
+      Buffer.from(credentialsEnv, 'base64').toString('utf-8')
+    );
+  }
 
   const auth = new google.auth.GoogleAuth({
     credentials,

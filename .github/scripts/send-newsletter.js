@@ -51,11 +51,18 @@ async function getActiveSubscribers() {
 // Find the new post file from git diff
 async function findNewPost() {
   // Get list of changed files from environment or git
-  const changedFiles = process.env.CHANGED_FILES?.split('\n') || [];
+  const changedFiles = process.env.CHANGED_FILES?.split('\n').map(f => f.trim()).filter(f => f) || [];
+
+  // Script runs from .github/scripts/, so go up two levels to repo root
+  const repoRoot = path.resolve(process.cwd(), '..', '..');
+
+  console.log(`Looking for posts in: ${repoRoot}`);
+  console.log(`Changed files: ${JSON.stringify(changedFiles)}`);
 
   for (const file of changedFiles) {
     if (file.startsWith('_posts/') && file.endsWith('.md')) {
-      const fullPath = path.join(process.cwd(), file);
+      const fullPath = path.join(repoRoot, file);
+      console.log(`Checking: ${fullPath}`);
       if (fs.existsSync(fullPath)) {
         return fullPath;
       }

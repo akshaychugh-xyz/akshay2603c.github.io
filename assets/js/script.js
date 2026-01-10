@@ -98,4 +98,51 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     console.error('Menu icon or menu items not found');
   }
+
+  // Newsletter form handling
+  const newsletterForm = document.getElementById('newsletter-form');
+  if (newsletterForm) {
+    const emailInput = document.getElementById('newsletter-email');
+    const submitButton = document.getElementById('newsletter-submit');
+    const formMessage = document.getElementById('form-message');
+
+    // TODO: Replace with your Google Apps Script deployment URL
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxSCkJCVFlVvAPvVJOJ3OyG4pBnfGsqTXZ6Zgl4Fn5H0rdPZgWMoTzMzL8VuVJBQ7Nftw/exec';
+
+    newsletterForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const email = emailInput.value.trim();
+      if (!email) return;
+
+      // Update UI to loading state
+      submitButton.disabled = true;
+      submitButton.textContent = 'Subscribing...';
+      formMessage.textContent = '';
+      formMessage.className = 'form-message';
+
+      try {
+        const response = await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors', // Apps Script requires this
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: email })
+        });
+
+        // With no-cors, we can't read the response, so assume success
+        formMessage.textContent = 'Please check your inbox to confirm.';
+        formMessage.className = 'form-message success';
+        emailInput.value = '';
+      } catch (error) {
+        formMessage.textContent = 'Something went wrong. Please try again.';
+        formMessage.className = 'form-message error';
+        console.error('Newsletter subscription error:', error);
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Subscribe';
+      }
+    });
+  }
 });

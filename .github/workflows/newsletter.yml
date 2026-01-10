@@ -1,0 +1,73 @@
+name: Send Newsletter
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '_posts/**'
+
+jobs:
+  send-newsletter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Get changed files
+        id: changed-files
+        run: |
+          # Get list of added or modified files in _posts/
+          CHANGED=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- '_posts/*.md' '_posts/**/*.md' 2>/dev/null || echo "")
+          echo "Changed post files:"
+          echo "$CHANGED"
+          echo "CHANGED_FILES<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Check for newsletter posts
+        id: check-newsletter
+        run: |
+          SHOULD_SEND="false"
+          for file in ${{ steps.changed-files.outputs.CHANGED_FILES }}; do
+            if [ -f "$file" ]; then
+              # Check if newsletter: true exists in frontmatter
+              if grep -q "^newsletter: true" "$file" || grep -q "^newsletter:true" "$file"; then
+                echo "Found newsletter post: $file"
+                SHOULD_SEND="true"
+                break
+              fi
+            fi
+          done
+          echo "should_send=$SHOULD_SEND" >> $GITHUB_OUTPUT
+
+      - name: Setup Node.js
+        if: steps.check-newsletter.outputs.should_send == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        if: steps.check-newsletter.outputs.should_send == 'true'
+        run: |
+          cd .github/scripts
+          npm install
+
+      - name: Send newsletter
+        if: steps.check-newsletter.outputs.should_send == 'true'
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          APPS_SCRIPT_URL: ${{ secrets.APPS_SCRIPT_URL }}
+          CHANGED_FILES: ${{ steps.changed-files.outputs.CHANGED_FILES }}
+        run: |
+          cd .github/scripts
+          node send-newsletter.js
+
+      - name: No newsletter to send
+        if: steps.check-newsletter.outputs.should_send != 'true'
+        run: echo "No posts with newsletter:true found. Skipping."

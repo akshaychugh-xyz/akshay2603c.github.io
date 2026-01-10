@@ -28,6 +28,8 @@ Also find me at [Twitter/X](https://x.com/akshaychugh_xyz) and [LinkedIn](https:
 
 *[View all writings →](/writings/)*
 
+{% include subscribe-form.html %}
+
 ---
 
 Cheers!

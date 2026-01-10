@@ -151,7 +151,15 @@ body {
 
   h1 { font-size: 2.2em; }
   h2 { font-size: 1.8em; }
-  h3 { font-size: 1.5em; color: var(--text-primary); }
+  h3 {
+    font-size: 0.85em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin-top: 3em;
+    margin-bottom: 1.2em;
+  }
   h4 { font-size: 1.3em; color: var(--text-primary); }
   h5 { font-size: 1.1em; color: var(--accent-tertiary); }
   h6 { font-size: 1em; color: var(--accent-tertiary); }
@@ -168,6 +176,17 @@ body {
     text-decoration: underline;
   }
 
+  /* Muted "View all" links */
+  em a {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  em a:hover {
+    color: var(--color-orange);
+  }
+
   /* Remove underlines from navigation */
   .site-nav a {
     color: var(--text-primary);
@@ -176,14 +195,16 @@ body {
   }
 
   .site-nav a:hover {
-    color: var(--text-primary);
-    opacity: 0.7;
+    color: var(--color-orange);
+    opacity: 1;
     text-decoration: none;
   }
   
   .site-header {
     position: relative;
-    padding: 1rem 0;
+    padding: 1rem 0 0.4rem 0;
+    border-bottom: 1px solid var(--color-orange);
+    margin-bottom: 0;
   }
   
   .wrapper {
@@ -206,7 +227,12 @@ body {
     letter-spacing: 0.5px;
     transition: color 0.3s ease;
   }
-  
+
+  .site-title:hover {
+    color: var(--color-orange);
+  }
+
+    
   .site-nav {
     display: flex;
     align-items: center;

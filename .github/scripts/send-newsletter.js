@@ -104,9 +104,27 @@ function parsePost(filePath) {
   };
 }
 
+// Clean up markdown content for email
+function cleanMarkdownForEmail(content) {
+  return content
+    // Remove Jekyll/Liquid template tags like {{ page.date | date_to_string }}
+    .replace(/\{\{[^}]+\}\}/g, '')
+    .replace(/\{%[^%]+%\}/g, '')
+    // Remove the first H1 heading (title is already in email template)
+    .replace(/^#\s+.+$/m, '')
+    // Remove <small> tags that wrap dates
+    .replace(/<small>.*?<\/small>/gs, '')
+    // Remove HTML comments
+    .replace(/<!--[\s\S]*?-->/g, '')
+    // Clean up extra blank lines
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
 // Convert markdown to HTML for email
 function markdownToHtml(markdownContent) {
-  return marked(markdownContent);
+  const cleaned = cleanMarkdownForEmail(markdownContent);
+  return marked(cleaned);
 }
 
 // Generate email HTML

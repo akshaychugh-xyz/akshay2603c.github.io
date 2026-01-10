@@ -30,6 +30,4 @@ Also find me at [Twitter/X](https://x.com/akshaychugh_xyz) and [LinkedIn](https:
 
 {% include subscribe-form.html %}
 
----
-
 Cheers!

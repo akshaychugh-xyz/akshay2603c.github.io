@@ -1,18 +1,20 @@
-<div class="subscribe-box">
-  <h3>Get new posts in your inbox</h3>
-  <p>Subscribe to receive my latest writings directly. No spam, unsubscribe anytime.</p>
-  <form id="newsletter-form" class="newsletter-form">
-    <div class="form-row">
-      <input
-        type="email"
-        id="newsletter-email"
-        name="email"
-        placeholder="your@email.com"
-        required
-        autocomplete="email"
-      >
-      <button type="submit" id="newsletter-submit">Subscribe</button>
+<!-- Variation selector: change 'data-variant' to 1, 2, 3, 4, or 5 -->
+<div class="subscribe-section" data-variant="3">
+  <form id="newsletter-form">
+    <div class="subscribe-content">
+      <span class="subscribe-text">Get new posts in your inbox</span>
+      <div class="subscribe-form-row">
+        <input
+          type="email"
+          id="newsletter-email"
+          name="email"
+          placeholder="your@email.com"
+          required
+          autocomplete="email"
+        >
+        <button type="submit" id="newsletter-submit">Subscribe</button>
+      </div>
     </div>
-    <p class="form-message" id="form-message"></p>
   </form>
+  <p class="form-message" id="form-message"></p>
 </div>

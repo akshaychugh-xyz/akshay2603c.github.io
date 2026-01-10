@@ -582,9 +582,9 @@ body {
   }
   
   h1 { font-size: 1.9em; }
-  h2 { font-size: 1.6em; }
-  h3 { font-size: 1.35em; }
-  h4 { font-size: 1.2em; }
+  h2 { font-size: 1.1em; }
+  h3 { font-size: 0.75em; letter-spacing: 0.05em; }
+  h4 { font-size: 1em; }
   
   .site-title { 
     font-size: 22px;
@@ -641,134 +641,7 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   VARIATION 1: Centered Elegant
-   Centered layout, orange pill button, refined spacing
-   ═══════════════════════════════════════════════════════════ */
-.subscribe-section[data-variant="1"] .subscribe-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75em;
-}
-
-.subscribe-section[data-variant="1"] .subscribe-text {
-  font-size: 0.9em;
-  color: var(--text-secondary);
-}
-
-.subscribe-section[data-variant="1"] .subscribe-form-row {
-  display: flex;
-  gap: 0.5em;
-}
-
-.subscribe-section[data-variant="1"] input[type="email"] {
-  padding: 0.5em 0.75em;
-  font-size: 0.85em;
-  font-family: inherit;
-  color: var(--text-primary);
-  background: var(--bg-primary);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  outline: none;
-  width: 180px;
-  transition: border-color 0.2s ease;
-}
-
-.subscribe-section[data-variant="1"] input[type="email"]:focus {
-  border-color: var(--color-orange);
-}
-
-.subscribe-section[data-variant="1"] input[type="email"]::placeholder {
-  color: var(--text-secondary);
-  opacity: 0.6;
-}
-
-.subscribe-section[data-variant="1"] button[type="submit"] {
-  padding: 0.5em 1em;
-  font-size: 0.85em;
-  font-family: inherit;
-  font-weight: 500;
-  color: #FFFCF0;
-  background: var(--color-orange);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-
-.subscribe-section[data-variant="1"] button[type="submit"]:hover {
-  opacity: 0.85;
-}
-
-.subscribe-section[data-variant="1"] .form-message {
-  text-align: center;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   VARIATION 2: Left-aligned with Ghost Button
-   Left layout, orange outline/ghost button
-   ═══════════════════════════════════════════════════════════ */
-.subscribe-section[data-variant="2"] .subscribe-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1em;
-  flex-wrap: wrap;
-}
-
-.subscribe-section[data-variant="2"] .subscribe-text {
-  font-size: 0.9em;
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-.subscribe-section[data-variant="2"] .subscribe-form-row {
-  display: flex;
-  gap: 0.5em;
-}
-
-.subscribe-section[data-variant="2"] input[type="email"] {
-  padding: 0.45em 0.7em;
-  font-size: 0.85em;
-  font-family: inherit;
-  color: var(--text-primary);
-  background: transparent;
-  border: 1px solid var(--border-color);
-  border-radius: 3px;
-  outline: none;
-  width: 160px;
-  transition: border-color 0.2s ease;
-}
-
-.subscribe-section[data-variant="2"] input[type="email"]:focus {
-  border-color: var(--color-orange);
-}
-
-.subscribe-section[data-variant="2"] input[type="email"]::placeholder {
-  color: var(--text-secondary);
-  opacity: 0.6;
-}
-
-.subscribe-section[data-variant="2"] button[type="submit"] {
-  padding: 0.45em 0.9em;
-  font-size: 0.85em;
-  font-family: inherit;
-  font-weight: 500;
-  color: var(--color-orange);
-  background: transparent;
-  border: 1px solid var(--color-orange);
-  border-radius: 3px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.subscribe-section[data-variant="2"] button[type="submit"]:hover {
-  background: var(--color-orange);
-  color: #FFFCF0;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   VARIATION 3: Orange Accent Bar
+   Subscribe Section: Orange Accent Bar
    Left orange border accent, inline layout
    ═══════════════════════════════════════════════════════════ */
 .subscribe-section[data-variant="3"] {
@@ -833,190 +706,36 @@ body {
   transform: translateX(2px);
 }
 
-/* ═══════════════════════════════════════════════════════════
-   VARIATION 4: Compact Centered
-   Small centered block, filled orange button, tighter
-   ═══════════════════════════════════════════════════════════ */
-.subscribe-section[data-variant="4"] {
-  text-align: center;
-}
-
-.subscribe-section[data-variant="4"] .subscribe-content {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.subscribe-section[data-variant="4"] .subscribe-text {
-  font-size: 0.85em;
-  color: var(--text-secondary);
-}
-
-.subscribe-section[data-variant="4"] .subscribe-text::after {
-  content: "·";
-  margin-left: 0.6em;
-  color: var(--border-color);
-}
-
-.subscribe-section[data-variant="4"] .subscribe-form-row {
-  display: flex;
-  gap: 0.4em;
-}
-
-.subscribe-section[data-variant="4"] input[type="email"] {
-  padding: 0.4em 0.6em;
-  font-size: 0.8em;
-  font-family: inherit;
-  color: var(--text-primary);
-  background: var(--bg-primary);
-  border: 1px solid var(--border-color);
-  border-radius: 3px;
-  outline: none;
-  width: 140px;
-  transition: border-color 0.2s ease;
-}
-
-.subscribe-section[data-variant="4"] input[type="email"]:focus {
-  border-color: var(--color-orange);
-}
-
-.subscribe-section[data-variant="4"] input[type="email"]::placeholder {
-  color: var(--text-secondary);
-  opacity: 0.5;
-}
-
-.subscribe-section[data-variant="4"] button[type="submit"] {
-  padding: 0.4em 0.75em;
-  font-size: 0.8em;
-  font-family: inherit;
-  font-weight: 500;
-  color: #FFFCF0;
-  background: var(--color-orange);
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-
-.subscribe-section[data-variant="4"] button[type="submit"]:hover {
-  opacity: 0.85;
-}
-
-.subscribe-section[data-variant="4"] .form-message {
-  width: 100%;
-  text-align: center;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   VARIATION 5: Editorial / Typographic
-   Larger text, underline input, orange arrow, refined
-   ═══════════════════════════════════════════════════════════ */
-.subscribe-section[data-variant="5"] .subscribe-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6em;
-}
-
-.subscribe-section[data-variant="5"] .subscribe-text {
-  font-size: 0.95em;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
-}
-
-.subscribe-section[data-variant="5"] .subscribe-form-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-}
-
-.subscribe-section[data-variant="5"] input[type="email"] {
-  padding: 0.3em 0;
-  font-size: 0.9em;
-  font-family: inherit;
-  color: var(--text-primary);
-  background: transparent;
-  border: none;
-  border-bottom: 1.5px solid var(--color-orange);
-  border-radius: 0;
-  outline: none;
-  width: 200px;
-  transition: border-color 0.2s ease;
-}
-
-.subscribe-section[data-variant="5"] input[type="email"]:focus {
-  border-bottom-width: 2px;
-}
-
-.subscribe-section[data-variant="5"] input[type="email"]::placeholder {
-  color: var(--text-secondary);
-  opacity: 0.5;
-}
-
-.subscribe-section[data-variant="5"] button[type="submit"] {
-  padding: 0.3em 0.5em;
-  font-size: 1.1em;
-  font-family: inherit;
-  color: var(--color-orange);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.subscribe-section[data-variant="5"] button[type="submit"]:hover {
-  transform: translateX(3px);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   Shared: Disabled state & Mobile
-   ═══════════════════════════════════════════════════════════ */
 .subscribe-section button[type="submit"]:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
 @media screen and (max-width: 480px) {
-  .subscribe-section[data-variant="1"] .subscribe-form-row,
-  .subscribe-section[data-variant="2"] .subscribe-form-row {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .subscribe-section[data-variant="1"] input[type="email"],
-  .subscribe-section[data-variant="2"] input[type="email"] {
-    width: 100%;
-  }
-
-  .subscribe-section[data-variant="1"] button[type="submit"],
-  .subscribe-section[data-variant="2"] button[type="submit"] {
-    width: 100%;
-  }
-
-  .subscribe-section[data-variant="2"] .subscribe-content {
-    flex-direction: column;
-    align-items: flex-start;
+  .subscribe-section[data-variant="3"] {
+    padding: 0.75em 0;
+    padding-left: 0.75em;
+    margin-top: 1.5em;
   }
 
   .subscribe-section[data-variant="3"] .subscribe-content {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.5em;
   }
 
-  .subscribe-section[data-variant="4"] .subscribe-text::after {
-    display: none;
+  .subscribe-section[data-variant="3"] .subscribe-text {
+    font-size: 0.8em;
   }
 
-  .subscribe-section[data-variant="4"] .subscribe-content {
-    flex-direction: column;
+  .subscribe-section[data-variant="3"] input[type="email"] {
+    width: 130px;
+    font-size: 0.8em;
+    padding: 0.3em 0.5em;
   }
 
-  .subscribe-section[data-variant="4"] .subscribe-form-row {
-    width: 100%;
-  }
-
-  .subscribe-section[data-variant="4"] input[type="email"] {
-    flex: 1;
+  .subscribe-section[data-variant="3"] button[type="submit"] {
+    font-size: 0.85em;
+    padding: 0.25em 0.4em;
   }
 }

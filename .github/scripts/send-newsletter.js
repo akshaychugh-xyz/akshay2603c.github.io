@@ -42,9 +42,17 @@ async function getActiveSubscribers() {
   const sheets = await getGoogleSheetsClient();
   const sheetId = process.env.GOOGLE_SHEET_ID;
 
+  // First get the spreadsheet to find the first sheet's name
+  const spreadsheet = await sheets.spreadsheets.get({
+    spreadsheetId: sheetId,
+  });
+
+  const firstSheetName = spreadsheet.data.sheets[0].properties.title;
+  console.log(`Using sheet: ${firstSheetName}`);
+
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId: sheetId,
-    range: 'Sheet1!A:C', // email, token, status columns
+    range: `'${firstSheetName}'!A:E`, // email, token, status, subscribed_at, confirmed_at
   });
 
   const rows = response.data.values || [];

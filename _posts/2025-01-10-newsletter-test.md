@@ -18,4 +18,4 @@ If you received this via email, the system works!
 
 *This post will be deleted after testing.*
 
-<!-- Trigger workflow v3 -->
+<!-- Trigger workflow v4 -->

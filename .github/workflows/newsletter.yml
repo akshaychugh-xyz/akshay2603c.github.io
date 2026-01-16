@@ -20,8 +20,8 @@ jobs:
       - name: Get changed files
         id: changed-files
         run: |
-          # Get list of added or modified files in _posts/
-          CHANGED=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- '_posts/*.md' '_posts/**/*.md' 2>/dev/null || echo "")
+          # Get list of newly added files in _posts/ (not modified)
+          CHANGED=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- '_posts/*.md' '_posts/**/*.md' 2>/dev/null || echo "")
           echo "Changed post files:"
           echo "$CHANGED"
           echo "CHANGED_FILES<<EOF" >> $GITHUB_OUTPUT
@@ -30,10 +30,12 @@ jobs:
 
       - name: Check for newsletter posts
         id: check-newsletter
+        env:
+          CHANGED_FILES: ${{ steps.changed-files.outputs.CHANGED_FILES }}
         run: |
           SHOULD_SEND="false"
-          for file in ${{ steps.changed-files.outputs.CHANGED_FILES }}; do
-            if [ -f "$file" ]; then
+          while IFS= read -r file; do
+            if [ -n "$file" ] && [ -f "$file" ]; then
               # Check if newsletter: true exists in frontmatter
               if grep -q "^newsletter: true" "$file" || grep -q "^newsletter:true" "$file"; then
                 echo "Found newsletter post: $file"
@@ -41,7 +43,7 @@ jobs:
                 break
               fi
             fi
-          done
+          done <<< "$CHANGED_FILES"
           echo "should_send=$SHOULD_SEND" >> $GITHUB_OUTPUT
 
       - name: Setup Node.js

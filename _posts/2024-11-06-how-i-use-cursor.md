@@ -6,7 +6,7 @@ categories: [writings, png]
 ---
 
 <small>{{ page.date | date_to_string }}</small>
-### How I use Cursor as a non-dev
+# How I use Cursor as a non-dev
 
 What is [Cursor](https://www.cursor.com/)? It's an AI code editor - essentially chat to create code with a cute mission statement of:
 > Built to make you extraordinarily productive, Cursor is the best way to code with AI.

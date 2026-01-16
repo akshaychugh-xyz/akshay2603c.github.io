@@ -15,11 +15,11 @@ permalink: /writings/
   {% assign all_posts = all_posts | sort: 'date' | reverse %}
   {% for post in all_posts %}
     <li style="margin-bottom: 0.5em;">
-      <div style="display: flex; justify-content: space-between; align-items: baseline;">
-        <a href="{{ post.url }}" style="margin-right: 1em;">{{ post.title }}</a>
-        <span style="color: #888; white-space: nowrap;">
-          <small>{{ post.date | date_to_string }}</small>
-          <small><i>(<a href="/writings/{{ post.categories[1] }}" style="color: #888;">{% if post.categories[1] == "png" %}product & growth{% else %}{{ post.categories[1] }}{% endif %}</a>)</i></small>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 0.5em;">
+        <a href="{{ post.url }}" style="flex: 1; min-width: 0;">{{ post.title }}</a>
+        <span style="color: #888; white-space: nowrap; font-size: 0.85em;">
+          {{ post.date | date_to_string }}
+          <span class="hide-on-mobile"><i>(<a href="/writings/{{ post.categories[1] }}" style="color: #888;">{% if post.categories[1] == "png" %}product & growth{% else %}{{ post.categories[1] }}{% endif %}</a>)</i></span>
         </span>
       </div>
     </li>

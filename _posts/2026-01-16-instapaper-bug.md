@@ -16,7 +16,9 @@ But it's something you care about. Something that you couldn't have imagined doi
 
 ## So here's the back-story:
 
-I had been a [Pocket](https://getpocket.com/home) user for the past 4-5 years as my save-for-later app. And then Mozilla randomly decided to shut it down in July 2025. ![](/assets/images/instapaper/instapaper-1.png)
+I had been a [Pocket](https://getpocket.com/home) user for the past 4-5 years as my save-for-later app. And then Mozilla randomly decided to shut it down in July 2025.
+
+![](/assets/images/instapaper/instapaper-1.png)
 
 I, of course, got worried about what will happen to my *bazillion* saved-for-later articles/blogs/twitter-threads and all the magical information that is just waiting for me to consume and transform myself.
 
@@ -25,9 +27,13 @@ After some research, I landed on [Instapaper](https://instapaper.com/). It has t
 ![](/assets/images/instapaper/instapaper-2.png)
 
 
-Now, Instapaper is a freemium tool that, rightfully so, blocks a few important functionalities - biggest of which is search.![](/assets/images/instapaper/instapaper-3.png)
+Now, Instapaper is a freemium tool that, rightfully so, blocks a few important functionalities - biggest of which is search.
 
-The only way for me to somehow reach posts of my interest is through tags![](/assets/images/instapaper/instapaper-4.png)
+![](/assets/images/instapaper/instapaper-3.png)
+
+The only way for me to somehow reach posts of my interest is through tags.
+
+![](/assets/images/instapaper/instapaper-4.png)
 
 > Therefore, tags are important.
 
@@ -35,6 +41,7 @@ The only way for me to somehow reach posts of my interest is through tags![](/as
 ## The itch
 
 For the past ~6-7 months of using Instapaper, I couldn't understand why, when I click on the chrome extension, the tag sometime appears and sometimes doesn't.
+
 ![](/assets/images/instapaper/instapaper-5.png)
 
 And then a few weeks ago, I remembered from my [BlunderBuddy](https://akshaychugh.xyz/side-projects/) experience that source code of chrome extensions are just saved locally on device.

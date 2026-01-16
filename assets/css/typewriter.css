@@ -135,9 +135,12 @@ body {
   }
   
   .container {
+    width: 100%;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -381,6 +384,13 @@ body {
   pre {
     padding: 8px 12px;
     overflow-x: auto;
+    max-width: 100%;
+  }
+
+  /* Constrain code block wrappers on mobile */
+  .highlighter-rouge {
+    max-width: 100%;
+    overflow-x: auto;
   }
 
   pre > code {
@@ -560,6 +570,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
   }
 
   body {
@@ -579,6 +590,10 @@ body {
 @media (max-width: 480px) {
   .container {
     padding: 10px;
+  }
+
+  .hide-on-mobile {
+    display: none;
   }
   
   h1 { font-size: 1.9em; }

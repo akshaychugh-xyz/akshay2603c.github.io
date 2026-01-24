@@ -23,7 +23,7 @@ email: akshaychugh995@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   documenting my life!
 baseurl: "" # the subpath of your site, e.g. /blog
-# url: "https://akshaychugh.xyz" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://akshaychugh.xyz" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: akshay2603c
 # github_username:  akshay2603c
 linkedin_username: akshaychugh2603
@@ -37,6 +37,18 @@ plugins:
 
 # Google Analytics
 google_analytics: G-G1EYHFW88H
+
+# Default OG image for social sharing (Twitter Cards, etc.)
+defaults:
+  - scope:
+      path: "_posts"
+    values:
+      image: /assets/images/og-default.png
+
+# Twitter Card settings (default: small card for generic branding)
+# Posts with custom images should add "twitter: card: summary_large_image" in frontmatter
+twitter:
+  card: summary
 
 # Exclude from processing.
 # The following items will not be processed, by default.

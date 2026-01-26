@@ -10,6 +10,8 @@ Also find me at [Twitter/X](https://x.com/akshaychugh_xyz) and [LinkedIn](https:
 
 ### Recent Writings
 
+- [How to level up with Claude Code](/writings/png/how-to-level-up-with-claude-code) - *Jan 2026*
+
 - [How I fixed a (small) bug in an app I use daily](/writings/png/instapaper) - *Jan 2026*
 
 - [Scratch your own itches with Claude code](/writings/life/scratch-your-itches) - *Aug 2025*

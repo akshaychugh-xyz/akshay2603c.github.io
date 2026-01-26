@@ -73,6 +73,5 @@ My goal with this post is to:
 	- Modify Claude Code's `status line config` as per your pref. I personally like seeing the model and branch name.
 
 ---
-## References
 
 

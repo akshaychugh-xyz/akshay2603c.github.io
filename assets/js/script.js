@@ -65,6 +65,23 @@ document.addEventListener('DOMContentLoaded', function() {
     themeToggle.addEventListener('click', toggleTheme);
   }
 
+  // Make external links open in new tab
+  function handleExternalLinks() {
+    const links = document.querySelectorAll('a[href]');
+    const currentHost = window.location.hostname;
+
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      // Check if it's an external link (starts with http/https and different domain)
+      if (href && href.match(/^https?:\/\//) && !href.includes(currentHost)) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  }
+
+  handleExternalLinks();
+
   // Menu functionality (existing code)
   if (menuIcon && menuItems) {
     // Close menu when clicking outside

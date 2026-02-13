@@ -38,21 +38,26 @@ plugins:
 # Google Analytics
 google_analytics: G-G1EYHFW88H
 
-# Default OG image for social sharing (Twitter Cards, etc.)
+# Default OG image for social sharing (LinkedIn, WhatsApp, Twitter, etc.)
 defaults:
   - scope:
       path: ""
     values:
-      image: /assets/images/og-default.png
+      image:
+        path: /assets/images/og-default-wide.png
+        width: 1200
+        height: 630
   - scope:
       path: "_posts"
     values:
-      image: /assets/images/og-default.png
+      image:
+        path: /assets/images/og-default-wide.png
+        width: 1200
+        height: 630
 
-# Twitter Card settings (default: small card for generic branding)
-# Posts with custom images should add "twitter: card: summary_large_image" in frontmatter
+# Twitter Card settings
 twitter:
-  card: summary
+  card: summary_large_image
 
 # Exclude from processing.
 # The following items will not be processed, by default.

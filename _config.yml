@@ -41,6 +41,10 @@ google_analytics: G-G1EYHFW88H
 # Default OG image for social sharing (Twitter Cards, etc.)
 defaults:
   - scope:
+      path: ""
+    values:
+      image: /assets/images/og-default.png
+  - scope:
       path: "_posts"
     values:
       image: /assets/images/og-default.png

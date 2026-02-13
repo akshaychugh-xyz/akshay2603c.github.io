@@ -1,5 +1,6 @@
 ---
 layout: default
+image: /assets/images/og-default.png
 ---
 
 👋 Hi, I am Akshay. Welcome to my little garden on the Internet!

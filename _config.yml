@@ -47,13 +47,6 @@ defaults:
         path: /assets/images/og-default-wide.png
         width: 1200
         height: 630
-  - scope:
-      path: "_posts"
-    values:
-      image:
-        path: /assets/images/og-default-wide.png
-        width: 1200
-        height: 630
 
 # Twitter Card settings
 twitter:

@@ -1,9 +1,5 @@
 ---
 layout: default
-image:
-  path: /assets/images/og-default-wide.png
-  width: 1200
-  height: 630
 ---
 
 👋 Hi, I am Akshay. Welcome to my little garden on the Internet!

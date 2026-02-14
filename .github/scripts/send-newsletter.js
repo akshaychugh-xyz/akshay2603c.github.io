@@ -52,7 +52,7 @@ async function getActiveSubscribers() {
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId: sheetId,
-    range: `'${firstSheetName}'!A:E`, // email, token, status, subscribed_at, confirmed_at
+    range: `'${firstSheetName}'!A:F`, // email, token, status, subscribed_at, confirmed_at, unsubscribed_at
   });
 
   const rows = response.data.values || [];

@@ -101,6 +101,7 @@ function handleSubscribe(email) {
         sheet.getRange(i + 1, 3).setValue('pending'); // status
         sheet.getRange(i + 1, 4).setValue(new Date().toISOString()); // subscribed_at
         sheet.getRange(i + 1, 5).setValue(''); // confirmed_at
+        sheet.getRange(i + 1, 6).setValue(''); // unsubscribed_at
         sendConfirmationEmail(email, newToken);
         return { success: true, message: 'Confirmation email sent' };
       }
@@ -168,6 +169,7 @@ function handleUnsubscribe(token) {
 
       // Update status to unsubscribed
       sheet.getRange(i + 1, 3).setValue('unsubscribed');
+      sheet.getRange(i + 1, 6).setValue(new Date().toISOString());
 
       return createHtmlPage(
         'Unsubscribed',

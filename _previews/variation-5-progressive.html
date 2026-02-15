@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variation 5: Progressive Disclosure — akshaychugh.xyz</title>
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     Flexoki Color System
+     ═══════════════════════════════════════════════════════════ */
+  :root {
+    --color-paper: #FFFCF0;
+    --color-base-50: #F2F0E5;
+    --color-base-100: #E6E4D9;
+    --color-base-200: #DAD8CE;
+    --color-base-300: #CECDC3;
+    --color-base-400: #B7B5AC;
+    --color-base-500: #9F9D94;
+    --color-base-600: #878580;
+    --color-base-700: #6F6E69;
+    --color-base-800: #575653;
+    --color-base-900: #2D2B28;
+    --color-base-950: #1C1B1A;
+    --color-black: #100F0F;
+    --color-orange: #DA702C;
+    --color-blue: #4385BE;
+    --color-red: #D14D41;
+    --color-green: #879A39;
+
+    --bg-primary: var(--color-paper);
+    --bg-secondary: var(--color-base-50);
+    --text-primary: var(--color-black);
+    --text-secondary: var(--color-base-700);
+    --accent-orange: var(--color-orange);
+    --accent-blue: var(--color-blue);
+    --border-color: var(--color-base-200);
+    --shadow-color: rgba(0, 0, 0, 0.06);
+  }
+
+  [data-theme="dark"] {
+    --color-paper: #1C1B1A;
+    --color-base-50: #2D2B28;
+    --color-base-100: #403E3C;
+    --color-base-200: #575653;
+    --color-base-300: #6F6E69;
+    --color-base-400: #878580;
+    --color-base-500: #9F9D94;
+    --color-base-600: #B7B5AC;
+    --color-base-700: #CECDC3;
+    --color-base-800: #DAD8CE;
+    --color-base-900: #F2F0E5;
+    --color-base-950: #FFFCF0;
+    --color-black: #E6E4D9;
+    --color-orange: #DA702C;
+    --color-blue: #6BB6FF;
+
+    --bg-primary: var(--color-paper);
+    --bg-secondary: var(--color-base-50);
+    --text-primary: var(--color-black);
+    --text-secondary: #B7B5AC;
+    --accent-orange: var(--color-orange);
+    --accent-blue: var(--color-blue);
+    --border-color: #575653;
+    --shadow-color: rgba(255, 255, 255, 0.04);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Reset & Base
+     ═══════════════════════════════════════════════════════════ */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-size: clamp(16px, 2vw, 18px);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--accent-orange);
+    text-decoration: underline;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Preview Banner
+     ═══════════════════════════════════════════════════════════ */
+  .preview-banner {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 6px 20px;
+    text-align: center;
+    font-size: 0.72em;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+  }
+
+  .preview-banner strong {
+    color: var(--accent-orange);
+    font-weight: 600;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Header
+     ═══════════════════════════════════════════════════════════ */
+  .site-header {
+    border-bottom: 1px solid var(--accent-orange);
+    padding: 1rem 0 0.4rem 0;
+  }
+
+  .header-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .site-title {
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    line-height: 54px;
+    transition: color 0.2s ease;
+  }
+
+  .site-title:hover {
+    color: var(--accent-orange);
+    text-decoration: none;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 400;
+    margin-left: 15px;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent-orange);
+    text-decoration: none;
+  }
+
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    transition: background-color 0.2s ease;
+  }
+
+  .theme-toggle:hover {
+    background-color: var(--bg-secondary);
+  }
+
+  .theme-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Hamburger menu (mobile) */
+  .menu-icon {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Main Content Area
+     ═══════════════════════════════════════════════════════════ */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1 0 auto;
+    width: 100%;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Intro Section (Always Visible)
+     ═══════════════════════════════════════════════════════════ */
+  .intro {
+    margin-top: 1.8em;
+    margin-bottom: 2.8em;
+  }
+
+  .intro-greeting {
+    font-size: 1.05em;
+    margin-bottom: 0.6em;
+    line-height: 1.6;
+  }
+
+  .intro-bio {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 0.8em;
+  }
+
+  .intro-links {
+    font-size: 0.95em;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+  }
+
+  .intro-links a {
+    font-weight: 500;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Accordion Sections (Progressive Disclosure)
+     ═══════════════════════════════════════════════════════════ */
+  .accordion-section {
+    border-top: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
+  }
+
+  .accordion-section:last-of-type {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  /* Hide default marker */
+  .accordion-section summary {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .accordion-section summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .accordion-section summary::marker {
+    display: none;
+    content: "";
+  }
+
+  /* Summary (the clickable header) */
+  .accordion-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1em 0;
+    transition: color 0.2s ease;
+  }
+
+  .accordion-summary:hover {
+    color: var(--accent-orange);
+  }
+
+  .accordion-summary:hover .accordion-label {
+    color: var(--accent-orange);
+  }
+
+  .accordion-label {
+    font-size: 0.78em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+  }
+
+  /* Chevron */
+  .accordion-chevron {
+    width: 18px;
+    height: 18px;
+    color: var(--accent-orange);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  /* Rotate chevron when open */
+  .accordion-section[open] .accordion-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Change label color when open */
+  .accordion-section[open] .accordion-label {
+    color: var(--accent-orange);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Accordion Content — Animated Reveal
+     ═══════════════════════════════════════════════════════════ */
+  .accordion-body {
+    overflow: hidden;
+  }
+
+  .accordion-inner {
+    padding-bottom: 1.6em;
+    opacity: 0;
+    transform: translateY(-8px);
+    animation: none;
+  }
+
+  .accordion-section[open] .accordion-inner {
+    animation: accordionSlideIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes accordionSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Writings Content
+     ═══════════════════════════════════════════════════════════ */
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .post-item {
+    padding: 0.65em 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1em;
+  }
+
+  .post-item + .post-item {
+    border-top: 1px solid var(--bg-secondary);
+  }
+
+  .post-item a {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .post-date {
+    color: var(--text-secondary);
+    font-size: 0.82em;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .view-all {
+    display: inline-block;
+    margin-top: 1em;
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    font-weight: 400;
+    transition: color 0.2s ease;
+  }
+
+  .view-all:hover {
+    color: var(--accent-orange);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Projects Content
+     ═══════════════════════════════════════════════════════════ */
+  .project-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .project-item {
+    padding: 0.7em 0;
+  }
+
+  .project-item + .project-item {
+    border-top: 1px solid var(--bg-secondary);
+  }
+
+  .project-name {
+    font-weight: 600;
+  }
+
+  .project-desc {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    margin-top: 0.15em;
+    line-height: 1.5;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     TIL Content
+     ═══════════════════════════════════════════════════════════ */
+  .til-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .til-item {
+    padding: 0.65em 0;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 0 1.2em;
+  }
+
+  .til-item + .til-item {
+    border-top: 1px solid var(--bg-secondary);
+  }
+
+  .til-date {
+    color: var(--accent-orange);
+    font-size: 0.85em;
+    font-weight: 600;
+    text-align: right;
+    padding-top: 0.05em;
+    white-space: nowrap;
+  }
+
+  .til-text {
+    font-size: 0.95em;
+    line-height: 1.55;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Newsletter Content
+     ═══════════════════════════════════════════════════════════ */
+  .subscribe-inner {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    flex-wrap: wrap;
+  }
+
+  .subscribe-label {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+  }
+
+  .subscribe-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .subscribe-row input[type="email"] {
+    padding: 0.45em 0.7em;
+    font-size: 0.88em;
+    font-family: inherit;
+    color: var(--text-primary);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    outline: none;
+    width: 180px;
+    transition: border-color 0.2s ease;
+  }
+
+  .subscribe-row input[type="email"]:focus {
+    border-bottom-color: var(--accent-orange);
+  }
+
+  .subscribe-row input[type="email"]::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.5;
+  }
+
+  .subscribe-row button[type="submit"] {
+    padding: 0.4em 0.7em;
+    font-size: 0.88em;
+    font-family: inherit;
+    color: var(--accent-orange);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .subscribe-row button[type="submit"]:hover {
+    transform: translateX(2px);
+  }
+
+  .form-message {
+    font-size: 0.8em;
+    margin-top: 0.5em;
+  }
+
+  .form-message:empty {
+    display: none;
+  }
+
+  .form-message.success {
+    color: var(--accent-orange);
+  }
+
+  .form-message.error {
+    color: var(--color-red);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Closing
+     ═══════════════════════════════════════════════════════════ */
+  .closing {
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+    color: var(--text-primary);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Footer
+     ═══════════════════════════════════════════════════════════ */
+  .site-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 20px 0;
+    font-size: 14px;
+    text-align: center;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    transition: border-color 0.3s ease;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Mobile Responsive
+     ═══════════════════════════════════════════════════════════ */
+  @media screen and (max-width: 600px) {
+    .menu-icon {
+      display: block;
+    }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--bg-primary);
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px var(--shadow-color);
+      z-index: 1000;
+    }
+
+    .nav-links.active {
+      display: block;
+    }
+
+    .nav-links a {
+      display: block;
+      margin: 10px 0;
+      margin-left: 0;
+      padding: 8px 0;
+      font-size: 1.1em;
+    }
+
+    .site-header {
+      position: relative;
+    }
+
+    .menu-icon.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .menu-icon.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-icon.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .site-title {
+      font-size: 22px;
+      line-height: 44px;
+    }
+
+    .container {
+      padding: 10px;
+    }
+
+    .til-item {
+      grid-template-columns: 1fr;
+      gap: 0.1em;
+    }
+    .til-date {
+      text-align: left;
+      font-size: 0.78em;
+    }
+
+    .post-item {
+      flex-direction: column;
+      gap: 0.1em;
+    }
+    .post-date {
+      order: -1;
+    }
+
+    .subscribe-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5em;
+    }
+    .subscribe-row input[type="email"] {
+      width: 140px;
+    }
+  }
+
+  @media (hover: none) {
+    a, button {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    .menu-icon {
+      padding: 12px;
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Focus Styles
+     ═══════════════════════════════════════════════════════════ */
+  .accordion-section summary:focus-visible {
+    outline: 2px solid var(--accent-orange);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  .theme-toggle:focus-visible,
+  .menu-icon:focus-visible {
+    outline: 2px solid var(--accent-orange);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+  <!-- Preview Banner -->
+  <div class="preview-banner">
+    <strong>Variation 5:</strong> Progressive Disclosure &mdash; All content behind expandable sections
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-wrapper">
+      <a class="site-title" href="/">akshay chugh</a>
+      <nav class="site-nav">
+        <button class="menu-icon" aria-label="Toggle menu" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links">
+          <a href="/writings">Writings</a>
+          <a href="/side-projects">Side Projects</a>
+          <a href="/notes">Notes</a>
+          <a href="/til">TIL</a>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode" onclick="toggleTheme()">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Intro — Always Visible -->
+    <div class="intro">
+      <p class="intro-greeting">&#x1F44B; Hi, I am Akshay. Welcome to my little garden on the Internet!</p>
+      <p class="intro-bio">I currently lead Product for Coinbase India and am obsessed with Claude Code on the side.</p>
+      <p class="intro-links">Also find me at <a href="https://x.com/akshaychugh_xyz">Twitter/X</a> and <a href="https://www.linkedin.com/in/chughakshay/">LinkedIn</a>.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         Section 1: Writings (open by default)
+         ═══════════════════════════════════════════════════════ -->
+    <details class="accordion-section" open>
+      <summary>
+        <div class="accordion-summary">
+          <span class="accordion-label">Recent Writings</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </summary>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <ul class="post-list">
+            <li class="post-item">
+              <a href="/writings/life/you-are-average-but-so-are-your-problems">You are average, but so are your problems</a>
+              <span class="post-date">Feb 2026</span>
+            </li>
+            <li class="post-item">
+              <a href="/writings/png/how-to-level-up-with-claude-code">How to level up with Claude Code</a>
+              <span class="post-date">Jan 2026</span>
+            </li>
+            <li class="post-item">
+              <a href="/writings/png/instapaper">How I fixed a (small) bug in an app I use daily</a>
+              <span class="post-date">Jan 2026</span>
+            </li>
+          </ul>
+          <a href="/writings/" class="view-all">View all writings &rarr;</a>
+        </div>
+      </div>
+    </details>
+
+    <!-- ═══════════════════════════════════════════════════════
+         Section 2: Side Projects
+         ═══════════════════════════════════════════════════════ -->
+    <details class="accordion-section">
+      <summary>
+        <div class="accordion-summary">
+          <span class="accordion-label">Side Projects</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </summary>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <ul class="project-list">
+            <li class="project-item">
+              <a href="https://fourplay.fun" class="project-name">FourPlay</a>
+              <div class="project-desc">Wordle meets numbers &mdash; multiplayer guessing game, specially fun for couples :).</div>
+            </li>
+            <li class="project-item">
+              <a href="https://blunderbuddy.pro/" class="project-name">BlunderBuddy</a>
+              <div class="project-desc">AI-powered personalized chess insights that actually make sense.</div>
+            </li>
+            <li class="project-item">
+              <a href="https://simpleeval.com/" class="project-name">Simple Eval</a>
+              <div class="project-desc">Connect your vibecoded app &amp; get auto-suggest evals to improve performance.</div>
+            </li>
+          </ul>
+          <a href="/side-projects/" class="view-all">View all projects &rarr;</a>
+        </div>
+      </div>
+    </details>
+
+    <!-- ═══════════════════════════════════════════════════════
+         Section 3: Today I Learned
+         ═══════════════════════════════════════════════════════ -->
+    <details class="accordion-section">
+      <summary>
+        <div class="accordion-summary">
+          <span class="accordion-label">Today I Learned</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </summary>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <ul class="til-list">
+            <li class="til-item">
+              <span class="til-date">15th</span>
+              <span class="til-text">A big share of Lego's sales now come from first-time Adult purchasers, buying for self &mdash; they call it Adult Fans of LEGO (AFOL) and lean into it with the 'Adults Welcome!' marketing</span>
+            </li>
+            <li class="til-item">
+              <span class="til-date">1st</span>
+              <span class="til-text"><a href="https://www.reddit.com/r/OnePlus7Pro/comments/bxw39c/psa_you_can_change_your_display_size_even_smaller/">Smallest width</a> developer settings on Android let you increase screen real-estate beyond what's normally possible</span>
+            </li>
+            <li class="til-item">
+              <span class="til-date">31st</span>
+              <span class="til-text">Netflix has a second-screen-viewability score before it greenlights projects because people can't follow dense movies/tv series anymore</span>
+            </li>
+          </ul>
+          <a href="/til/" class="view-all">View all TILs &rarr;</a>
+        </div>
+      </div>
+    </details>
+
+    <!-- ═══════════════════════════════════════════════════════
+         Section 4: Newsletter
+         ═══════════════════════════════════════════════════════ -->
+    <details class="accordion-section">
+      <summary>
+        <div class="accordion-summary">
+          <span class="accordion-label">Stay Updated</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </summary>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="subscribe-inner">
+            <span class="subscribe-label">Get new posts in your inbox</span>
+            <form class="subscribe-row" id="newsletter-form" onsubmit="handleSubscribe(event)">
+              <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required autocomplete="email">
+              <button type="submit" id="newsletter-submit">Subscribe &rarr;</button>
+            </form>
+          </div>
+          <p class="form-message" id="form-message"></p>
+        </div>
+      </div>
+    </details>
+
+    <!-- Closing -->
+    <p class="closing">Cheers!</p>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="header-wrapper">
+      <span>&copy; 2026 Akshay Chugh</span>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // ── Theme Toggle ────────────────────────────────────────
+    function toggleTheme() {
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateThemeIcons(next);
+    }
+
+    function updateThemeIcons(theme) {
+      var sunIcon = document.querySelector('.sun-icon');
+      var moonIcon = document.querySelector('.moon-icon');
+      if (theme === 'dark') {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      } else {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+      }
+    }
+
+    // Load saved theme or detect system preference
+    (function() {
+      var saved = localStorage.getItem('theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+        updateThemeIcons(saved);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateThemeIcons('dark');
+      }
+    })();
+
+    // ── Mobile Menu Toggle ──────────────────────────────────
+    function toggleMenu() {
+      var icon = document.querySelector('.menu-icon');
+      var links = document.querySelector('.nav-links');
+      icon.classList.toggle('active');
+      links.classList.toggle('active');
+    }
+
+    // ── Accordion Animation ─────────────────────────────────
+    // Smooth open/close using the Web Animations API
+    document.querySelectorAll('.accordion-section').forEach(function(details) {
+      var summary = details.querySelector('summary');
+      var body = details.querySelector('.accordion-body');
+      var inner = details.querySelector('.accordion-inner');
+      var animating = false;
+      var closingAnim = null;
+      var openingAnim = null;
+
+      summary.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // If currently animating, cancel
+        if (closingAnim) closingAnim.cancel();
+        if (openingAnim) openingAnim.cancel();
+
+        if (details.open) {
+          // CLOSING
+          var startHeight = body.offsetHeight + 'px';
+          closingAnim = body.animate(
+            [
+              { height: startHeight, opacity: 1 },
+              { height: '0px', opacity: 0 }
+            ],
+            { duration: 280, easing: 'cubic-bezier(0.4, 0, 0.2, 1)' }
+          );
+          closingAnim.onfinish = function() {
+            details.open = false;
+            body.style.height = '';
+            body.style.opacity = '';
+            closingAnim = null;
+          };
+        } else {
+          // OPENING
+          details.open = true;
+
+          // Wait for layout, then animate
+          requestAnimationFrame(function() {
+            var endHeight = body.offsetHeight + 'px';
+            openingAnim = body.animate(
+              [
+                { height: '0px', opacity: 0 },
+                { height: endHeight, opacity: 1 }
+              ],
+              { duration: 320, easing: 'cubic-bezier(0.4, 0, 0.2, 1)' }
+            );
+            openingAnim.onfinish = function() {
+              body.style.height = '';
+              body.style.opacity = '';
+              openingAnim = null;
+            };
+          });
+        }
+      });
+    });
+
+    // ── Newsletter Subscribe (demo) ─────────────────────────
+    function handleSubscribe(e) {
+      e.preventDefault();
+      var email = document.getElementById('newsletter-email').value;
+      var msg = document.getElementById('form-message');
+      var btn = document.getElementById('newsletter-submit');
+
+      btn.disabled = true;
+      btn.textContent = 'Subscribing...';
+
+      // Simulate a subscribe action
+      setTimeout(function() {
+        msg.textContent = 'Thanks for subscribing!';
+        msg.className = 'form-message success';
+        btn.textContent = 'Subscribed';
+        document.getElementById('newsletter-email').value = '';
+      }, 800);
+    }
+  </script>
+</body>
+</html>

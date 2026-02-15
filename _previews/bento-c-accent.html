@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>akshay chugh</title>
+  <style>
+    /* ─── Theme Variables ─── */
+    :root {
+      --bg: #FFFCF0;
+      --text: #100F0F;
+      --secondary: #878580;
+      --border: #DAD8CE;
+      --orange: #DA702C;
+      --blue: #4385BE;
+      --bg-secondary: #F2F0E5;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #1C1B1A;
+      --text: #E6E4D9;
+      --secondary: #B7B5AC;
+      --border: #575653;
+      --orange: #DA702C;
+      --blue: #6BB6FF;
+      --bg-secondary: #2D2B28;
+      --shadow: rgba(255, 255, 255, 0.1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #1C1B1A;
+        --text: #E6E4D9;
+        --secondary: #B7B5AC;
+        --border: #575653;
+        --orange: #DA702C;
+        --blue: #6BB6FF;
+        --bg-secondary: #2D2B28;
+        --shadow: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: clamp(16px, 2vw, 18px);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text);
+      background-color: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* ─── Header ─── */
+    .site-header {
+      position: relative;
+      padding: 1rem 0 0.4rem 0;
+      border-bottom: 1px solid var(--orange);
+      margin-bottom: 0;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .site-title {
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 54px;
+      color: var(--text);
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .site-title:hover {
+      color: var(--orange);
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .site-nav a {
+      color: var(--text);
+      font-weight: 400;
+      text-decoration: none;
+      padding: 5px 10px;
+      transition: color 0.3s ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--orange);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+      color: var(--text);
+    }
+
+    .theme-toggle:hover {
+      background-color: var(--bg-secondary);
+    }
+
+    .theme-toggle svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .menu-icon {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .menu-icon span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: var(--text);
+      margin: 5px 0;
+      transition: 0.4s;
+    }
+
+    /* ─── Container ─── */
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      flex: 1 0 auto;
+    }
+
+    /* ─── Bento Grid ─── */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 16px;
+      margin-top: 1.2em;
+    }
+
+    .bento-tile {
+      border-left: 3px solid var(--orange);
+      padding: 1em 1em 1em 1.2em;
+      background: var(--bg);
+      transition: border-left-width 0.15s ease, padding-left 0.15s ease;
+    }
+
+    .bento-tile:hover {
+      border-left-width: 4px;
+      padding-left: calc(1.2em - 1px);
+    }
+
+    .bento-full {
+      grid-column: 1 / -1;
+    }
+
+    /* ─── Section Labels ─── */
+    .section-label {
+      font-size: 0.75em;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--secondary);
+      margin-bottom: 0.8em;
+    }
+
+    /* ─── Intro ─── */
+    .intro-greeting {
+      font-size: 1.05em;
+      margin-bottom: 0.5em;
+      line-height: 1.6;
+    }
+
+    .intro-bio {
+      margin-bottom: 0.5em;
+      line-height: 1.6;
+    }
+
+    .intro-social {
+      line-height: 1.6;
+    }
+
+    /* ─── Links ─── */
+    a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--orange);
+      text-decoration: underline;
+    }
+
+    /* ─── Post List ─── */
+    .post-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .post-list li {
+      padding: 0.4em 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.8em;
+    }
+
+    .post-list li + li {
+      border-top: 1px solid var(--border);
+    }
+
+    .post-list li a {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .post-date {
+      color: var(--secondary);
+      font-size: 0.82em;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    /* ─── Project List ─── */
+    .project-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .project-list li {
+      padding: 0.45em 0;
+    }
+
+    .project-list li + li {
+      border-top: 1px solid var(--border);
+    }
+
+    .project-name {
+      font-weight: 600;
+    }
+
+    .project-desc {
+      color: var(--secondary);
+      font-size: 0.88em;
+    }
+
+    /* ─── TIL List ─── */
+    .til-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .til-list li {
+      padding: 0.4em 0;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+
+    .til-list li + li {
+      border-top: 1px solid var(--border);
+    }
+
+    .til-date {
+      color: var(--secondary);
+      font-size: 0.82em;
+      white-space: nowrap;
+    }
+
+    /* ─── View All ─── */
+    .view-all {
+      display: inline-block;
+      margin-top: 0.8em;
+      font-size: 0.85em;
+      color: var(--secondary);
+      font-weight: 400;
+    }
+
+    .view-all:hover {
+      color: var(--orange);
+      text-decoration: underline;
+    }
+
+    /* ─── Subscribe ─── */
+    .subscribe-text {
+      font-size: 0.88em;
+      color: var(--secondary);
+      margin-bottom: 0.6em;
+    }
+
+    .subscribe-form-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+    }
+
+    .subscribe-form-row input[type="email"] {
+      padding: 0.4em 0.6em;
+      font-size: 0.85em;
+      font-family: inherit;
+      color: var(--text);
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      border-radius: 0;
+      outline: none;
+      width: 160px;
+      transition: border-color 0.2s ease;
+    }
+
+    .subscribe-form-row input[type="email"]:focus {
+      border-bottom-color: var(--orange);
+    }
+
+    .subscribe-form-row input[type="email"]::placeholder {
+      color: var(--secondary);
+      opacity: 0.5;
+    }
+
+    .subscribe-form-row button[type="submit"] {
+      padding: 0.35em 0.6em;
+      font-size: 0.95em;
+      font-family: inherit;
+      color: var(--orange);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .subscribe-form-row button[type="submit"]:hover {
+      transform: translateX(2px);
+    }
+
+    .subscribe-form-row button[type="submit"]:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .form-message {
+      font-size: 0.8em;
+      margin-top: 0.5em;
+    }
+
+    .form-message:empty {
+      display: none;
+    }
+
+    .form-message.success {
+      color: var(--orange);
+    }
+
+    .form-message.error {
+      color: #D14D41;
+    }
+
+    /* ─── Footer ─── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0;
+      font-size: 14px;
+      line-height: 1.5;
+      flex-shrink: 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ─── Mobile ─── */
+    @media screen and (max-width: 600px) {
+      .site-nav {
+        position: static;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      .menu-items {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--bg);
+        padding: 10px;
+        box-shadow: 0 2px 5px var(--shadow);
+        z-index: 1000;
+      }
+
+      .menu-items.active {
+        display: block;
+      }
+
+      .site-nav a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .menu-icon.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+
+      .menu-icon.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-icon.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+
+      .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .site-title {
+        font-size: 22px;
+        line-height: 44px;
+      }
+
+      .container {
+        padding: 10px;
+      }
+
+      .post-list li {
+        flex-direction: column;
+        gap: 0.1em;
+      }
+
+      .post-date {
+        order: -1;
+      }
+    }
+
+    @media (hover: none) {
+      a, button {
+        min-height: 44px;
+        min-width: 44px;
+      }
+
+      .menu-icon {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Header ─── -->
+  <header class="site-header">
+    <div class="wrapper">
+      <a class="site-title" href="/">akshay chugh</a>
+      <nav class="site-nav">
+        <button class="menu-icon" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="menu-items">
+          <a href="/writings">Writings</a>
+          <a href="/side-projects">Side Projects</a>
+          <a href="/notes">Notes</a>
+          <a href="/til">TIL</a>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ─── Main Content ─── -->
+  <div class="container">
+    <div class="bento-grid">
+
+      <!-- Row 1: Intro (full width) -->
+      <div class="bento-tile bento-full">
+        <p class="intro-greeting">&#x1F44B; Hi, I am Akshay. Welcome to my little garden on the Internet!</p>
+        <p class="intro-bio">I currently lead Product for Coinbase India and am obsessed with Claude Code on the side.</p>
+        <p class="intro-social">Also find me at <a href="https://x.com/akshaychugh_xyz" target="_blank" rel="noopener noreferrer">Twitter/X</a> and <a href="https://www.linkedin.com/in/chughakshay/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+      </div>
+
+      <!-- Row 2 Left: Writings -->
+      <div class="bento-tile">
+        <div class="section-label">Recent Writings</div>
+        <ul class="post-list">
+          <li>
+            <a href="/writings/life/you-are-average-but-so-are-your-problems">You are average, but so are your problems</a>
+            <span class="post-date">Feb 2026</span>
+          </li>
+          <li>
+            <a href="/writings/png/how-to-level-up-with-claude-code">How to level up with Claude Code</a>
+            <span class="post-date">Jan 2026</span>
+          </li>
+          <li>
+            <a href="/writings/png/instapaper">How I fixed a (small) bug in an app I use daily</a>
+            <span class="post-date">Jan 2026</span>
+          </li>
+          <li>
+            <a href="/writings/life/scratch-your-itches">Scratch your own itches with Claude Code</a>
+            <span class="post-date">Aug 2025</span>
+          </li>
+          <li>
+            <a href="/writings/life/difficult-yet-simple">Difficult yet Simple</a>
+            <span class="post-date">Aug 2025</span>
+          </li>
+        </ul>
+        <a class="view-all" href="/writings/">View all writings &rarr;</a>
+      </div>
+
+      <!-- Row 2 Right: Projects -->
+      <div class="bento-tile">
+        <div class="section-label">Favorite Side Projects</div>
+        <ul class="project-list">
+          <li>
+            <div><a class="project-name" href="https://fourplay.fun" target="_blank" rel="noopener noreferrer">FourPlay</a></div>
+            <div class="project-desc">Wordle meets numbers, multiplayer guessing game</div>
+          </li>
+          <li>
+            <div><a class="project-name" href="https://blunderbuddy.pro/" target="_blank" rel="noopener noreferrer">BlunderBuddy</a></div>
+            <div class="project-desc">AI-powered personalized chess insights</div>
+          </li>
+          <li>
+            <div><a class="project-name" href="https://simpleeval.com/" target="_blank" rel="noopener noreferrer">Simple Eval</a></div>
+            <div class="project-desc">Auto-suggest evals for vibecoded apps</div>
+          </li>
+        </ul>
+        <a class="view-all" href="/side-projects/">View all projects &rarr;</a>
+      </div>
+
+      <!-- Row 3 Left: TIL -->
+      <div class="bento-tile">
+        <div class="section-label">Today I Learned</div>
+        <ul class="til-list">
+          <li>
+            <div class="til-date">Feb 2026</div>
+            <div>A big share of Lego's sales now come from first-time Adult purchasers, buying for self</div>
+          </li>
+          <li>
+            <div class="til-date">Feb 2026</div>
+            <div><a href="https://www.reddit.com/r/OnePlus7Pro/comments/bxw39c/psa_you_can_change_your_display_size_even_smaller/" target="_blank" rel="noopener noreferrer">Smallest width</a> developer settings on Android let you increase screen real-estate beyond what's normally possible</div>
+          </li>
+          <li>
+            <div class="til-date">Jan 2026</div>
+            <div>Netflix has a second-screen-viewability score before it greenlights projects</div>
+          </li>
+        </ul>
+        <a class="view-all" href="/til/">View all TILs &rarr;</a>
+      </div>
+
+      <!-- Row 3 Right: Subscribe -->
+      <div class="bento-tile">
+        <div class="section-label">Stay in Touch</div>
+        <div class="subscribe-text">Get new posts in your inbox</div>
+        <form id="newsletter-form">
+          <div class="subscribe-form-row">
+            <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required autocomplete="email">
+            <button type="submit" id="newsletter-submit">Subscribe &rarr;</button>
+          </div>
+        </form>
+        <p class="form-message" id="form-message"></p>
+      </div>
+
+    </div><!-- /.bento-grid -->
+
+    <p style="margin-top: 2em; color: var(--text);">Cheers!</p>
+
+  </div><!-- /.container -->
+
+  <!-- ─── Footer ─── -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; akshay chugh</p>
+    </div>
+  </footer>
+
+  <!-- ─── JavaScript ─── -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuIcon = document.querySelector('.menu-icon');
+      const menuItems = document.querySelector('.menu-items');
+      const siteNav = document.querySelector('.site-nav');
+      const themeToggle = document.querySelector('.theme-toggle');
+      const sunIcon = document.querySelector('.sun-icon');
+      const moonIcon = document.querySelector('.moon-icon');
+
+      // Dark mode
+      function initTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+          updateThemeIcon(savedTheme);
+        } else if (systemPrefersDark) {
+          updateThemeIcon('dark');
+        } else {
+          updateThemeIcon('light');
+        }
+      }
+
+      function updateThemeIcon(theme) {
+        if (theme === 'dark') {
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'block';
+        } else {
+          sunIcon.style.display = 'block';
+          moonIcon.style.display = 'none';
+        }
+      }
+
+      function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        let newTheme;
+        if (currentTheme === 'dark') {
+          newTheme = 'light';
+        } else if (currentTheme === 'light') {
+          newTheme = 'dark';
+        } else {
+          newTheme = systemPrefersDark ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      }
+
+      initTheme();
+
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+        if (!localStorage.getItem('theme')) {
+          updateThemeIcon(e.matches ? 'dark' : 'light');
+        }
+      });
+
+      if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+      }
+
+      // External links open in new tab
+      document.querySelectorAll('a[href]').forEach(function(link) {
+        var href = link.getAttribute('href');
+        if (href && href.match(/^https?:\/\//) && !href.includes(window.location.hostname)) {
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener noreferrer');
+        }
+      });
+
+      // Mobile menu
+      if (menuIcon && menuItems) {
+        document.addEventListener('click', function(event) {
+          if (!siteNav.contains(event.target)) {
+            menuItems.classList.remove('active');
+            menuIcon.classList.remove('active');
+            menuIcon.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        menuIcon.addEventListener('click', function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          var isExpanded = menuItems.classList.contains('active');
+          menuItems.classList.toggle('active');
+          menuIcon.classList.toggle('active');
+          menuIcon.setAttribute('aria-expanded', String(!isExpanded));
+        });
+
+        menuItems.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            menuItems.classList.remove('active');
+            menuIcon.classList.remove('active');
+            menuIcon.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // Newsletter form
+      var newsletterForm = document.getElementById('newsletter-form');
+      if (newsletterForm) {
+        var emailInput = document.getElementById('newsletter-email');
+        var submitButton = document.getElementById('newsletter-submit');
+        var formMessage = document.getElementById('form-message');
+        var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxSCkJCVFlVvAPvVJOJ3OyG4pBnfGsqTXZ6Zgl4Fn5H0rdPZgWMoTzMzL8VuVJBQ7Nftw/exec';
+
+        newsletterForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          var email = emailInput.value.trim();
+          if (!email) return;
+
+          submitButton.disabled = true;
+          submitButton.textContent = 'Subscribing...';
+          formMessage.textContent = '';
+          formMessage.className = 'form-message';
+
+          try {
+            await fetch(APPS_SCRIPT_URL, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: email })
+            });
+            formMessage.textContent = 'Please check your inbox to confirm.';
+            formMessage.className = 'form-message success';
+            emailInput.value = '';
+          } catch (error) {
+            formMessage.textContent = 'Something went wrong. Please try again.';
+            formMessage.className = 'form-message error';
+          } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Subscribe \u2192';
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

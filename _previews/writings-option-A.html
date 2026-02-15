@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writings — Option A: Timeline (matches TIL)</title>
+<style>
+  :root {
+    --color-paper: #FFFCF0;
+    --color-base-50: #F2F0E5;
+    --color-base-100: #E6E4D9;
+    --color-base-200: #DAD8CE;
+    --color-base-300: #CECDC3;
+    --color-base-700: #6F6E69;
+    --color-black: #100F0F;
+    --color-orange: #DA702C;
+    --color-blue: #4385BE;
+    --bg-primary: var(--color-paper);
+    --bg-secondary: var(--color-base-50);
+    --text-primary: var(--color-black);
+    --text-secondary: var(--color-base-700);
+    --accent-secondary: var(--color-blue);
+    --border-color: var(--color-base-200);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 18px; line-height: 1.7;
+    color: var(--text-primary); background: var(--bg-primary);
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+  .site-header {
+    border-bottom: 1px solid var(--color-orange);
+    padding: 1rem 0 0.4rem 0; margin-bottom: 0;
+  }
+  .site-header .wrapper {
+    max-width: 800px; margin: 0 auto; padding: 0 20px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .site-header .site-title { font-size: 28px; font-weight: 400; color: var(--text-primary); text-decoration: none; }
+  .site-header nav a { color: var(--text-primary); text-decoration: none; margin-left: 15px; font-weight: 400; }
+  .site-header nav a.active { color: var(--color-orange); }
+  .option-badge {
+    display: inline-block; background: var(--color-orange); color: var(--color-paper);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 3px; margin-bottom: 1em;
+  }
+  h2 { font-size: 1.8em; font-weight: 600; margin-top: 1.8em; margin-bottom: 0.6em; }
+  a { color: var(--accent-secondary); text-decoration: none; font-weight: 500; }
+  a:hover { color: var(--color-orange); text-decoration: underline; }
+
+  /* === OPTION A: Timeline matching TIL exactly === */
+  .wr-month-group { margin-bottom: 2em; }
+  .wr-month-label {
+    font-size: 0.8em; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-secondary);
+    margin-bottom: 0.8em; padding-bottom: 0.3em;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .wr-timeline { display: flex; flex-direction: column; }
+  .wr-tl-entry {
+    display: grid; grid-template-columns: 56px 1fr;
+    gap: 0 1.2em; padding: 0.65em 0;
+  }
+  .wr-tl-entry + .wr-tl-entry { border-top: 1px solid var(--color-base-100); }
+  .wr-tl-day {
+    color: var(--color-orange); font-size: 0.85em; font-weight: 600;
+    padding-top: 0.05em; text-align: right; white-space: nowrap;
+  }
+  .wr-tl-content { line-height: 1.55; }
+  .wr-tl-content a { color: var(--accent-secondary); text-decoration: none; font-weight: 500; }
+  .wr-tl-content a:hover { color: var(--color-orange); text-decoration: underline; }
+  .wr-tag {
+    font-size: 0.75em; color: var(--text-secondary); font-style: italic; margin-left: 0.3em;
+  }
+
+  .wr-tags-footer {
+    margin-top: 1.5em; padding-top: 1em;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9em;
+  }
+  .wr-tags-footer a { font-weight: 400; }
+
+  @media (max-width: 480px) {
+    .wr-tl-entry { grid-template-columns: 1fr; gap: 0.1em; }
+    .wr-tl-day { text-align: left; font-size: 0.78em; }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="#">akshay chugh</a>
+    <nav>
+      <a href="#" class="active">Writings</a>
+      <a href="#">Side Projects</a>
+      <a href="#">Notes</a>
+      <a href="#">TIL</a>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <div class="option-badge">Option A — Timeline (matches TIL)</div>
+  <h2>Fresh from the human brain, no AI used :)</h2>
+
+  <div class="wr-month-group">
+    <div class="wr-month-label">February 2026</div>
+    <div class="wr-timeline">
+      <div class="wr-tl-entry">
+        <div class="wr-tl-day">14th</div>
+        <div class="wr-tl-content"><a href="#">You are average, but so are your problems</a> <span class="wr-tag">(life)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wr-month-group">
+    <div class="wr-month-label">January 2026</div>
+    <div class="wr-timeline">
+      <div class="wr-tl-entry">
+        <div class="wr-tl-day">26th</div>
+        <div class="wr-tl-content"><a href="#">How to level up with Claude Code</a> <span class="wr-tag">(product & growth)</span></div>
+      </div>
+      <div class="wr-tl-entry">
+        <div class="wr-tl-day">16th</div>
+        <div class="wr-tl-content"><a href="#">How I fixed a (small) bug in an app I use daily</a> <span class="wr-tag">(product & growth)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wr-month-group">
+    <div class="wr-month-label">August 2025</div>
+    <div class="wr-timeline">
+      <div class="wr-tl-entry">
+        <div class="wr-tl-day">23rd</div>
+        <div class="wr-tl-content"><a href="#">Scratch your own itches with Claude code</a> <span class="wr-tag">(life)</span></div>
+      </div>
+      <div class="wr-tl-entry">
+        <div class="wr-tl-day">5th</div>
+        <div class="wr-tl-content"><a href="#">Difficult yet Simple</a> <span class="wr-tag">(life)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wr-month-group">
+    <div class="wr-month-label">July 2025</div>
+    <div class="wr-timeline">
+      <div class="wr-tl-entry">
+        <div class="wr-tl-day">25th</div>
+        <div class="wr-tl-content"><a href="#">How Zerodha grows</a> <span class="wr-tag">(product & growth)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wr-month-group">
+    <div class="wr-month-label">February 2025</div>
+    <div class="wr-timeline">
+      <div class="wr-tl-entry">
+        <div class="wr-tl-day">8th</div>
+        <div class="wr-tl-content"><a href="#">Granola AI - def a better note taker but not because of its AI</a> <span class="wr-tag">(product & growth)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wr-month-group">
+    <div class="wr-month-label">November 2024</div>
+    <div class="wr-timeline">
+      <div class="wr-tl-entry">
+        <div class="wr-tl-day">6th</div>
+        <div class="wr-tl-content"><a href="#">How I use Cursor</a> <span class="wr-tag">(product & growth)</span></div>
+      </div>
+      <div class="wr-tl-entry">
+        <div class="wr-tl-day">6th</div>
+        <div class="wr-tl-content"><a href="#">Maintain a decision log</a> <span class="wr-tag">(product & growth)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wr-month-group">
+    <div class="wr-month-label">May 2023</div>
+    <div class="wr-timeline">
+      <div class="wr-tl-entry">
+        <div class="wr-tl-day">9th</div>
+        <div class="wr-tl-content"><a href="#">Why is Jio giving away the IPL for free?</a> <span class="wr-tag">(product & growth)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wr-month-group">
+    <div class="wr-month-label">February 2023</div>
+    <div class="wr-timeline">
+      <div class="wr-tl-entry">
+        <div class="wr-tl-day">21st</div>
+        <div class="wr-tl-content"><a href="#">Long distance cycling: your go-to guide to do a 100km ride</a> <span class="wr-tag">(fitness)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wr-month-group">
+    <div class="wr-month-label">January 2023</div>
+    <div class="wr-timeline">
+      <div class="wr-tl-entry">
+        <div class="wr-tl-day">16th</div>
+        <div class="wr-tl-content"><a href="#">Reflections - Demystifying the Chief of Staff role</a> <span class="wr-tag">(life)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wr-month-group">
+    <div class="wr-month-label">April 2022</div>
+    <div class="wr-timeline">
+      <div class="wr-tl-entry">
+        <div class="wr-tl-day">24th</div>
+        <div class="wr-tl-content"><a href="#">Growth 101 - what is it and why is it important</a> <span class="wr-tag">(product & growth)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wr-tags-footer">
+    <strong>Tags:</strong> <a href="#">product & growth</a>, <a href="#">life</a>, <a href="#">fitness</a>, <a href="#">web3</a>
+  </div>
+</div>
+</body>
+</html>

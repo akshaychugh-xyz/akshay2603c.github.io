@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIL Toggle Options</title>
+<style>
+  :root {
+    --color-paper: #FFFCF0;
+    --color-base-50: #F2F0E5;
+    --color-base-100: #E6E4D9;
+    --color-base-200: #DAD8CE;
+    --color-base-300: #CECDC3;
+    --color-base-700: #6F6E69;
+    --color-black: #100F0F;
+    --color-orange: #DA702C;
+    --color-blue: #4385BE;
+    --bg-primary: var(--color-paper);
+    --bg-secondary: var(--color-base-50);
+    --text-primary: var(--color-black);
+    --text-secondary: var(--color-base-700);
+    --border-color: var(--color-base-200);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .option-section {
+    margin-bottom: 4em;
+    padding-bottom: 3em;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .option-section:last-child {
+    border-bottom: none;
+  }
+
+  .option-label {
+    display: inline-block;
+    background: var(--color-orange);
+    color: var(--color-paper);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 0.5em;
+  }
+
+  .option-desc {
+    color: var(--text-secondary);
+    font-size: 0.88em;
+    margin-bottom: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.8em;
+    font-weight: 600;
+  }
+
+  /* ========================================
+     OPTION A: Ghost button (outlined pill)
+     ======================================== */
+  .til-header-a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .til-header-a h2 { margin: 0; }
+
+  .til-toggle-a {
+    font-family: inherit;
+    font-size: 0.72em;
+    color: var(--text-secondary);
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.25em 0.7em;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+  }
+
+  .til-toggle-a:hover {
+    color: var(--color-orange);
+    border-color: var(--color-orange);
+  }
+
+  /* ========================================
+     OPTION B: Underline text link
+     ======================================== */
+  .til-header-b {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .til-header-b h2 { margin: 0; }
+
+  .til-toggle-b {
+    font-family: inherit;
+    font-size: 0.72em;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    border-bottom: 1px dashed var(--color-base-300);
+    padding: 0 0 1px 0;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+  }
+
+  .til-toggle-b:hover {
+    color: var(--color-orange);
+    border-bottom-color: var(--color-orange);
+    border-bottom-style: solid;
+  }
+
+  /* ========================================
+     OPTION C: Filled subtle pill
+     ======================================== */
+  .til-header-c {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .til-header-c h2 { margin: 0; }
+
+  .til-toggle-c {
+    font-family: inherit;
+    font-size: 0.7em;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border: none;
+    border-radius: 3px;
+    padding: 0.25em 0.65em;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+  }
+
+  .til-toggle-c:hover {
+    color: var(--color-paper);
+    background: var(--color-orange);
+  }
+
+  /* ========================================
+     OPTION D: Icon + text minimal
+     ======================================== */
+  .til-header-d {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .til-header-d h2 { margin: 0; }
+
+  .til-toggle-d {
+    font-family: inherit;
+    font-size: 0.72em;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.35em;
+  }
+
+  .til-toggle-d:hover {
+    color: var(--color-orange);
+  }
+
+  .til-toggle-d svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    transition: transform 0.2s ease;
+  }
+
+  .til-toggle-d.expanded svg {
+    transform: rotate(180deg);
+  }
+
+  /* Shared demo details */
+  .demo-timeline {
+    margin-top: 1.5em;
+  }
+
+  .demo-entry {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 0 1.2em;
+    padding: 0.65em 0;
+  }
+
+  .demo-entry + .demo-entry {
+    border-top: 1px solid var(--color-base-100);
+  }
+
+  .demo-day {
+    color: var(--color-orange);
+    font-size: 0.85em;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .demo-entry details summary {
+    list-style: none;
+    cursor: pointer;
+    line-height: 1.55;
+  }
+
+  .demo-entry details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .demo-hint {
+    display: inline-block;
+    color: var(--text-secondary);
+    font-size: 0.7em;
+    margin-left: 0.3em;
+    transition: transform 0.2s ease;
+    vertical-align: middle;
+  }
+
+  .demo-entry details[open] .demo-hint {
+    transform: rotate(90deg);
+  }
+
+  .demo-body {
+    margin-top: 0.5em;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    line-height: 1.65;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- OPTION A -->
+  <div class="option-section">
+    <div class="option-label">Option A — Ghost Pill</div>
+    <p class="option-desc">Outlined border, subtle and contained. Feels like a small UI control.</p>
+
+    <div class="til-header-a">
+      <h2>A running log of (small) things I learnt!</h2>
+      <button class="til-toggle-a" onclick="toggleDemo(this, 'a')">expand all</button>
+    </div>
+
+    <div class="demo-timeline" id="demo-a">
+      <div class="demo-entry">
+        <div class="demo-day">15th</div>
+        <div>A big share of Lego's sales now come from first-time Adult purchasers</div>
+      </div>
+      <div class="demo-entry">
+        <div class="demo-day">1st</div>
+        <details>
+          <summary>'Smallest width' developer settings on Android <span class="demo-hint">&#9656;</span></summary>
+          <div class="demo-body"><p>A lot of other interesting settings in developer options too.</p></div>
+        </details>
+      </div>
+      <div class="demo-entry">
+        <div class="demo-day">31st</div>
+        <details>
+          <summary>Netflix has a 'second-screen-viewability' score <span class="demo-hint">&#9656;</span></summary>
+          <div class="demo-body"><p>Before greenlighting a show, Netflix evaluates engagement.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="option-section">
+    <div class="option-label">Option B — Dashed Underline</div>
+    <p class="option-desc">Text-only with a dashed underline. Lightest touch, feels like a footnote link.</p>
+
+    <div class="til-header-b">
+      <h2>A running log of (small) things I learnt!</h2>
+      <button class="til-toggle-b" onclick="toggleDemo(this, 'b')">expand all</button>
+    </div>
+
+    <div class="demo-timeline" id="demo-b">
+      <div class="demo-entry">
+        <div class="demo-day">15th</div>
+        <div>A big share of Lego's sales now come from first-time Adult purchasers</div>
+      </div>
+      <div class="demo-entry">
+        <div class="demo-day">1st</div>
+        <details>
+          <summary>'Smallest width' developer settings on Android <span class="demo-hint">&#9656;</span></summary>
+          <div class="demo-body"><p>A lot of other interesting settings in developer options too.</p></div>
+        </details>
+      </div>
+      <div class="demo-entry">
+        <div class="demo-day">31st</div>
+        <details>
+          <summary>Netflix has a 'second-screen-viewability' score <span class="demo-hint">&#9656;</span></summary>
+          <div class="demo-body"><p>Before greenlighting a show, Netflix evaluates engagement.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION C -->
+  <div class="option-section">
+    <div class="option-label">Option C — Filled Pill</div>
+    <p class="option-desc">Soft background fill, turns orange on hover. A bit more presence.</p>
+
+    <div class="til-header-c">
+      <h2>A running log of (small) things I learnt!</h2>
+      <button class="til-toggle-c" onclick="toggleDemo(this, 'c')">expand all</button>
+    </div>
+
+    <div class="demo-timeline" id="demo-c">
+      <div class="demo-entry">
+        <div class="demo-day">15th</div>
+        <div>A big share of Lego's sales now come from first-time Adult purchasers</div>
+      </div>
+      <div class="demo-entry">
+        <div class="demo-day">1st</div>
+        <details>
+          <summary>'Smallest width' developer settings on Android <span class="demo-hint">&#9656;</span></summary>
+          <div class="demo-body"><p>A lot of other interesting settings in developer options too.</p></div>
+        </details>
+      </div>
+      <div class="demo-entry">
+        <div class="demo-day">31st</div>
+        <details>
+          <summary>Netflix has a 'second-screen-viewability' score <span class="demo-hint">&#9656;</span></summary>
+          <div class="demo-body"><p>Before greenlighting a show, Netflix evaluates engagement.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION D -->
+  <div class="option-section">
+    <div class="option-label">Option D — Icon + Text</div>
+    <p class="option-desc">Chevron icon with text, rotates on toggle. Most interactive feel.</p>
+
+    <div class="til-header-d">
+      <h2>A running log of (small) things I learnt!</h2>
+      <button class="til-toggle-d" onclick="toggleDemo(this, 'd')">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        expand all
+      </button>
+    </div>
+
+    <div class="demo-timeline" id="demo-d">
+      <div class="demo-entry">
+        <div class="demo-day">15th</div>
+        <div>A big share of Lego's sales now come from first-time Adult purchasers</div>
+      </div>
+      <div class="demo-entry">
+        <div class="demo-day">1st</div>
+        <details>
+          <summary>'Smallest width' developer settings on Android <span class="demo-hint">&#9656;</span></summary>
+          <div class="demo-body"><p>A lot of other interesting settings in developer options too.</p></div>
+        </details>
+      </div>
+      <div class="demo-entry">
+        <div class="demo-day">31st</div>
+        <details>
+          <summary>Netflix has a 'second-screen-viewability' score <span class="demo-hint">&#9656;</span></summary>
+          <div class="demo-body"><p>Before greenlighting a show, Netflix evaluates engagement.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleDemo(el, id) {
+  var container = document.getElementById('demo-' + id);
+  var details = container.querySelectorAll('details');
+  var expanding = el.textContent.trim().includes('expand');
+  details.forEach(function(d) { d.open = expanding; });
+
+  if (id === 'd') {
+    var textNode = el.childNodes[el.childNodes.length - 1];
+    textNode.textContent = expanding ? '\n        collapse all\n      ' : '\n        expand all\n      ';
+    el.classList.toggle('expanded', expanding);
+  } else {
+    el.textContent = expanding ? 'collapse all' : 'expand all';
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+- date: 2026-02-15
+  title: "A big share of Lego's sales now come from first-time Adult purchasers, buying for self - they call it Adult Fans of LEGO (AFOL) and lean into it with the 'Adults Welcome!' marketing"
+
+- date: 2026-02-01
+  title: "[Smallest width](https://www.reddit.com/r/OnePlus7Pro/comments/bxw39c/psa_you_can_change_your_display_size_even_smaller/) developer settings on Android let you increase screen real-estate beyond what's normally possible"
+  details: |
+    A lot of other interesting settings in developer options too, including reducing animation speed that makes the phone so much more snappier.
+
+- date: 2026-01-31
+  title: "Netflix has a [second-screen-viewability](https://www.theguardian.com/tv-and-radio/2025/jan/17/not-second-screen-enough-is-netflix-deliberately-dumbing-down-tv-so-people-can-watch-while-scrolling) score before it greenlights projects because people can't follow dense movies/tv series anymore"
+
+- date: 2026-01-26
+  title: "Bluetooth has a 'sniffing' mode to magically connect with switched-off devices"
+  details: |
+    Most Bluetooth devices even when "asleep" can receive your other BT device's connection request and magically "wake up". For e.g. your laptop can connect with your switched off bluetooth speaker.
+
+    The speaker is in "sniffing" mode where a tiny part of its bluetooth radio is kept on to periodically "sniff" for incoming BT connection requests. A pre-paired device remembers each other's BT addresses and can therefore connect to each other magically. This also ensures that no non-paired devices can just randomly wake up your bluetooth speaker.
+
+- date: 2026-01-23
+  title: "Spotify allows you to paywall podcast access from other subscriptions"
+  details: |
+    Spotify now allows you to paywall protect podcasts with real time info-sharing of your subscriptions on other platforms. E.g. [this NYT podcast](https://help.nytimes.com/30729304846612-link-your-new-york-times-account-to-other-podcast-platforms) that is only accessible to NYT subscribers, with in-app authentication possible on Spotify to vet your subscription status.
+
+- date: 2026-01-22
+  title: "Your Mac has a built-in job scheduler!"
+  details: |
+    Knowing this means you can potentially "program" your laptop to do X things at Y time of the day every Z days. This fact, merged with Claude Code Skills, effectively means you can setup complicated workflows in a recurring manner all natively on your Mac, with no need to access any server based service like n8n, github actions etc.
+
+    There are 2 built-in job schedulers in Mac: `Cron` and `Launchd`. Cron will miss stuff out if your laptop is "off" at the time of the job. Launchd can queue in stuff so even if a job is missed, it will re-activate the next time your Mac wakes up.

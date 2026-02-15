@@ -1,9 +1,9 @@
 ---
 layout: default
 title: 'Do The Work'
-permalink: /reflections/books/do-the-work
+permalink: /notes/books/do-the-work
 tag: 5-star
-categories: [reflections, books]
+categories: [notes, books]
 ---
 <small>{{ page.date | date_to_string }}</small>
 

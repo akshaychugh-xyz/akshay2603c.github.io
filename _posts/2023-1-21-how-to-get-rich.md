@@ -1,9 +1,9 @@
 ---
 layout: default
 title: 'How to get rich'
-permalink: /reflections/books/how-to-get-rich
+permalink: /notes/books/how-to-get-rich
 tag: 5-star
-categories: [reflections, books]
+categories: [notes, books]
 ---
 <small>{{ page.date | date_to_string }}</small>
 > Disclaimer: This post is mainly my reflections from the book (ideas that I found interesting, stuff that I know but need constant reminding etc.). 

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variation 1: The Portal | akshay chugh</title>
+  <style>
+    /* ============================================================
+       Flexoki Color System
+       ============================================================ */
+    :root {
+      --bg-primary: #FFFCF0;
+      --bg-secondary: #F2F0E5;
+      --text-primary: #100F0F;
+      --text-secondary: #6F6E69;
+      --accent-orange: #DA702C;
+      --accent-blue: #4385BE;
+      --border-color: #DAD8CE;
+      --shadow-color: rgba(0, 0, 0, 0.08);
+      --base-100: #E6E4D9;
+      --base-200: #DAD8CE;
+      --base-300: #CECDC3;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #1C1B1A;
+      --bg-secondary: #2D2B28;
+      --text-primary: #E6E4D9;
+      --text-secondary: #B7B5AC;
+      --accent-orange: #DA702C;
+      --accent-blue: #6BB6FF;
+      --border-color: #575653;
+      --shadow-color: rgba(255, 255, 255, 0.06);
+      --base-100: #403E3C;
+      --base-200: #575653;
+      --base-300: #6F6E69;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg-primary: #1C1B1A;
+        --bg-secondary: #2D2B28;
+        --text-primary: #E6E4D9;
+        --text-secondary: #B7B5AC;
+        --accent-orange: #DA702C;
+        --accent-blue: #6BB6FF;
+        --border-color: #575653;
+        --shadow-color: rgba(255, 255, 255, 0.06);
+        --base-100: #403E3C;
+        --base-200: #575653;
+        --base-300: #6F6E69;
+      }
+    }
+
+    /* ============================================================
+       Reset & Base
+       ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: clamp(16px, 2vw, 18px);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--accent-orange);
+      text-decoration: underline;
+    }
+
+    /* ============================================================
+       Preview Banner
+       ============================================================ */
+    .preview-banner {
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 8px 20px;
+      text-align: center;
+      font-size: 0.72em;
+      color: var(--text-secondary);
+      letter-spacing: 0.02em;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+
+    .preview-banner strong {
+      color: var(--accent-orange);
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       Header
+       ============================================================ */
+    .site-header {
+      position: relative;
+      padding: 1rem 0 0.4rem 0;
+      border-bottom: 1px solid var(--accent-orange);
+      margin-bottom: 0;
+      transition: border-color 0.3s ease;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .site-title {
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 54px;
+      margin: 0;
+      color: var(--text-primary);
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .site-title:hover {
+      color: var(--accent-orange);
+      text-decoration: none;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .site-nav a {
+      color: var(--text-primary);
+      font-weight: 400;
+      text-decoration: none;
+      padding: 5px 10px;
+      transition: color 0.3s ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--accent-orange);
+      text-decoration: none;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+      color: var(--text-primary);
+    }
+
+    .theme-toggle:hover {
+      background-color: var(--bg-secondary);
+    }
+
+    .theme-toggle svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* Mobile hamburger menu */
+    .menu-icon {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .menu-icon span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-primary);
+      margin: 5px 0;
+      transition: 0.4s;
+    }
+
+    @media screen and (max-width: 600px) {
+      .site-nav {
+        position: static;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      .menu-items {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-primary);
+        padding: 10px 15px;
+        box-shadow: 0 2px 5px var(--shadow-color);
+        z-index: 1000;
+      }
+
+      .menu-items.active {
+        display: block;
+      }
+
+      .site-nav a {
+        display: block;
+        margin: 10px 0;
+        padding: 8px 0;
+        font-size: 1.1em;
+      }
+
+      .menu-icon.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+
+      .menu-icon.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-icon.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+
+      .site-title {
+        font-size: 22px;
+        line-height: 44px;
+      }
+    }
+
+    /* ============================================================
+       Main Content Container
+       ============================================================ */
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      flex: 1 0 auto;
+    }
+
+    /* ============================================================
+       Welcome Section
+       ============================================================ */
+    .welcome {
+      margin-top: 2.5em;
+      margin-bottom: 0.6em;
+    }
+
+    .welcome-greeting {
+      font-size: 1.05em;
+      line-height: 1.6;
+      margin-bottom: 0.6em;
+    }
+
+    .welcome-bio {
+      font-size: 1em;
+      line-height: 1.6;
+      color: var(--text-primary);
+      margin-bottom: 0.6em;
+    }
+
+    .welcome-social {
+      font-size: 0.92em;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+      transition: color 0.3s ease;
+    }
+
+    /* ============================================================
+       Navigation Tiles
+       ============================================================ */
+    .nav-tiles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 3em;
+    }
+
+    .nav-tile {
+      display: block;
+      padding: 1.3em 1.4em;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.25s ease;
+      background: transparent;
+    }
+
+    .nav-tile:hover {
+      border-color: var(--accent-orange);
+      box-shadow: 0 2px 12px var(--shadow-color);
+      text-decoration: none;
+      color: var(--text-primary);
+      transform: translateY(-2px);
+    }
+
+    .nav-tile-name {
+      font-size: 1.05em;
+      font-weight: 600;
+      margin-bottom: 0.3em;
+      color: var(--text-primary);
+      transition: color 0.25s ease;
+    }
+
+    .nav-tile:hover .nav-tile-name {
+      color: var(--accent-orange);
+    }
+
+    .nav-tile-desc {
+      font-size: 0.82em;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      transition: color 0.3s ease;
+    }
+
+    .nav-tile-arrow {
+      display: inline-block;
+      font-size: 0.85em;
+      color: var(--text-secondary);
+      margin-top: 0.6em;
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+
+    .nav-tile:hover .nav-tile-arrow {
+      transform: translateX(4px);
+      color: var(--accent-orange);
+    }
+
+    @media (max-width: 480px) {
+      .nav-tiles {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 2em;
+      }
+
+      .nav-tile {
+        padding: 1em 1.1em;
+      }
+    }
+
+    /* ============================================================
+       Newsletter Subscribe Section
+       ============================================================ */
+    .subscribe-section {
+      margin-top: 3em;
+      padding: 1.25em 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      transition: border-color 0.3s ease;
+    }
+
+    .subscribe-section .subscribe-inner {
+      border-left: 3px solid var(--accent-orange);
+      padding-left: 1em;
+    }
+
+    .subscribe-content {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      flex-wrap: wrap;
+    }
+
+    .subscribe-text {
+      font-size: 0.88em;
+      color: var(--text-secondary);
+      transition: color 0.3s ease;
+    }
+
+    .subscribe-form-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+    }
+
+    .subscribe-form-row input[type="email"] {
+      padding: 0.4em 0.6em;
+      font-size: 0.85em;
+      font-family: inherit;
+      color: var(--text-primary);
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border-color);
+      border-radius: 0;
+      outline: none;
+      width: 180px;
+      transition: border-color 0.2s ease, color 0.3s ease;
+    }
+
+    .subscribe-form-row input[type="email"]:focus {
+      border-bottom-color: var(--accent-orange);
+    }
+
+    .subscribe-form-row input[type="email"]::placeholder {
+      color: var(--text-secondary);
+      opacity: 0.5;
+    }
+
+    .subscribe-form-row button[type="submit"] {
+      padding: 0.35em 0.6em;
+      font-size: 0.95em;
+      font-family: inherit;
+      color: var(--accent-orange);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .subscribe-form-row button[type="submit"]:hover {
+      transform: translateX(2px);
+    }
+
+    .subscribe-form-row button[type="submit"]:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .form-message {
+      font-size: 0.8em;
+      margin-top: 0.5em;
+      margin-bottom: 0;
+    }
+
+    .form-message:empty {
+      display: none;
+    }
+
+    .form-message.success {
+      color: var(--accent-orange);
+    }
+
+    .form-message.error {
+      color: #D14D41;
+    }
+
+    @media screen and (max-width: 480px) {
+      .subscribe-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5em;
+      }
+
+      .subscribe-text {
+        font-size: 0.8em;
+      }
+
+      .subscribe-form-row input[type="email"] {
+        width: 140px;
+        font-size: 0.8em;
+        padding: 0.3em 0.5em;
+      }
+
+      .subscribe-form-row button[type="submit"] {
+        font-size: 0.85em;
+        padding: 0.25em 0.4em;
+      }
+    }
+
+    /* ============================================================
+       Cheers & Footer
+       ============================================================ */
+    .cheers {
+      margin-top: 2em;
+      margin-bottom: 2em;
+      font-size: 1em;
+      color: var(--text-primary);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 20px 0;
+      font-size: 14px;
+      line-height: 1.5;
+      flex-shrink: 0;
+      transition: border-color 0.3s ease;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-text {
+      margin: 0;
+      text-align: center;
+      color: var(--text-secondary);
+      transition: color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preview Banner -->
+  <div class="preview-banner">
+    <strong>Variation 1: The Portal</strong> &mdash; Homepage as a pure gateway, no content previews
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="wrapper">
+      <a class="site-title" href="/">akshay chugh</a>
+      <nav class="site-nav">
+        <button class="menu-icon" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="menu-items">
+          <a href="/writings">Writings</a>
+          <a href="/side-projects">Side Projects</a>
+          <a href="/notes">Notes</a>
+          <a href="/til">TIL</a>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+
+    <!-- Welcome -->
+    <div class="welcome">
+      <p class="welcome-greeting">&#x1F44B; Hi, I am Akshay. Welcome to my little garden on the Internet!</p>
+      <p class="welcome-bio">I lead Product for Coinbase India and am obsessed with Claude Code on the side.</p>
+      <p class="welcome-social">Also find me at <a href="https://x.com/akshaychugh_xyz" target="_blank" rel="noopener noreferrer">Twitter/X</a> and <a href="https://www.linkedin.com/in/chughakshay/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+    </div>
+
+    <!-- Navigation Tiles -->
+    <div class="nav-tiles">
+      <a class="nav-tile" href="/writings">
+        <div class="nav-tile-name">Writings</div>
+        <div class="nav-tile-desc">Thoughts on life, product &amp; growth</div>
+        <div class="nav-tile-arrow">&rarr;</div>
+      </a>
+      <a class="nav-tile" href="/side-projects">
+        <div class="nav-tile-name">Side Projects</div>
+        <div class="nav-tile-desc">Things I've built for fun and learning</div>
+        <div class="nav-tile-arrow">&rarr;</div>
+      </a>
+      <a class="nav-tile" href="/notes">
+        <div class="nav-tile-name">Notes</div>
+        <div class="nav-tile-desc">Book notes and highlights worth keeping</div>
+        <div class="nav-tile-arrow">&rarr;</div>
+      </a>
+      <a class="nav-tile" href="/til">
+        <div class="nav-tile-name">TIL</div>
+        <div class="nav-tile-desc">Small things I learn every day</div>
+        <div class="nav-tile-arrow">&rarr;</div>
+      </a>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="subscribe-section">
+      <div class="subscribe-inner">
+        <form id="newsletter-form">
+          <div class="subscribe-content">
+            <span class="subscribe-text">Get new posts in your inbox</span>
+            <div class="subscribe-form-row">
+              <input
+                type="email"
+                id="newsletter-email"
+                name="email"
+                placeholder="your@email.com"
+                required
+                autocomplete="email"
+              >
+              <button type="submit" id="newsletter-submit">Subscribe</button>
+            </div>
+          </div>
+        </form>
+        <p class="form-message" id="form-message"></p>
+      </div>
+    </div>
+
+    <!-- Cheers -->
+    <p class="cheers">Cheers!</p>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="footer-text">&copy; 2026 Akshay Chugh</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuIcon = document.querySelector('.menu-icon');
+      const menuItems = document.querySelector('.menu-items');
+      const siteNav = document.querySelector('.site-nav');
+      const themeToggle = document.querySelector('.theme-toggle');
+      const sunIcon = document.querySelector('.sun-icon');
+      const moonIcon = document.querySelector('.moon-icon');
+
+      // ── Theme ──────────────────────────────────────────────
+      function initTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+          updateThemeIcon(savedTheme);
+        } else if (systemPrefersDark) {
+          updateThemeIcon('dark');
+        } else {
+          updateThemeIcon('light');
+        }
+      }
+
+      function updateThemeIcon(theme) {
+        if (theme === 'dark') {
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'block';
+        } else {
+          sunIcon.style.display = 'block';
+          moonIcon.style.display = 'none';
+        }
+      }
+
+      function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        let newTheme;
+        if (currentTheme === 'dark') {
+          newTheme = 'light';
+        } else if (currentTheme === 'light') {
+          newTheme = 'dark';
+        } else {
+          newTheme = systemPrefersDark ? 'light' : 'dark';
+        }
+
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      }
+
+      initTheme();
+
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+        if (!localStorage.getItem('theme')) {
+          updateThemeIcon(e.matches ? 'dark' : 'light');
+        }
+      });
+
+      if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+      }
+
+      // ── External Links ─────────────────────────────────────
+      function handleExternalLinks() {
+        const links = document.querySelectorAll('a[href]');
+        const currentHost = window.location.hostname;
+        links.forEach(function(link) {
+          var href = link.getAttribute('href');
+          if (href && href.match(/^https?:\/\//) && !href.includes(currentHost)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+          }
+        });
+      }
+      handleExternalLinks();
+
+      // ── Mobile Menu ────────────────────────────────────────
+      if (menuIcon && menuItems) {
+        document.addEventListener('click', function(event) {
+          if (!siteNav.contains(event.target)) {
+            menuItems.classList.remove('active');
+            menuIcon.classList.remove('active');
+            menuIcon.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        menuIcon.addEventListener('click', function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          var isExpanded = menuItems.classList.contains('active');
+          menuItems.classList.toggle('active');
+          menuIcon.classList.toggle('active');
+          menuIcon.setAttribute('aria-expanded', String(!isExpanded));
+        });
+
+        menuItems.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            menuItems.classList.remove('active');
+            menuIcon.classList.remove('active');
+            menuIcon.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // ── Newsletter ─────────────────────────────────────────
+      var newsletterForm = document.getElementById('newsletter-form');
+      if (newsletterForm) {
+        var emailInput = document.getElementById('newsletter-email');
+        var submitButton = document.getElementById('newsletter-submit');
+        var formMessage = document.getElementById('form-message');
+        var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxSCkJCVFlVvAPvVJOJ3OyG4pBnfGsqTXZ6Zgl4Fn5H0rdPZgWMoTzMzL8VuVJBQ7Nftw/exec';
+
+        newsletterForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          var email = emailInput.value.trim();
+          if (!email) return;
+
+          submitButton.disabled = true;
+          submitButton.textContent = 'Subscribing...';
+          formMessage.textContent = '';
+          formMessage.className = 'form-message';
+
+          try {
+            await fetch(APPS_SCRIPT_URL, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: email })
+            });
+            formMessage.textContent = 'Please check your inbox to confirm.';
+            formMessage.className = 'form-message success';
+            emailInput.value = '';
+          } catch (error) {
+            formMessage.textContent = 'Something went wrong. Please try again.';
+            formMessage.className = 'form-message error';
+          } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Subscribe';
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

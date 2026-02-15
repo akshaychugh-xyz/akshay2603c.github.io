@@ -1,8 +1,8 @@
 ---
 layout: default
 title: 'The Mundanity of Excellence'
-permalink: /reflections/non-books/the-mundanity-of-excellence
-categories: [reflections, non-books]
+permalink: /notes/non-books/the-mundanity-of-excellence
+categories: [notes, non-books]
 source: "https://academics.hamilton.edu/documents/themundanityofexcellence.pdf"
 ---
 <small>{{ page.date | date_to_string }}</small>

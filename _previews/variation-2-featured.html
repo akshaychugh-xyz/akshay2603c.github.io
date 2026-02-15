@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variation 2: The Featured Piece</title>
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     Flexoki Color Palette — Light & Dark
+     ═══════════════════════════════════════════════════════════ */
+  :root {
+    --color-paper: #FFFCF0;
+    --color-base-50: #F2F0E5;
+    --color-base-100: #E6E4D9;
+    --color-base-200: #DAD8CE;
+    --color-base-300: #CECDC3;
+    --color-base-400: #B7B5AC;
+    --color-base-500: #9F9D94;
+    --color-base-600: #878580;
+    --color-base-700: #6F6E69;
+    --color-base-800: #575653;
+    --color-base-900: #2D2B28;
+    --color-base-950: #1C1B1A;
+    --color-black: #100F0F;
+    --color-orange: #DA702C;
+    --color-blue: #4385BE;
+
+    --bg-primary: var(--color-paper);
+    --bg-secondary: var(--color-base-50);
+    --text-primary: var(--color-black);
+    --text-secondary: var(--color-base-700);
+    --accent-orange: var(--color-orange);
+    --accent-blue: var(--color-blue);
+    --border-color: var(--color-base-200);
+    --shadow-color: rgba(0, 0, 0, 0.06);
+  }
+
+  [data-theme="dark"] {
+    --color-paper: #1C1B1A;
+    --color-base-50: #2D2B28;
+    --color-base-100: #403E3C;
+    --color-base-200: #575653;
+    --color-base-300: #6F6E69;
+    --color-base-400: #878580;
+    --color-base-500: #9F9D94;
+    --color-base-600: #B7B5AC;
+    --color-base-700: #CECDC3;
+    --color-base-800: #DAD8CE;
+    --color-base-900: #F2F0E5;
+    --color-base-950: #FFFCF0;
+    --color-black: #E6E4D9;
+    --color-orange: #DA702C;
+    --color-blue: #6BB6FF;
+
+    --bg-primary: var(--color-paper);
+    --bg-secondary: var(--color-base-50);
+    --text-primary: var(--color-black);
+    --text-secondary: #B7B5AC;
+    --accent-orange: var(--color-orange);
+    --accent-blue: var(--color-blue);
+    --border-color: var(--color-base-200);
+    --shadow-color: rgba(255, 255, 255, 0.04);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --color-paper: #1C1B1A;
+      --color-base-50: #2D2B28;
+      --color-base-100: #403E3C;
+      --color-base-200: #575653;
+      --color-base-300: #6F6E69;
+      --color-base-400: #878580;
+      --color-base-500: #9F9D94;
+      --color-base-600: #B7B5AC;
+      --color-base-700: #CECDC3;
+      --color-base-800: #DAD8CE;
+      --color-base-900: #F2F0E5;
+      --color-base-950: #FFFCF0;
+      --color-black: #E6E4D9;
+      --color-orange: #DA702C;
+      --color-blue: #6BB6FF;
+
+      --bg-primary: var(--color-paper);
+      --bg-secondary: var(--color-base-50);
+      --text-primary: var(--color-black);
+      --text-secondary: #B7B5AC;
+      --accent-orange: var(--color-orange);
+      --accent-blue: var(--color-blue);
+      --border-color: var(--color-base-200);
+      --shadow-color: rgba(255, 255, 255, 0.04);
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Reset & Base
+     ═══════════════════════════════════════════════════════════ */
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: clamp(16px, 2vw, 18px);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--accent-orange);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Variation Banner
+     ═══════════════════════════════════════════════════════════ */
+  .variation-banner {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.45em 1em;
+    text-align: center;
+    font-size: 0.72em;
+    color: var(--text-secondary);
+    letter-spacing: 0.03em;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+
+  .variation-banner strong {
+    color: var(--accent-orange);
+    font-weight: 600;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Header
+     ═══════════════════════════════════════════════════════════ */
+  .site-header {
+    position: relative;
+    padding: 1rem 0 0.4rem 0;
+    border-bottom: 1px solid var(--accent-orange);
+    margin-bottom: 0;
+    transition: border-color 0.3s ease;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .site-title {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 54px;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+  }
+
+  .site-title:hover {
+    color: var(--accent-orange);
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .site-nav a {
+    color: var(--text-primary);
+    font-weight: 400;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.2s ease;
+  }
+
+  .site-nav a:hover {
+    color: var(--accent-orange);
+  }
+
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    color: var(--text-primary);
+  }
+
+  .theme-toggle:hover {
+    background-color: var(--bg-secondary);
+  }
+
+  .theme-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Hamburger menu */
+  .menu-icon {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+
+  .menu-items {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Content Container
+     ═══════════════════════════════════════════════════════════ */
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1 0 auto;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Intro Section
+     ═══════════════════════════════════════════════════════════ */
+  .intro {
+    margin-top: 2.5em;
+    margin-bottom: 3em;
+  }
+
+  .intro p {
+    margin-bottom: 0.6em;
+    line-height: 1.65;
+  }
+
+  .intro .greeting {
+    font-size: 1.05em;
+  }
+
+  .intro .bio {
+    color: var(--text-secondary);
+    font-size: 0.95em;
+  }
+
+  .social-links {
+    margin-top: 0.8em;
+    display: flex;
+    gap: 1.2em;
+  }
+
+  .social-links a {
+    font-size: 0.88em;
+    color: var(--text-secondary);
+    font-weight: 400;
+    transition: color 0.2s ease;
+  }
+
+  .social-links a:hover {
+    color: var(--accent-orange);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Featured Section
+     ═══════════════════════════════════════════════════════════ */
+  .featured-section {
+    margin-bottom: 3em;
+  }
+
+  .featured-label {
+    font-size: 0.75em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 1em;
+  }
+
+  .featured-card {
+    border-left: 3px solid var(--accent-orange);
+    background: var(--bg-secondary);
+    padding: 1.5em 1.8em;
+    border-radius: 0 6px 6px 0;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 1px 4px var(--shadow-color);
+  }
+
+  .featured-card:hover {
+    box-shadow: 0 2px 12px var(--shadow-color);
+  }
+
+  .featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    margin-bottom: 0.7em;
+  }
+
+  .featured-tag {
+    font-size: 0.7em;
+    color: var(--accent-orange);
+    border: 1px solid var(--accent-orange);
+    border-radius: 3px;
+    padding: 0.15em 0.55em;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .featured-date {
+    font-size: 0.8em;
+    color: var(--text-secondary);
+  }
+
+  .featured-title {
+    font-size: 1.35em;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.45em;
+    line-height: 1.35;
+    transition: color 0.3s ease;
+  }
+
+  .featured-title a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: inherit;
+  }
+
+  .featured-title a:hover {
+    color: var(--accent-orange);
+    text-decoration: none;
+  }
+
+  .featured-excerpt {
+    color: var(--text-secondary);
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-bottom: 1em;
+  }
+
+  .featured-cta {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--accent-orange);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    transition: gap 0.2s ease, color 0.2s ease;
+  }
+
+  .featured-cta:hover {
+    color: var(--accent-orange);
+    gap: 0.55em;
+    text-decoration: none;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Explore Links — 3 horizontal blocks
+     ═══════════════════════════════════════════════════════════ */
+  .explore-section {
+    margin-bottom: 3em;
+  }
+
+  .explore-label {
+    font-size: 0.75em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 1em;
+  }
+
+  .explore-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+  }
+
+  .explore-card {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.2em 1em;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .explore-card:hover {
+    border-color: var(--accent-orange);
+    background: var(--bg-secondary);
+    box-shadow: 0 1px 6px var(--shadow-color);
+    text-decoration: none;
+  }
+
+  .explore-card-title {
+    font-size: 0.92em;
+    font-weight: 500;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.35em;
+    transition: color 0.2s ease;
+  }
+
+  .explore-card:hover .explore-card-title {
+    color: var(--accent-orange);
+  }
+
+  .explore-card-arrow {
+    font-size: 0.95em;
+    transition: transform 0.2s ease;
+  }
+
+  .explore-card:hover .explore-card-arrow {
+    transform: translateX(3px);
+  }
+
+  .explore-card-desc {
+    font-size: 0.78em;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Newsletter
+     ═══════════════════════════════════════════════════════════ */
+  .subscribe-section {
+    margin-bottom: 2.5em;
+    padding: 1.25em 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-left: 3px solid var(--accent-orange);
+    padding-left: 1em;
+    transition: border-color 0.3s ease;
+  }
+
+  .subscribe-content {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    flex-wrap: wrap;
+  }
+
+  .subscribe-text {
+    font-size: 0.88em;
+    color: var(--text-secondary);
+  }
+
+  .subscribe-form-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+
+  .subscribe-section input[type="email"] {
+    padding: 0.4em 0.6em;
+    font-size: 0.85em;
+    font-family: inherit;
+    color: var(--text-primary);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    outline: none;
+    width: 170px;
+    transition: border-color 0.2s ease, color 0.3s ease;
+  }
+
+  .subscribe-section input[type="email"]:focus {
+    border-bottom-color: var(--accent-orange);
+  }
+
+  .subscribe-section input[type="email"]::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.5;
+  }
+
+  .subscribe-section button[type="submit"] {
+    padding: 0.35em 0.6em;
+    font-size: 0.95em;
+    font-family: inherit;
+    color: var(--accent-orange);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .subscribe-section button[type="submit"]:hover {
+    transform: translateX(2px);
+  }
+
+  .form-message {
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
+
+  .form-message:empty {
+    display: none;
+  }
+
+  .form-message.success {
+    color: var(--accent-orange);
+  }
+
+  .form-message.error {
+    color: #D14D41;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Cheers / Sign-off
+     ═══════════════════════════════════════════════════════════ */
+  .sign-off {
+    margin-bottom: 3em;
+    font-size: 1em;
+    color: var(--text-primary);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Footer
+     ═══════════════════════════════════════════════════════════ */
+  .site-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 20px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    flex-shrink: 0;
+    transition: border-color 0.3s ease;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .footer-text {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85em;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Mobile Responsive
+     ═══════════════════════════════════════════════════════════ */
+  @media screen and (max-width: 600px) {
+    .site-nav {
+      position: static;
+    }
+
+    .menu-icon {
+      display: block;
+    }
+
+    .menu-items {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--bg-primary);
+      padding: 10px 15px;
+      box-shadow: 0 2px 5px var(--shadow-color);
+      z-index: 1000;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-items.active {
+      display: flex;
+    }
+
+    .menu-items a {
+      display: block;
+      margin: 8px 0;
+      padding: 4px 0;
+      font-size: 1.05em;
+    }
+
+    .menu-icon.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .menu-icon.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-icon.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .explore-grid {
+      grid-template-columns: 1fr;
+      gap: 0.7em;
+    }
+
+    .explore-card {
+      padding: 1em;
+    }
+
+    .featured-card {
+      padding: 1.2em 1.3em;
+    }
+
+    .featured-title {
+      font-size: 1.2em;
+    }
+
+    .intro {
+      margin-top: 1.8em;
+      margin-bottom: 2em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 10px;
+    }
+
+    .site-title {
+      font-size: 22px;
+      line-height: 44px;
+    }
+
+    .subscribe-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5em;
+    }
+
+    .subscribe-text {
+      font-size: 0.8em;
+    }
+
+    .subscribe-section input[type="email"] {
+      width: 140px;
+      font-size: 0.8em;
+    }
+
+    .subscribe-section button[type="submit"] {
+      font-size: 0.85em;
+    }
+  }
+
+  @media (hover: none) {
+    a, button {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    .menu-icon {
+      padding: 12px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ─────────────────────────────────────────────────────────
+       Variation Banner
+       ───────────────────────────────────────────────────────── -->
+  <div class="variation-banner">
+    <strong>Variation 2: The Featured Piece</strong> &mdash; Spotlight one thing, link to the rest
+  </div>
+
+  <!-- ─────────────────────────────────────────────────────────
+       Header
+       ───────────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="wrapper">
+      <a class="site-title" href="/">akshay chugh</a>
+      <nav class="site-nav">
+        <button class="menu-icon" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="menu-items">
+          <a href="/writings">Writings</a>
+          <a href="/side-projects">Side Projects</a>
+          <a href="/notes">Notes</a>
+          <a href="/til">TIL</a>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ─────────────────────────────────────────────────────────
+       Main Content
+       ───────────────────────────────────────────────────────── -->
+  <main class="container">
+
+    <!-- Intro -->
+    <section class="intro">
+      <p class="greeting">Hi, I am Akshay. Welcome to my little garden on the Internet!</p>
+      <p class="bio">I currently lead Product for Coinbase India and am obsessed with Claude Code on the side.</p>
+      <div class="social-links">
+        <a href="https://x.com/akshaychugh_xyz">Twitter/X</a>
+        <a href="https://www.linkedin.com/in/chughakshay/">LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- Featured Piece -->
+    <section class="featured-section">
+      <div class="featured-label">Featured</div>
+      <div class="featured-card">
+        <div class="featured-meta">
+          <span class="featured-tag">life</span>
+          <span class="featured-date">Feb 2026</span>
+        </div>
+        <h2 class="featured-title">
+          <a href="/writings/life/you-are-average-but-so-are-your-problems">You are average, but so are your problems</a>
+        </h2>
+        <p class="featured-excerpt">
+          A reflection on embracing the ordinary and finding peace in being average. Why the relentless pursuit of exceptionalism might be the very thing holding you back.
+        </p>
+        <a class="featured-cta" href="/writings/life/you-are-average-but-so-are-your-problems">
+          Read <span class="explore-card-arrow">&rarr;</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Explore Links -->
+    <section class="explore-section">
+      <div class="explore-label">Explore</div>
+      <div class="explore-grid">
+        <a class="explore-card" href="/writings">
+          <div class="explore-card-title">
+            Writings <span class="explore-card-arrow">&rarr;</span>
+          </div>
+          <div class="explore-card-desc">Essays on life, products, and building things</div>
+        </a>
+        <a class="explore-card" href="/side-projects">
+          <div class="explore-card-title">
+            Side Projects <span class="explore-card-arrow">&rarr;</span>
+          </div>
+          <div class="explore-card-desc">FourPlay, BlunderBuddy, Simple Eval, and more</div>
+        </a>
+        <a class="explore-card" href="/til">
+          <div class="explore-card-title">
+            TIL <span class="explore-card-arrow">&rarr;</span>
+          </div>
+          <div class="explore-card-desc">Small things I learn along the way</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <div class="subscribe-section">
+      <form id="newsletter-form">
+        <div class="subscribe-content">
+          <span class="subscribe-text">Get new posts in your inbox</span>
+          <div class="subscribe-form-row">
+            <input
+              type="email"
+              id="newsletter-email"
+              name="email"
+              placeholder="your@email.com"
+              required
+              autocomplete="email"
+            >
+            <button type="submit" id="newsletter-submit">Subscribe &rarr;</button>
+          </div>
+        </div>
+      </form>
+      <p class="form-message" id="form-message"></p>
+    </div>
+
+    <!-- Sign-off -->
+    <p class="sign-off">Cheers!</p>
+
+  </main>
+
+  <!-- ─────────────────────────────────────────────────────────
+       Footer
+       ───────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="footer-text">akshaychugh.xyz</p>
+    </div>
+  </footer>
+
+  <!-- ─────────────────────────────────────────────────────────
+       JavaScript — Theme Toggle & Mobile Menu
+       ───────────────────────────────────────────────────────── -->
+  <script>
+    (function() {
+      // ── Theme Toggle ──
+      const themeToggle = document.querySelector('.theme-toggle');
+      const sunIcon = document.querySelector('.sun-icon');
+      const moonIcon = document.querySelector('.moon-icon');
+      const html = document.documentElement;
+
+      function getPreferredTheme() {
+        const stored = localStorage.getItem('theme');
+        if (stored) return stored;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      function applyTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        if (theme === 'dark') {
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'block';
+        } else {
+          sunIcon.style.display = 'block';
+          moonIcon.style.display = 'none';
+        }
+      }
+
+      applyTheme(getPreferredTheme());
+
+      themeToggle.addEventListener('click', function() {
+        const current = html.getAttribute('data-theme') || getPreferredTheme();
+        const next = current === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', next);
+        applyTheme(next);
+      });
+
+      // ── Mobile Menu Toggle ──
+      const menuIcon = document.querySelector('.menu-icon');
+      const menuItems = document.querySelector('.menu-items');
+
+      if (menuIcon && menuItems) {
+        menuIcon.addEventListener('click', function() {
+          menuIcon.classList.toggle('active');
+          menuItems.classList.toggle('active');
+        });
+      }
+
+      // ── Newsletter Form (demo) ──
+      const form = document.getElementById('newsletter-form');
+      const messageEl = document.getElementById('form-message');
+
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const email = document.getElementById('newsletter-email').value;
+          if (email) {
+            messageEl.textContent = 'Thanks for subscribing!';
+            messageEl.className = 'form-message success';
+            form.reset();
+          }
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>

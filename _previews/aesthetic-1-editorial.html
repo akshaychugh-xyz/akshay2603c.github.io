@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aesthetic 1: Ink & Paper — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  /* ======== CSS Variables ======== */
+  :root {
+    --bg-page: #FAFAF8;
+    --bg-tile: #FFFFFF;
+    --text-primary: #1A1A1A;
+    --text-secondary: #7A7A72;
+    --accent: #C1272D;
+    --accent-hover: #A01F24;
+    --border: #E8E8E4;
+    --border-light: #F0F0EC;
+    --shadow: 0 1px 3px rgba(26, 26, 26, 0.04);
+    --shadow-hover: 0 4px 12px rgba(26, 26, 26, 0.08);
+    --rule-color: #D8D8D4;
+    --input-bg: #FAFAF8;
+  }
+
+  [data-theme="dark"] {
+    --bg-page: #141412;
+    --bg-tile: #1E1E1C;
+    --text-primary: #E8E6E0;
+    --text-secondary: #9A9A92;
+    --accent: #E84B50;
+    --accent-hover: #F06B6F;
+    --border: #2E2D2A;
+    --border-light: #252522;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --rule-color: #3A3A36;
+    --input-bg: #282826;
+  }
+
+  /* ======== Reset & Base ======== */
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Source Serif 4', 'Georgia', serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background: var(--bg-page);
+    transition: background-color 0.35s ease, color 0.35s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  /* ======== Info Banner ======== */
+  .info-banner {
+    background: var(--bg-tile);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 20px;
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Source Serif 4', serif;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: background-color 0.35s ease, border-color 0.35s ease;
+  }
+
+  /* ======== Header ======== */
+  .site-header {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 28px 24px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    transition: border-color 0.35s ease;
+  }
+
+  .site-title {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease;
+  }
+
+  .site-title:hover {
+    color: var(--accent);
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .nav-links-desktop {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .nav-links-desktop a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 6px 14px;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links-desktop a:hover {
+    color: var(--accent);
+  }
+
+  /* ======== Theme Toggle ======== */
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    padding: 6px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: color 0.2s ease, border-color 0.2s ease;
+    width: 34px;
+    height: 34px;
+  }
+
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* ======== Mobile Menu ======== */
+  .menu-icon {
+    display: none;
+    background: none;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    padding: 6px 8px;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--text-secondary);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .nav-links-mobile {
+    display: none;
+  }
+
+  /* ======== Bento Grid ======== */
+  .bento-container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 20px 24px 60px;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: auto auto auto;
+    gap: 16px;
+    /* Subtle column rule via background gradient */
+    position: relative;
+  }
+
+  /* Decorative vertical rule between columns */
+  .bento-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    /* Position at the gap between 3fr and 2fr columns */
+    left: calc(60% - 0.5px);
+    width: 1px;
+    background: var(--border-light);
+    pointer-events: none;
+    z-index: 0;
+    display: none; /* Only for large screens, overlaps with tiles */
+  }
+
+  /* ======== Tile Base ======== */
+  .tile {
+    background: var(--bg-tile);
+    border: 1px solid var(--border);
+    border-radius: 0; /* Sharp corners — editorial */
+    padding: 28px 28px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.3s ease, border-color 0.35s ease, background-color 0.35s ease;
+    position: relative;
+    z-index: 1;
+    /* Animation setup */
+    opacity: 0;
+    transform: translateY(12px);
+    animation: tileFadeIn 0.5s ease forwards;
+  }
+
+  .tile:hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  /* Staggered animation delays */
+  .tile-intro     { animation-delay: 0.05s; }
+  .tile-writing   { animation-delay: 0.15s; }
+  .tile-project   { animation-delay: 0.25s; }
+  .tile-til       { animation-delay: 0.35s; }
+  .tile-subscribe { animation-delay: 0.45s; }
+
+  @keyframes tileFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ======== Grid Placement ======== */
+  .tile-intro {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    padding: 36px 32px;
+  }
+
+  .tile-writing {
+    grid-column: 1 / 2;
+    grid-row: 2;
+  }
+
+  .tile-project {
+    grid-column: 2 / 3;
+    grid-row: 2;
+  }
+
+  .tile-til {
+    grid-column: 1 / 2;
+    grid-row: 3;
+  }
+
+  .tile-subscribe {
+    grid-column: 2 / 3;
+    grid-row: 3;
+  }
+
+  /* ======== Tile Labels (Section Headers) ======== */
+  .tile-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-variant: small-caps;
+  }
+
+  .tile-label-text {
+    position: relative;
+    padding-bottom: 6px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+
+  .tile-label-text::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .tile-label-link {
+    font-family: 'Source Serif 4', serif;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-variant: normal;
+    transition: color 0.2s ease;
+  }
+
+  .tile-label-link:hover {
+    color: var(--accent);
+  }
+
+  /* ======== Intro Tile ======== */
+  .intro-greeting {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+  }
+
+  .intro-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--rule-color);
+    border: none;
+    margin-bottom: 16px;
+  }
+
+  .intro-bio {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16.5px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: 22px;
+    max-width: 560px;
+  }
+
+  /* Drop cap on first letter */
+  .intro-bio::first-letter {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 3.2em;
+    float: left;
+    line-height: 0.8;
+    margin-right: 8px;
+    margin-top: 6px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .intro-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .intro-links a {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 2px;
+    transition: color 0.2s ease;
+  }
+
+  .intro-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  .intro-links a:hover {
+    color: var(--accent);
+  }
+
+  .intro-links a:hover::after {
+    width: 100%;
+  }
+
+  .intro-links-separator {
+    color: var(--border);
+    font-size: 14px;
+    user-select: none;
+  }
+
+  /* ======== Writing List ======== */
+  .writing-list {
+    list-style: none;
+  }
+
+  .writing-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-light);
+    transition: border-color 0.35s ease;
+  }
+
+  .writing-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .writing-list li:first-child {
+    padding-top: 0;
+  }
+
+  .writing-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .writing-title {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.4;
+    transition: color 0.2s ease;
+    flex: 1;
+  }
+
+  .writing-date {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .writing-list a:hover .writing-title {
+    color: var(--accent);
+  }
+
+  /* ======== Project List ======== */
+  .project-list {
+    list-style: none;
+  }
+
+  .project-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-light);
+    transition: border-color 0.35s ease;
+  }
+
+  .project-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .project-list li:first-child {
+    padding-top: 0;
+  }
+
+  .project-name {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+    transition: color 0.2s ease;
+  }
+
+  .project-name a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .project-name a:hover {
+    color: var(--accent);
+  }
+
+  .project-desc {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-top: 3px;
+  }
+
+  /* ======== TIL List ======== */
+  .til-list {
+    list-style: none;
+  }
+
+  .til-list li {
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border-light);
+    transition: border-color 0.35s ease;
+  }
+
+  .til-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .til-list li:first-child {
+    padding-top: 0;
+  }
+
+  .til-list a {
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s ease;
+  }
+
+  .til-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14.5px;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.45;
+    transition: color 0.2s ease;
+  }
+
+  .til-date {
+    font-family: 'Source Serif 4', serif;
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  .til-list a:hover .til-title {
+    color: var(--accent);
+  }
+
+  /* ======== Subscribe Tile ======== */
+  .subscribe-heading {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+  }
+
+  .subscribe-desc {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14.5px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+
+  .subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .subscribe-form input[type="email"] {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    background: var(--input-bg);
+    color: var(--text-primary);
+    border-radius: 0;
+    outline: none;
+    transition: border-color 0.2s ease, background-color 0.35s ease;
+    width: 100%;
+  }
+
+  .subscribe-form input[type="email"]::placeholder {
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  .subscribe-form input[type="email"]:focus {
+    border-color: var(--accent);
+  }
+
+  .subscribe-form button {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 10px 20px;
+    background: var(--accent);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .subscribe-form button:hover {
+    background: var(--accent-hover);
+  }
+
+  /* ======== Footer ======== */
+  .site-footer {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 20px 24px 40px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    transition: border-color 0.35s ease;
+  }
+
+  .site-footer p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+    font-style: italic;
+  }
+
+  /* ======== Responsive: Mobile ======== */
+  @media (max-width: 640px) {
+    .site-header {
+      padding: 20px 18px 16px;
+    }
+
+    .nav-links-desktop {
+      display: none;
+    }
+
+    .menu-icon {
+      display: flex;
+    }
+
+    .nav-links-mobile {
+      display: none;
+      flex-direction: column;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 18px 12px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-page);
+      transition: background-color 0.35s ease, border-color 0.35s ease;
+    }
+
+    .nav-links-mobile.open {
+      display: flex;
+    }
+
+    .nav-links-mobile a {
+      font-family: 'Source Serif 4', serif;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-light);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links-mobile a:last-child {
+      border-bottom: none;
+    }
+
+    .nav-links-mobile a:hover {
+      color: var(--accent);
+    }
+
+    .bento-container {
+      padding: 14px 18px 40px;
+    }
+
+    .bento-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .tile-intro,
+    .tile-writing,
+    .tile-project,
+    .tile-til,
+    .tile-subscribe {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .tile {
+      padding: 22px 20px;
+    }
+
+    .tile-intro {
+      padding: 28px 22px;
+    }
+
+    .intro-greeting {
+      font-size: 26px;
+    }
+
+    .intro-bio {
+      font-size: 15.5px;
+    }
+
+    .writing-list a {
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .writing-date {
+      font-size: 12px;
+    }
+  }
+
+  /* ======== Sun/Moon icon visibility ======== */
+  .icon-sun { display: none; }
+  .icon-moon { display: block; }
+
+  [data-theme="dark"] .icon-sun { display: block; }
+  [data-theme="dark"] .icon-moon { display: none; }
+
+  /* ======== Menu icon animation ======== */
+  .menu-icon.open span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+  .menu-icon.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-icon.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+  }
+</style>
+</head>
+<body>
+
+<!-- Info Banner -->
+<div class="info-banner">
+  Preview: Ink &amp; Paper Editorial Aesthetic
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <a href="#" class="site-title">akshay chugh</a>
+  <nav class="site-nav">
+    <div class="nav-links-desktop">
+      <a href="#">Writings</a>
+      <a href="#">Books</a>
+      <a href="#">Projects</a>
+      <a href="#">Uses</a>
+    </div>
+    <button class="menu-icon" onclick="toggleMobileMenu()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="nav-links-mobile" id="mobileNav">
+  <a href="#">Writings</a>
+  <a href="#">Books</a>
+  <a href="#">Projects</a>
+  <a href="#">Uses</a>
+</nav>
+
+<!-- Main Content -->
+<main class="bento-container">
+  <div class="bento-grid">
+
+    <!-- Intro Tile (full width) -->
+    <div class="tile tile-intro">
+      <h1 class="intro-greeting">Hi, I am Akshay.</h1>
+      <hr class="intro-rule">
+      <p class="intro-bio">Welcome to my little garden on the Internet. I currently lead Product for Coinbase India and am obsessed with Claude Code on the side.</p>
+      <div class="intro-links">
+        <a href="https://x.com/akshay2603c" target="_blank" rel="noopener">Twitter/X</a>
+        <span class="intro-links-separator">|</span>
+        <a href="https://www.linkedin.com/in/akshay2603c/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <!-- Writings Tile (left, row 2) -->
+    <div class="tile tile-writing">
+      <div class="tile-label">
+        <span class="tile-label-text">Recent Writings</span>
+        <a href="#" class="tile-label-link">View all &rarr;</a>
+      </div>
+      <ul class="writing-list">
+        <li>
+          <a href="#">
+            <span class="writing-title">You are average, but so are your problems</span>
+            <span class="writing-date">Feb 2026</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="writing-title">How to level up with Claude Code</span>
+            <span class="writing-date">Jan 2026</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="writing-title">How I fixed a (small) bug in an app I use daily</span>
+            <span class="writing-date">Jan 2026</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="writing-title">Scratch your own itches with Claude Code</span>
+            <span class="writing-date">Aug 2025</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="writing-title">Difficult yet Simple</span>
+            <span class="writing-date">Aug 2025</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Projects Tile (right, row 2) -->
+    <div class="tile tile-project">
+      <div class="tile-label">
+        <span class="tile-label-text">Side Projects</span>
+        <a href="#" class="tile-label-link">View all &rarr;</a>
+      </div>
+      <ul class="project-list">
+        <li>
+          <div class="project-name"><a href="#">FourPlay</a></div>
+          <div class="project-desc">Wordle meets numbers, multiplayer guessing game</div>
+        </li>
+        <li>
+          <div class="project-name"><a href="#">BlunderBuddy</a></div>
+          <div class="project-desc">AI-powered personalized chess insights</div>
+        </li>
+        <li>
+          <div class="project-name"><a href="#">Simple Eval</a></div>
+          <div class="project-desc">Auto-suggest evals for vibecoded apps</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- TIL Tile (left, row 3) -->
+    <div class="tile tile-til">
+      <div class="tile-label">
+        <span class="tile-label-text">Recent TILs</span>
+        <a href="#" class="tile-label-link">View all &rarr;</a>
+      </div>
+      <ul class="til-list">
+        <li>
+          <a href="#">
+            <div class="til-title">You can use git stash to save work without committing</div>
+            <div class="til-date">Feb 12, 2026</div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="til-title">CSS :has() selector can style parent elements based on children</div>
+            <div class="til-date">Feb 8, 2026</div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="til-title">The Homebrew command to list all installed packages and their sizes</div>
+            <div class="til-date">Jan 30, 2026</div>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Subscribe Tile (right, row 3) -->
+    <div class="tile tile-subscribe">
+      <div class="tile-label">
+        <span class="tile-label-text">Newsletter</span>
+      </div>
+      <p class="subscribe-desc">Get new posts in your inbox.</p>
+      <form class="subscribe-form" onsubmit="event.preventDefault();">
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p>Cheers! &mdash; akshaychugh.xyz</p>
+</footer>
+
+<script>
+  // Theme toggle with localStorage persistence
+  function getPreferredTheme() {
+    const stored = localStorage.getItem('theme-editorial');
+    if (stored) return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme-editorial', theme);
+  }
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  }
+
+  // Initialize theme immediately
+  setTheme(getPreferredTheme());
+
+  // Mobile menu toggle
+  function toggleMobileMenu() {
+    const nav = document.getElementById('mobileNav');
+    const icon = document.querySelector('.menu-icon');
+    nav.classList.toggle('open');
+    icon.classList.toggle('open');
+  }
+
+  // Close mobile menu when clicking a link
+  document.querySelectorAll('.nav-links-mobile a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('mobileNav').classList.remove('open');
+      document.querySelector('.menu-icon').classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>

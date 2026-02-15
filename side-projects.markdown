@@ -4,6 +4,11 @@ title: side projects
 permalink: /side-projects/
 ---
 
+## Things I've built, with my bestie Claude Code 🧡
+
+- <a href="https://fourplay.fun" target="_blank" rel="noopener noreferrer">FourPlay</a> <span style="float: right; color: #888;"><small>15 Feb 2026</small></span>
+  <div style="color: #666;">Wordle meets numbers - multiplayer guessing game, specially fun for couples :).</div>
+
 - <a href="https://blunderbuddy.pro/" target="_blank" rel="noopener noreferrer">BlunderBuddy</a> <span style="float: right; color: #888;"><small>01 Jul 2025</small></span>
   <div style="color: #666;">AI-powered personalized chess insights that actually make sense.</div>
 

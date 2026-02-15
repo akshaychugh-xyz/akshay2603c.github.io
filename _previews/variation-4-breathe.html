@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>akshay chugh — Variation 4: Breathe</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       VARIATION 4: BREATHE
+       Same structure, 60% less content, massive whitespace
+       ═══════════════════════════════════════════════════════════ */
+
+    /* ── Reset ── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ── Light Theme (default) ── */
+    :root {
+      --bg-primary: #FFFCF0;
+      --bg-secondary: #F2F0E5;
+      --text-primary: #100F0F;
+      --text-secondary: #6F6E69;
+      --accent-blue: #4385BE;
+      --accent-orange: #DA702C;
+      --border-color: #DAD8CE;
+      --shadow-color: rgba(0, 0, 0, 0.08);
+      --banner-bg: #F2F0E5;
+      --banner-text: #6F6E69;
+    }
+
+    /* ── Dark Theme ── */
+    [data-theme="dark"] {
+      --bg-primary: #1C1B1A;
+      --bg-secondary: #2D2B28;
+      --text-primary: #E6E4D9;
+      --text-secondary: #B7B5AC;
+      --accent-blue: #6BB6FF;
+      --accent-orange: #DA702C;
+      --border-color: #575653;
+      --shadow-color: rgba(255, 255, 255, 0.06);
+      --banner-bg: #2D2B28;
+      --banner-text: #B7B5AC;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg-primary: #1C1B1A;
+        --bg-secondary: #2D2B28;
+        --text-primary: #E6E4D9;
+        --text-secondary: #B7B5AC;
+        --accent-blue: #6BB6FF;
+        --accent-orange: #DA702C;
+        --border-color: #575653;
+        --shadow-color: rgba(255, 255, 255, 0.06);
+        --banner-bg: #2D2B28;
+        --banner-text: #B7B5AC;
+      }
+    }
+
+    /* ── Base ── */
+    html {
+      font-size: clamp(16px, 2vw, 18px);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Variation Banner ── */
+    .variation-banner {
+      background-color: var(--banner-bg);
+      color: var(--banner-text);
+      text-align: center;
+      padding: 0.5em 1em;
+      font-size: 0.75em;
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid var(--border-color);
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      position: relative;
+      padding: 1rem 0 0.4rem 0;
+      border-bottom: 1px solid var(--accent-orange);
+      margin-bottom: 0;
+      transition: border-color 0.3s ease;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .site-title {
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 54px;
+      margin: 0;
+      color: var(--text-primary);
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .site-title:hover {
+      color: var(--accent-orange);
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .site-nav a {
+      color: var(--text-primary);
+      font-weight: 400;
+      text-decoration: none;
+      font-size: 1em;
+      transition: color 0.3s ease;
+      padding: 5px 10px;
+    }
+
+    .site-nav a:hover {
+      color: var(--accent-orange);
+    }
+
+    /* ── Theme Toggle ── */
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+      color: var(--text-primary);
+    }
+
+    .theme-toggle:hover {
+      background-color: var(--bg-secondary);
+    }
+
+    .theme-toggle svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ── Mobile Menu ── */
+    .menu-icon {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .menu-icon span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-primary);
+      margin: 5px 0;
+      transition: 0.4s;
+    }
+
+    @media screen and (max-width: 600px) {
+      .site-nav {
+        position: static;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      .menu-items {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-primary);
+        padding: 10px 20px;
+        box-shadow: 0 2px 5px var(--shadow-color);
+        z-index: 1000;
+        transition: background-color 0.3s ease;
+      }
+
+      .menu-items.active {
+        display: block;
+      }
+
+      .site-nav a {
+        display: block;
+        margin: 10px 0;
+        padding: 8px 0;
+        font-size: 1.1em;
+      }
+
+      .menu-icon.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+
+      .menu-icon.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-icon.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+    }
+
+    /* ── Main Container ── */
+    .container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+      flex: 1 0 auto;
+    }
+
+    /* ── Intro Section ── */
+    .intro {
+      margin-top: 28vh;
+      margin-bottom: 6em;
+    }
+
+    .intro .greeting {
+      font-size: 1.1em;
+      line-height: 1.9;
+      margin-bottom: 1.2em;
+    }
+
+    .intro .bio {
+      font-size: 1em;
+      line-height: 1.9;
+      color: var(--text-primary);
+      margin-bottom: 1em;
+    }
+
+    .intro .social {
+      font-size: 1em;
+      line-height: 1.9;
+      color: var(--text-primary);
+    }
+
+    /* ── Links ── */
+    a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--accent-orange);
+      text-decoration: underline;
+    }
+
+    /* ── Section Styling ── */
+    .section {
+      margin-bottom: 6em;
+    }
+
+    .section-label {
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+      font-size: 0.85em;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin-top: 0;
+      margin-bottom: 2em;
+      transition: color 0.3s ease;
+    }
+
+    /* ── Writing Items ── */
+    .writing-item {
+      margin-bottom: 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5em;
+    }
+
+    .writing-item a {
+      font-size: 1em;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .writing-date {
+      color: var(--text-secondary);
+      font-size: 0.85em;
+      font-style: italic;
+      flex-shrink: 0;
+      white-space: nowrap;
+      transition: color 0.3s ease;
+    }
+
+    /* ── Project Items ── */
+    .project-item {
+      margin-bottom: 2em;
+    }
+
+    .project-item .project-name {
+      font-weight: 600;
+    }
+
+    .project-item .project-name a {
+      font-weight: 600;
+    }
+
+    .project-item .project-desc {
+      color: var(--text-secondary);
+      font-size: 0.95em;
+      margin-top: 0.2em;
+      transition: color 0.3s ease;
+    }
+
+    /* ── View All Links ── */
+    .view-all {
+      margin-top: 1.5em;
+    }
+
+    .view-all a {
+      font-size: 0.85em;
+      color: var(--text-secondary);
+      font-weight: 400;
+      font-style: italic;
+      transition: color 0.3s ease;
+    }
+
+    .view-all a:hover {
+      color: var(--accent-orange);
+    }
+
+    /* ── Newsletter ── */
+    .subscribe-section {
+      margin-top: 2em;
+      margin-bottom: 3em;
+      padding: 1.25em 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      border-left: 3px solid var(--accent-orange);
+      padding-left: 1em;
+      transition: border-color 0.3s ease;
+    }
+
+    .subscribe-content {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      flex-wrap: wrap;
+    }
+
+    .subscribe-text {
+      font-size: 0.88em;
+      color: var(--text-secondary);
+      transition: color 0.3s ease;
+    }
+
+    .subscribe-form-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+    }
+
+    .subscribe-section input[type="email"] {
+      padding: 0.4em 0.6em;
+      font-size: 0.85em;
+      font-family: inherit;
+      color: var(--text-primary);
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border-color);
+      border-radius: 0;
+      outline: none;
+      width: 180px;
+      transition: border-color 0.2s ease, color 0.3s ease;
+    }
+
+    .subscribe-section input[type="email"]:focus {
+      border-bottom-color: var(--accent-orange);
+    }
+
+    .subscribe-section input[type="email"]::placeholder {
+      color: var(--text-secondary);
+      opacity: 0.5;
+    }
+
+    .subscribe-section button[type="submit"] {
+      padding: 0.35em 0.6em;
+      font-size: 0.95em;
+      font-family: inherit;
+      color: var(--accent-orange);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .subscribe-section button[type="submit"]:hover {
+      transform: translateX(2px);
+    }
+
+    .subscribe-section button[type="submit"]:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .form-message {
+      font-size: 0.8em;
+      margin-top: 0.5em;
+      margin-bottom: 0;
+    }
+
+    .form-message:empty {
+      display: none;
+    }
+
+    .form-message.success {
+      color: var(--accent-orange);
+    }
+
+    .form-message.error {
+      color: #D14D41;
+    }
+
+    /* ── Cheers ── */
+    .cheers {
+      margin-top: 3em;
+      margin-bottom: 6em;
+      font-size: 1em;
+      line-height: 1.8;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 20px 0;
+      font-size: 14px;
+      line-height: 1.5;
+      flex-shrink: 0;
+      transition: border-color 0.3s ease;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-text {
+      margin: 0;
+      text-align: center;
+      color: var(--text-secondary);
+      transition: color 0.3s ease;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .container {
+        padding: 10px 16px;
+      }
+
+      .intro {
+        margin-top: 18vh;
+        margin-bottom: 4em;
+      }
+
+      .section {
+        margin-bottom: 4em;
+      }
+
+      .section-label {
+        font-size: 0.75em;
+        letter-spacing: 0.05em;
+        margin-bottom: 1.5em;
+      }
+
+      .writing-item {
+        flex-direction: column;
+        gap: 0.15em;
+        margin-bottom: 1.8em;
+      }
+
+      .writing-date {
+        order: -1;
+        font-size: 0.78em;
+      }
+
+      .site-title {
+        font-size: 22px;
+        line-height: 44px;
+      }
+
+      .subscribe-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5em;
+      }
+
+      .subscribe-text {
+        font-size: 0.8em;
+      }
+
+      .subscribe-section input[type="email"] {
+        width: 140px;
+        font-size: 0.8em;
+        padding: 0.3em 0.5em;
+      }
+
+      .subscribe-section button[type="submit"] {
+        font-size: 0.85em;
+        padding: 0.25em 0.4em;
+      }
+
+      .subscribe-section {
+        padding: 0.75em 0;
+        padding-left: 0.75em;
+        margin-top: 1.5em;
+      }
+    }
+
+    @media (hover: none) {
+      a, button {
+        min-height: 44px;
+        min-width: 44px;
+      }
+
+      .menu-icon {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Variation Banner -->
+  <div class="variation-banner">
+    Variation 4: Breathe &mdash; Same structure, 60% less content, massive whitespace
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="wrapper">
+      <a class="site-title" href="#">akshay chugh</a>
+      <nav class="site-nav">
+        <button class="menu-icon" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="menu-items">
+          <a href="#">Writings</a>
+          <a href="#">Side Projects</a>
+          <a href="#">Notes</a>
+          <a href="#">TIL</a>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+
+    <!-- Intro -->
+    <div class="intro">
+      <p class="greeting">Hi, I am Akshay. Welcome to my little garden on the Internet!</p>
+      <p class="bio">I currently lead Product for Coinbase India and am obsessed with Claude Code on the side.</p>
+      <p class="social">Also find me at <a href="https://x.com/akshaychugh_xyz">Twitter/X</a> and <a href="https://www.linkedin.com/in/chughakshay/">LinkedIn</a>.</p>
+    </div>
+
+    <!-- Recent Writings -->
+    <div class="section">
+      <h3 class="section-label">Recent Writings</h3>
+
+      <div class="writing-item">
+        <a href="/writings/life/you-are-average-but-so-are-your-problems">You are average, but so are your problems</a>
+        <span class="writing-date">Feb 2026</span>
+      </div>
+
+      <div class="writing-item">
+        <a href="/writings/png/how-to-level-up-with-claude-code">How to level up with Claude Code</a>
+        <span class="writing-date">Jan 2026</span>
+      </div>
+
+      <div class="view-all">
+        <a href="/writings/">View all writings &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+      <h3 class="section-label">Projects</h3>
+
+      <div class="project-item">
+        <span class="project-name"><a href="https://fourplay.fun">FourPlay</a></span>
+        <p class="project-desc">Wordle meets numbers &mdash; multiplayer guessing game, specially fun for couples.</p>
+      </div>
+
+      <div class="project-item">
+        <span class="project-name"><a href="https://simpleeval.com/">Simple Eval</a></span>
+        <p class="project-desc">Connect your vibecoded app &amp; get auto-suggest evals to improve performance.</p>
+      </div>
+
+      <div class="view-all">
+        <a href="/side-projects/">View all projects &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="subscribe-section">
+      <form id="newsletter-form">
+        <div class="subscribe-content">
+          <span class="subscribe-text">Get new posts in your inbox</span>
+          <div class="subscribe-form-row">
+            <input
+              type="email"
+              id="newsletter-email"
+              name="email"
+              placeholder="your@email.com"
+              required
+              autocomplete="email"
+            >
+            <button type="submit" id="newsletter-submit">Subscribe</button>
+          </div>
+        </div>
+      </form>
+      <p class="form-message" id="form-message"></p>
+    </div>
+
+    <!-- Cheers -->
+    <p class="cheers">Cheers!</p>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="footer-text">&copy; 2026 Akshay Chugh</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // ── Theme Toggle ──
+    (function() {
+      const toggle = document.querySelector('.theme-toggle');
+      const sunIcon = toggle.querySelector('.sun-icon');
+      const moonIcon = toggle.querySelector('.moon-icon');
+      const root = document.documentElement;
+
+      function getSystemTheme() {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      function getEffectiveTheme() {
+        const stored = localStorage.getItem('theme');
+        if (stored) return stored;
+        return getSystemTheme();
+      }
+
+      function applyTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        if (theme === 'dark') {
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'block';
+        } else {
+          sunIcon.style.display = 'block';
+          moonIcon.style.display = 'none';
+        }
+      }
+
+      // Initialize
+      applyTheme(getEffectiveTheme());
+
+      toggle.addEventListener('click', function() {
+        const current = getEffectiveTheme();
+        const next = current === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', next);
+        applyTheme(next);
+      });
+
+      // Listen for system changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+        if (!localStorage.getItem('theme')) {
+          applyTheme(getSystemTheme());
+        }
+      });
+    })();
+
+    // ── Mobile Menu Toggle ──
+    (function() {
+      const menuIcon = document.querySelector('.menu-icon');
+      const menuItems = document.querySelector('.menu-items');
+
+      if (menuIcon && menuItems) {
+        menuIcon.addEventListener('click', function() {
+          menuIcon.classList.toggle('active');
+          menuItems.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        menuItems.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            menuIcon.classList.remove('active');
+            menuItems.classList.remove('active');
+          });
+        });
+
+        // Close menu on outside click
+        document.addEventListener('click', function(e) {
+          if (!menuIcon.contains(e.target) && !menuItems.contains(e.target)) {
+            menuIcon.classList.remove('active');
+            menuItems.classList.remove('active');
+          }
+        });
+      }
+    })();
+
+    // ── Newsletter Form (demo handler) ──
+    (function() {
+      const form = document.getElementById('newsletter-form');
+      const emailInput = document.getElementById('newsletter-email');
+      const submitBtn = document.getElementById('newsletter-submit');
+      const messageEl = document.getElementById('form-message');
+
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const email = emailInput.value.trim();
+          if (!email) return;
+
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Subscribing...';
+
+          // Simulate subscription (replace with real endpoint in production)
+          setTimeout(function() {
+            messageEl.textContent = 'Thanks for subscribing!';
+            messageEl.className = 'form-message success';
+            emailInput.value = '';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Subscribe';
+          }, 800);
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>

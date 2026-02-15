@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variation 3: The Bento Grid</title>
+<style>
+  :root {
+    --color-paper: #FFFCF0;
+    --color-base-50: #F2F0E5;
+    --color-base-100: #E6E4D9;
+    --color-base-200: #DAD8CE;
+    --color-base-300: #CECDC3;
+    --color-base-700: #6F6E69;
+    --color-black: #100F0F;
+    --color-orange: #DA702C;
+    --color-blue: #4385BE;
+
+    --bg-primary: var(--color-paper);
+    --bg-tile: var(--color-base-50);
+    --bg-tile-hero: #FDFAF0;
+    --text-primary: var(--color-black);
+    --text-secondary: var(--color-base-700);
+    --accent: var(--color-orange);
+    --accent-blue: var(--color-blue);
+    --border-color: var(--color-base-200);
+    --shadow: 0 1px 3px rgba(16, 15, 15, 0.04), 0 1px 2px rgba(16, 15, 15, 0.02);
+    --shadow-hover: 0 6px 16px rgba(16, 15, 15, 0.08), 0 2px 6px rgba(16, 15, 15, 0.04);
+  }
+
+  [data-theme="dark"] {
+    --color-paper: #1C1B1A;
+    --color-base-50: #2D2B28;
+    --color-base-100: #3D3A37;
+    --color-base-200: #575653;
+    --color-base-300: #6F6E69;
+    --color-base-700: #B7B5AC;
+    --color-black: #E6E4D9;
+    --color-blue: #6BB6FF;
+
+    --bg-primary: var(--color-paper);
+    --bg-tile: var(--color-base-50);
+    --bg-tile-hero: #252320;
+    --text-primary: var(--color-black);
+    --text-secondary: var(--color-base-700);
+    --accent: var(--color-orange);
+    --accent-blue: var(--color-blue);
+    --border-color: var(--color-base-200);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ---- Info banner ---- */
+  .info-banner {
+    background: var(--bg-tile);
+    border-bottom: 1px solid var(--border-color);
+    padding: 8px 20px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* ---- Header ---- */
+  .site-header {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px 20px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+  }
+
+  .site-title:hover { color: var(--accent); }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .site-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 15px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .site-nav a:hover {
+    color: var(--accent);
+    background: var(--bg-tile);
+  }
+
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 6px;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    width: 34px;
+    height: 34px;
+  }
+
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .theme-toggle svg { width: 18px; height: 18px; }
+
+  /* ---- Mobile menu ---- */
+  .menu-icon {
+    display: none;
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 6px 8px;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 16px;
+    height: 2px;
+    background: var(--text-secondary);
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .nav-links-desktop { display: flex; align-items: center; gap: 2px; }
+  .nav-links-mobile { display: none; }
+
+  /* ---- Bento Grid ---- */
+  .bento-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4px 20px 60px;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: auto auto auto;
+    gap: 14px;
+  }
+
+  /* ---- Tile base ---- */
+  .tile {
+    background: var(--bg-tile);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 26px 26px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.3s ease, transform 0.25s ease, border-color 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tile:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  /* ---- Grid placement ---- */
+  /* Row 1: Intro (wide, spans 2 cols) */
+  .tile-intro {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    background: var(--bg-tile-hero);
+    padding: 32px 30px;
+  }
+
+  /* Row 2: Writing (left, larger) + Project (right) */
+  .tile-writing {
+    grid-column: 1 / 2;
+    grid-row: 2;
+  }
+
+  .tile-project {
+    grid-column: 2 / 3;
+    grid-row: 2;
+  }
+
+  /* Row 3: TIL (left) + Subscribe (right) */
+  .tile-til {
+    grid-column: 1 / 2;
+    grid-row: 3;
+  }
+
+  .tile-subscribe {
+    grid-column: 2 / 3;
+    grid-row: 3;
+  }
+
+  /* ---- Tile labels ---- */
+  .tile-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tile-label-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .tile-label-dot--blue { background: var(--accent-blue); }
+
+  /* ---- Intro tile ---- */
+  .intro-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .intro-content { flex: 1; }
+
+  .intro-wave {
+    font-size: 32px;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .intro-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .intro-bio {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    max-width: 540px;
+  }
+
+  .intro-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .intro-links a {
+    font-size: 14px;
+    color: var(--accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+    font-weight: 500;
+  }
+
+  .intro-links a:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .intro-links a svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  /* Decorative accent bar on intro tile */
+  .tile-intro::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-blue) 100%);
+    border-radius: 12px 12px 0 0;
+  }
+
+  /* ---- Writing tile ---- */
+  .writing-title {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.45;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+
+  .writing-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .writing-title a:hover { color: var(--accent); }
+
+  .writing-date {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+  }
+
+  .writing-excerpt {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+
+  .writing-more {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .writing-more a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .writing-more a:hover { color: var(--accent); }
+
+  .tile-link {
+    font-size: 14px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap 0.2s ease;
+  }
+
+  .tile-link:hover { gap: 8px; }
+
+  .tile-link-arrow { font-size: 16px; }
+
+  /* ---- Project tile ---- */
+  .project-name {
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .project-name a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .project-name a:hover { color: var(--accent); }
+
+  .project-external-icon {
+    width: 14px;
+    height: 14px;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+  }
+
+  .project-desc {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+
+  .project-tags { margin-bottom: 16px; }
+
+  .project-tag {
+    display: inline-block;
+    font-size: 11.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+
+  /* ---- TIL tile ---- */
+  .til-entry {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .til-entry:last-of-type {
+    border-bottom: none;
+    margin-bottom: 14px;
+    padding-bottom: 0;
+  }
+
+  .til-entry-date {
+    font-size: 11.5px;
+    color: var(--text-secondary);
+    margin-bottom: 3px;
+    font-weight: 500;
+  }
+
+  .til-entry a {
+    color: var(--accent-blue);
+    text-decoration: none;
+  }
+
+  .til-entry a:hover { text-decoration: underline; }
+
+  /* ---- Subscribe tile ---- */
+  .subscribe-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .subscribe-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .subscribe-subtext {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+
+  .subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .subscribe-form input[type="email"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .subscribe-form input[type="email"]:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(218, 112, 44, 0.1);
+  }
+
+  .subscribe-form input[type="email"]::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
+  }
+
+  .subscribe-form button {
+    width: 100%;
+    padding: 10px 20px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .subscribe-form button:hover {
+    background: #C4621E;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(218, 112, 44, 0.3);
+  }
+
+  .form-message {
+    font-size: 13px;
+    margin-top: 8px;
+    color: var(--text-secondary);
+    min-height: 20px;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 640px) {
+    .nav-links-desktop { display: none; }
+    .menu-icon { display: flex; }
+
+    .nav-links-mobile {
+      display: none;
+      flex-direction: column;
+      padding: 8px 20px 16px;
+      max-width: 800px;
+      margin: 0 auto;
+      gap: 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-links-mobile.open { display: flex; }
+
+    .nav-links-mobile a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 15px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links-mobile a:last-child { border-bottom: none; }
+    .nav-links-mobile a:hover { color: var(--accent); }
+
+    .bento-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      gap: 12px;
+    }
+
+    .tile-intro,
+    .tile-writing,
+    .tile-project,
+    .tile-til,
+    .tile-subscribe {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .tile { padding: 22px 20px; }
+    .tile-intro { padding: 26px 22px; }
+
+    .intro-inner { flex-direction: column; gap: 0; }
+
+    .site-header { padding: 16px 20px 10px; }
+    .bento-container { padding: 4px 16px 48px; }
+
+    .subscribe-form { flex-direction: column; }
+  }
+
+  @media (max-width: 400px) {
+    .intro-links {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .intro-links a { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+  <!-- Info banner -->
+  <div class="info-banner">
+    Variation 3: The Bento Grid &mdash; Asymmetric tiles with visual hierarchy
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <a class="site-title" href="/">akshay chugh</a>
+    <nav class="site-nav">
+      <div class="nav-links-desktop">
+        <a href="/writings">Writings</a>
+        <a href="/side-projects">Side Projects</a>
+        <a href="/notes">Notes</a>
+        <a href="/til">TIL</a>
+      </div>
+      <button class="menu-icon" aria-label="Toggle menu" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <button class="theme-toggle" aria-label="Toggle dark mode" onclick="toggleTheme()">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile nav -->
+  <div class="nav-links-mobile" id="mobile-nav">
+    <a href="/writings">Writings</a>
+    <a href="/side-projects">Side Projects</a>
+    <a href="/notes">Notes</a>
+    <a href="/til">TIL</a>
+  </div>
+
+  <!-- Bento Grid -->
+  <main class="bento-container">
+    <div class="bento-grid">
+
+      <!-- Row 1: Intro (full width hero) -->
+      <div class="tile tile-intro">
+        <div class="intro-inner">
+          <div class="intro-content">
+            <div class="intro-wave">&#x1F44B;</div>
+            <div class="intro-name">Hi, I am Akshay.</div>
+            <div class="intro-bio">
+              Welcome to my little garden on the Internet! I currently lead Product for Coinbase India and am obsessed with Claude Code on the side.
+            </div>
+            <div class="intro-links">
+              <a href="https://x.com/akshaychugh_xyz" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                Twitter/X
+              </a>
+              <a href="https://www.linkedin.com/in/chughakshay/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2 left: Latest Writing -->
+      <div class="tile tile-writing">
+        <div class="tile-label">
+          <span class="tile-label-dot"></span>
+          Latest Writing
+        </div>
+        <div class="writing-title">
+          <a href="/writings/life/you-are-average-but-so-are-your-problems">You are average, but so are your problems</a>
+        </div>
+        <div class="writing-date">February 2026</div>
+        <div class="writing-excerpt">
+          A reminder that most of us are pretty average at most things &mdash; and that is completely fine.
+        </div>
+        <a href="/writings/life/you-are-average-but-so-are-your-problems" class="tile-link">
+          Read <span class="tile-link-arrow">&rarr;</span>
+        </a>
+        <div class="writing-more">
+          Also: <a href="/writings/png/how-to-level-up-with-claude-code">How to level up with Claude Code</a>
+          &nbsp;&middot;&nbsp;
+          <a href="/writings/" class="tile-link" style="margin-left: 0;">All writings &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Row 2 right: Featured Project -->
+      <div class="tile tile-project">
+        <div class="tile-label">
+          <span class="tile-label-dot tile-label-dot--blue"></span>
+          Featured Project
+        </div>
+        <div class="project-name">
+          <a href="https://fourplay.fun" target="_blank" rel="noopener noreferrer">FourPlay</a>
+          <svg class="project-external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+        </div>
+        <div class="project-desc">
+          Wordle meets numbers &mdash; multiplayer guessing game, specially fun for couples.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Game</span>
+          <span class="project-tag">Multiplayer</span>
+          <span class="project-tag">Feb 2026</span>
+        </div>
+        <a href="/side-projects/" class="tile-link">
+          View all projects <span class="tile-link-arrow">&rarr;</span>
+        </a>
+      </div>
+
+      <!-- Row 3 left: TIL -->
+      <div class="tile tile-til">
+        <div class="tile-label">
+          <span class="tile-label-dot tile-label-dot--blue"></span>
+          Today I Learned
+        </div>
+        <div class="til-entry">
+          <div class="til-entry-date">Feb 15, 2026</div>
+          A big share of Lego&rsquo;s sales now come from first-time Adult purchasers, buying for self &mdash; they call it Adult Fans of LEGO (AFOL) and lean into it with &lsquo;Adults Welcome!&rsquo; marketing.
+        </div>
+        <div class="til-entry">
+          <div class="til-entry-date">Feb 1, 2026</div>
+          <a href="https://www.reddit.com/r/OnePlus7Pro/comments/bxw39c/psa_you_can_change_your_display_size_even_smaller/">Smallest width</a> developer settings on Android let you increase screen real-estate beyond what&rsquo;s normally possible.
+        </div>
+        <a href="/til/" class="tile-link">
+          View all TILs <span class="tile-link-arrow">&rarr;</span>
+        </a>
+      </div>
+
+      <!-- Row 3 right: Subscribe -->
+      <div class="tile tile-subscribe">
+        <div class="subscribe-inner">
+          <div class="tile-label">
+            <span class="tile-label-dot"></span>
+            Newsletter
+          </div>
+          <div class="subscribe-text">Get new posts in your inbox</div>
+          <div class="subscribe-subtext">No spam, unsubscribe anytime.</div>
+          <form class="subscribe-form" id="newsletter-form" onsubmit="handleSubscribe(event)">
+            <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required autocomplete="email">
+            <button type="submit" id="newsletter-submit">Subscribe</button>
+          </form>
+          <p class="form-message" id="form-message"></p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // ---- Theme toggle ----
+    function getPreferredTheme() {
+      var stored = localStorage.getItem('theme');
+      if (stored) return stored;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      var sun = document.querySelector('.sun-icon');
+      var moon = document.querySelector('.moon-icon');
+      if (theme === 'dark') {
+        sun.style.display = 'none';
+        moon.style.display = 'block';
+      } else {
+        sun.style.display = 'block';
+        moon.style.display = 'none';
+      }
+    }
+
+    function toggleTheme() {
+      var current = document.documentElement.getAttribute('data-theme') || 'light';
+      var next = current === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      applyTheme(next);
+    }
+
+    // Apply on load
+    applyTheme(getPreferredTheme());
+
+    // ---- Mobile menu ----
+    function toggleMobileMenu() {
+      var nav = document.getElementById('mobile-nav');
+      nav.classList.toggle('open');
+    }
+
+    // ---- Newsletter subscribe ----
+    function handleSubscribe(e) {
+      e.preventDefault();
+      var email = document.getElementById('newsletter-email').value;
+      var msg = document.getElementById('form-message');
+      var btn = document.getElementById('newsletter-submit');
+
+      btn.disabled = true;
+      btn.textContent = 'Subscribing...';
+
+      // Simulate subscribe (in production, this would hit a real endpoint)
+      setTimeout(function() {
+        msg.textContent = 'Thanks for subscribing!';
+        msg.style.color = 'var(--accent)';
+        btn.textContent = 'Subscribed';
+      }, 800);
+    }
+  </script>
+</body>
+</html>

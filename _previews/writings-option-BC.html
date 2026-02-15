@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writings — Option B+C: Year Groups + Tag Filters</title>
+<style>
+  :root {
+    --color-paper: #FFFCF0;
+    --color-base-50: #F2F0E5;
+    --color-base-100: #E6E4D9;
+    --color-base-200: #DAD8CE;
+    --color-base-300: #CECDC3;
+    --color-base-700: #6F6E69;
+    --color-black: #100F0F;
+    --color-orange: #DA702C;
+    --color-blue: #4385BE;
+    --bg-primary: var(--color-paper);
+    --bg-secondary: var(--color-base-50);
+    --text-primary: var(--color-black);
+    --text-secondary: var(--color-base-700);
+    --accent-secondary: var(--color-blue);
+    --border-color: var(--color-base-200);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 18px; line-height: 1.7;
+    color: var(--text-primary); background: var(--bg-primary);
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+  .site-header {
+    border-bottom: 1px solid var(--color-orange);
+    padding: 1rem 0 0.4rem 0; margin-bottom: 0;
+  }
+  .site-header .wrapper {
+    max-width: 800px; margin: 0 auto; padding: 0 20px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .site-header .site-title { font-size: 28px; font-weight: 400; color: var(--text-primary); text-decoration: none; }
+  .site-header nav a { color: var(--text-primary); text-decoration: none; margin-left: 15px; font-weight: 400; }
+  .site-header nav a.active { color: var(--color-orange); }
+  h2 { font-size: 1.8em; font-weight: 600; margin-top: 1.8em; margin-bottom: 0.6em; }
+  a { color: var(--accent-secondary); text-decoration: none; font-weight: 500; }
+  a:hover { color: var(--color-orange); text-decoration: underline; }
+  .hide-on-mobile {}
+
+  /* Filter pills */
+  .wr-filters {
+    display: flex; flex-wrap: wrap; gap: 0.4em;
+    margin-bottom: 1.8em;
+  }
+  .wr-filter {
+    font-family: inherit; font-size: 0.75em;
+    color: var(--text-secondary); background: none;
+    border: 1px solid var(--border-color); border-radius: 3px;
+    padding: 0.2em 0.6em; cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .wr-filter:hover { color: var(--color-orange); border-color: var(--color-orange); }
+  .wr-filter.active {
+    color: var(--color-paper); background: var(--color-orange);
+    border-color: var(--color-orange);
+  }
+
+  /* Year groups */
+  .wr-year-group { margin-bottom: 2.5em; }
+  .wr-year-group.hidden { display: none; }
+  .wr-year-label {
+    font-size: 1.6em; font-weight: 600; color: var(--color-orange);
+    margin-bottom: 0.5em; letter-spacing: -0.01em;
+  }
+  .wr-year-list { list-style: none; padding: 0; margin: 0; }
+  .wr-year-item {
+    padding: 0.55em 0;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1em;
+  }
+  .wr-year-item + .wr-year-item { border-top: 1px solid var(--color-base-100); }
+  .wr-year-item a { flex: 1; min-width: 0; }
+  .wr-year-item.hidden { display: none; }
+  .wr-year-meta {
+    display: flex; align-items: baseline; gap: 0.8em;
+    flex-shrink: 0; white-space: nowrap;
+  }
+  .wr-year-date { color: var(--text-secondary); font-size: 0.82em; }
+  .wr-year-tag {
+    font-size: 0.7em; color: var(--text-secondary);
+    border: 1px solid var(--border-color); border-radius: 3px;
+    padding: 0.1em 0.45em; font-weight: 400;
+  }
+
+  @media (max-width: 480px) {
+    .wr-year-item { flex-direction: column; gap: 0.1em; }
+    .wr-year-meta { order: -1; }
+    .wr-year-tag { display: none; }
+    .hide-on-mobile { display: none; }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="#">akshay chugh</a>
+    <nav>
+      <a href="#" class="active">Writings</a>
+      <a href="#">Side Projects</a>
+      <a href="#">Notes</a>
+      <a href="#">TIL</a>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <h2>Fresh from the human brain, no AI used :)</h2>
+
+  <div class="wr-filters">
+    <button class="wr-filter active" onclick="filterWritings('all', this)">all</button>
+    <button class="wr-filter" onclick="filterWritings('png', this)">product & growth</button>
+    <button class="wr-filter" onclick="filterWritings('life', this)">life</button>
+    <button class="wr-filter" onclick="filterWritings('fitness', this)">fitness</button>
+    <button class="wr-filter" onclick="filterWritings('web3', this)">web3</button>
+  </div>
+
+  <div class="wr-year-group">
+    <div class="wr-year-label">2026</div>
+    <ul class="wr-year-list">
+      <li class="wr-year-item" data-tag="life">
+        <a href="#">You are average, but so are your problems</a>
+        <span class="wr-year-meta">
+          <span class="wr-year-date">14 Feb</span>
+          <span class="wr-year-tag hide-on-mobile">life</span>
+        </span>
+      </li>
+      <li class="wr-year-item" data-tag="png">
+        <a href="#">How to level up with Claude Code</a>
+        <span class="wr-year-meta">
+          <span class="wr-year-date">26 Jan</span>
+          <span class="wr-year-tag hide-on-mobile">product & growth</span>
+        </span>
+      </li>
+      <li class="wr-year-item" data-tag="png">
+        <a href="#">How I fixed a (small) bug in an app I use daily</a>
+        <span class="wr-year-meta">
+          <span class="wr-year-date">16 Jan</span>
+          <span class="wr-year-tag hide-on-mobile">product & growth</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="wr-year-group">
+    <div class="wr-year-label">2025</div>
+    <ul class="wr-year-list">
+      <li class="wr-year-item" data-tag="life">
+        <a href="#">Scratch your own itches with Claude code</a>
+        <span class="wr-year-meta">
+          <span class="wr-year-date">23 Aug</span>
+          <span class="wr-year-tag hide-on-mobile">life</span>
+        </span>
+      </li>
+      <li class="wr-year-item" data-tag="life">
+        <a href="#">Difficult yet Simple</a>
+        <span class="wr-year-meta">
+          <span class="wr-year-date">5 Aug</span>
+          <span class="wr-year-tag hide-on-mobile">life</span>
+        </span>
+      </li>
+      <li class="wr-year-item" data-tag="png">
+        <a href="#">How Zerodha grows</a>
+        <span class="wr-year-meta">
+          <span class="wr-year-date">25 Jul</span>
+          <span class="wr-year-tag hide-on-mobile">product & growth</span>
+        </span>
+      </li>
+      <li class="wr-year-item" data-tag="png">
+        <a href="#">Granola AI - def a better note taker but not because of its AI</a>
+        <span class="wr-year-meta">
+          <span class="wr-year-date">8 Feb</span>
+          <span class="wr-year-tag hide-on-mobile">product & growth</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="wr-year-group">
+    <div class="wr-year-label">2024</div>
+    <ul class="wr-year-list">
+      <li class="wr-year-item" data-tag="png">
+        <a href="#">How I use Cursor</a>
+        <span class="wr-year-meta">
+          <span class="wr-year-date">6 Nov</span>
+          <span class="wr-year-tag hide-on-mobile">product & growth</span>
+        </span>
+      </li>
+      <li class="wr-year-item" data-tag="png">
+        <a href="#">Maintain a decision log</a>
+        <span class="wr-year-meta">
+          <span class="wr-year-date">6 Nov</span>
+          <span class="wr-year-tag hide-on-mobile">product & growth</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="wr-year-group">
+    <div class="wr-year-label">2023</div>
+    <ul class="wr-year-list">
+      <li class="wr-year-item" data-tag="png">
+        <a href="#">Why is Jio giving away the IPL for free?</a>
+        <span class="wr-year-meta">
+          <span class="wr-year-date">9 May</span>
+          <span class="wr-year-tag hide-on-mobile">product & growth</span>
+        </span>
+      </li>
+      <li class="wr-year-item" data-tag="fitness">
+        <a href="#">Long distance cycling: your go-to guide to do a 100km ride</a>
+        <span class="wr-year-meta">
+          <span class="wr-year-date">21 Feb</span>
+          <span class="wr-year-tag hide-on-mobile">fitness</span>
+        </span>
+      </li>
+      <li class="wr-year-item" data-tag="life">
+        <a href="#">Reflections - Demystifying the Chief of Staff role</a>
+        <span class="wr-year-meta">
+          <span class="wr-year-date">16 Jan</span>
+          <span class="wr-year-tag hide-on-mobile">life</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="wr-year-group">
+    <div class="wr-year-label">2022</div>
+    <ul class="wr-year-list">
+      <li class="wr-year-item" data-tag="png">
+        <a href="#">Growth 101 - what is it and why is it important</a>
+        <span class="wr-year-meta">
+          <span class="wr-year-date">24 Apr</span>
+          <span class="wr-year-tag hide-on-mobile">product & growth</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+function filterWritings(tag, btn) {
+  document.querySelectorAll('.wr-filter').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+
+  document.querySelectorAll('.wr-year-item').forEach(function(item) {
+    if (tag === 'all' || item.dataset.tag === tag) {
+      item.classList.remove('hidden');
+    } else {
+      item.classList.add('hidden');
+    }
+  });
+
+  // Hide year groups with no visible items
+  document.querySelectorAll('.wr-year-group').forEach(function(group) {
+    var visibleItems = group.querySelectorAll('.wr-year-item:not(.hidden)');
+    group.classList.toggle('hidden', visibleItems.length === 0);
+  });
+}
+</script>
+</body>
+</html>

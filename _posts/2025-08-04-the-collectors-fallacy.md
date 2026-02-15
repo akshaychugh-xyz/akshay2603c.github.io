@@ -1,8 +1,8 @@
 ---
 layout: default
 title: "The Collector's Fallacy"
-permalink: /reflections/non-books/the-collectors-fallacy
-categories: [reflections, non-books]
+permalink: /notes/non-books/the-collectors-fallacy
+categories: [notes, non-books]
 source: "https://zettelkasten.de/posts/collectors-fallacy/"
 ---
 <small>{{ page.date | date_to_string }}</small>

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>akshay chugh</title>
+<style>
+/* ========================================
+   CSS CUSTOM PROPERTIES — Flexoki Palette
+   ======================================== */
+:root {
+  --bg-page: #FFFCF0;
+  --bg-tile: #F2F0E5;
+  --text-primary: #100F0F;
+  --text-secondary: #878580;
+  --text-tertiary: #B7B5AC;
+  --border-color: #DAD8CE;
+  --color-orange: #DA702C;
+  --color-blue: #4385BE;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+[data-theme="dark"] {
+  --bg-page: #1C1B1A;
+  --bg-tile: #2D2B28;
+  --text-primary: #E6E4D9;
+  --text-secondary: #B7B5AC;
+  --text-tertiary: #878580;
+  --border-color: #575653;
+  --color-orange: #DA702C;
+  --color-blue: #6BB6FF;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-page: #1C1B1A;
+    --bg-tile: #2D2B28;
+    --text-primary: #E6E4D9;
+    --text-secondary: #B7B5AC;
+    --text-tertiary: #878580;
+    --border-color: #575653;
+    --color-orange: #DA702C;
+    --color-blue: #6BB6FF;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    --shadow-hover: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+.site-header {
+  padding: 1rem 0 0.4rem 0;
+  border-bottom: 1px solid var(--color-orange);
+  position: relative;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.site-title {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 54px;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.site-title:hover {
+  color: var(--color-orange);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.site-nav .menu-items a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 400;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+
+.site-nav .menu-items a:hover {
+  color: var(--color-orange);
+}
+
+.menu-icon {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.menu-icon span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-primary);
+  margin: 5px 0;
+  transition: 0.4s;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--bg-tile);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ========================================
+   MAIN CONTAINER & BENTO GRID
+   ======================================== */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 14px;
+}
+
+/* ========================================
+   TILE BASE — Borderless Float
+   ======================================== */
+.tile {
+  background-color: var(--bg-tile);
+  border: none;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.tile:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* ========================================
+   INTRO TILE
+   ======================================== */
+.tile-intro {
+  grid-column: 1 / -1;
+  padding: 36px 32px;
+}
+
+.intro-wave {
+  font-size: 1.6em;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.intro-name {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.intro-desc {
+  font-size: 1em;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  max-width: 620px;
+}
+
+.intro-links {
+  font-size: 0.92em;
+}
+
+.intro-links a {
+  color: var(--color-blue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.intro-links a:hover {
+  color: var(--color-orange);
+  text-decoration: underline;
+}
+
+.intro-links .sep {
+  color: var(--text-tertiary);
+  margin: 0 8px;
+}
+
+/* ========================================
+   SECTION LABELS
+   ======================================== */
+.section-label {
+  font-size: 0.72em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-orange);
+  margin-bottom: 16px;
+}
+
+/* ========================================
+   CONTENT LISTS
+   ======================================== */
+.content-list {
+  list-style: none;
+}
+
+.content-list li {
+  padding: 7px 0;
+}
+
+.content-list li + li {
+  border-top: 1px solid var(--bg-page);
+}
+
+.content-list a {
+  color: var(--color-blue);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95em;
+  line-height: 1.45;
+  transition: color 0.2s ease;
+}
+
+.content-list a:hover {
+  color: var(--color-orange);
+  text-decoration: underline;
+}
+
+.content-list .date {
+  display: block;
+  font-size: 0.78em;
+  color: var(--text-tertiary);
+  margin-top: 1px;
+}
+
+.content-list .desc {
+  display: block;
+  font-size: 0.82em;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  line-height: 1.45;
+}
+
+/* ========================================
+   VIEW ALL LINK
+   ======================================== */
+.view-all {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.82em;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.view-all:hover {
+  color: var(--color-orange);
+}
+
+/* ========================================
+   TIL TILE
+   ======================================== */
+.til-list {
+  list-style: none;
+}
+
+.til-list li {
+  padding: 8px 0;
+  line-height: 1.5;
+}
+
+.til-list li + li {
+  border-top: 1px solid var(--bg-page);
+}
+
+.til-date {
+  font-size: 0.75em;
+  color: var(--text-tertiary);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.til-text {
+  font-size: 0.9em;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.til-text a {
+  color: var(--color-blue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.til-text a:hover {
+  color: var(--color-orange);
+  text-decoration: underline;
+}
+
+/* ========================================
+   SUBSCRIBE TILE
+   ======================================== */
+.subscribe-desc {
+  font-size: 0.88em;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  line-height: 1.55;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 8px;
+}
+
+.subscribe-form input[type="email"] {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 0.88em;
+  font-family: inherit;
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.subscribe-form input[type="email"]:focus {
+  border-color: var(--color-orange);
+}
+
+.subscribe-form input[type="email"]::placeholder {
+  color: var(--text-tertiary);
+}
+
+.subscribe-form button {
+  padding: 10px 20px;
+  font-size: 0.88em;
+  font-family: inherit;
+  font-weight: 600;
+  color: #FFFCF0;
+  background-color: var(--color-orange);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.subscribe-form button:hover {
+  opacity: 0.88;
+}
+
+.subscribe-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-message {
+  font-size: 0.8em;
+  margin-top: 8px;
+}
+
+.form-message:empty {
+  display: none;
+}
+
+.form-message.success {
+  color: var(--color-orange);
+}
+
+.form-message.error {
+  color: #D14D41;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.site-footer {
+  text-align: center;
+  padding: 24px 20px 32px;
+  font-size: 0.88em;
+  color: var(--text-tertiary);
+}
+
+/* ========================================
+   MOBILE — single column below 640px
+   ======================================== */
+@media screen and (max-width: 640px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tile-intro {
+    padding: 28px 24px;
+  }
+
+  .tile {
+    padding: 24px;
+  }
+
+  .intro-name {
+    font-size: 1.3em;
+  }
+
+  .site-title {
+    font-size: 22px;
+    line-height: 44px;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .menu-items {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-page);
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+  }
+
+  .menu-items.active {
+    display: block;
+  }
+
+  .menu-items a {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .menu-icon.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  .menu-icon.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-icon.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+  }
+
+  .subscribe-form button {
+    padding: 12px 20px;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .menu-items {
+    display: flex !important;
+    align-items: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================================
+     HEADER
+     ======================================== -->
+<header class="site-header">
+  <div class="header-wrapper">
+    <a class="site-title" href="/">akshay chugh</a>
+    <nav class="site-nav">
+      <button class="menu-icon" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="menu-items">
+        <a href="/writings">Writings</a>
+        <a href="/side-projects">Side Projects</a>
+        <a href="/notes">Notes</a>
+        <a href="/til">TIL</a>
+      </div>
+      <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- ========================================
+     MAIN CONTENT
+     ======================================== -->
+<main class="container">
+  <div class="bento-grid">
+
+    <!-- ROW 1: Intro (full width) -->
+    <div class="tile tile-intro">
+      <div class="intro-wave">&#x1F44B;</div>
+      <div class="intro-name">Hi, I am Akshay.</div>
+      <p class="intro-desc">Welcome to my little garden on the Internet! I currently lead Product for Coinbase India and am obsessed with Claude Code on the side.</p>
+      <div class="intro-links">
+        <a href="https://x.com/akshaychugh_xyz" target="_blank" rel="noopener noreferrer">Twitter/X</a>
+        <span class="sep">&middot;</span>
+        <a href="https://www.linkedin.com/in/chughakshay/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+
+    <!-- ROW 2 LEFT: Writings -->
+    <div class="tile tile-writings">
+      <div class="section-label">Writings</div>
+      <ul class="content-list">
+        <li>
+          <a href="/writings/life/you-are-average-but-so-are-your-problems">You are average, but so are your problems</a>
+          <span class="date">Feb 2026</span>
+        </li>
+        <li>
+          <a href="/writings/png/how-to-level-up-with-claude-code">How to level up with Claude Code</a>
+          <span class="date">Jan 2026</span>
+        </li>
+        <li>
+          <a href="/writings/png/instapaper">How I fixed a (small) bug in an app I use daily</a>
+          <span class="date">Jan 2026</span>
+        </li>
+        <li>
+          <a href="/writings/life/scratch-your-itches">Scratch your own itches with Claude Code</a>
+          <span class="date">Aug 2025</span>
+        </li>
+        <li>
+          <a href="/writings/life/difficult-yet-simple">Difficult yet Simple</a>
+          <span class="date">Aug 2025</span>
+        </li>
+      </ul>
+      <a class="view-all" href="/writings">View all &rarr;</a>
+    </div>
+
+    <!-- ROW 2 RIGHT: Projects -->
+    <div class="tile tile-projects">
+      <div class="section-label">Projects</div>
+      <ul class="content-list">
+        <li>
+          <a href="https://fourplay.fun" target="_blank" rel="noopener noreferrer">FourPlay</a>
+          <span class="desc">Wordle meets numbers &mdash; multiplayer guessing game</span>
+        </li>
+        <li>
+          <a href="https://blunderbuddy.pro/" target="_blank" rel="noopener noreferrer">BlunderBuddy</a>
+          <span class="desc">AI-powered personalized chess insights</span>
+        </li>
+        <li>
+          <a href="https://simpleeval.com/" target="_blank" rel="noopener noreferrer">Simple Eval</a>
+          <span class="desc">Auto-suggest evals for vibecoded apps</span>
+        </li>
+      </ul>
+      <a class="view-all" href="/side-projects">View all &rarr;</a>
+    </div>
+
+    <!-- ROW 3 LEFT: TIL -->
+    <div class="tile tile-til">
+      <div class="section-label">Today I Learned</div>
+      <ul class="til-list">
+        <li>
+          <span class="til-date">Feb 15, 2026</span>
+          <span class="til-text">A big share of Lego's sales now come from first-time Adult purchasers, buying for self &mdash; they call it Adult Fans of LEGO (AFOL)</span>
+        </li>
+        <li>
+          <span class="til-date">Feb 1, 2026</span>
+          <span class="til-text"><a href="https://www.reddit.com/r/OnePlus7Pro/comments/bxw39c/psa_you_can_change_your_display_size_even_smaller/" target="_blank" rel="noopener noreferrer">Smallest width</a> developer settings on Android let you increase screen real-estate beyond what's normally possible</span>
+        </li>
+        <li>
+          <span class="til-date">Jan 31, 2026</span>
+          <span class="til-text">Netflix has a second-screen-viewability score before it greenlights projects because people can't follow dense shows anymore</span>
+        </li>
+      </ul>
+      <a class="view-all" href="/til">View all &rarr;</a>
+    </div>
+
+    <!-- ROW 3 RIGHT: Subscribe -->
+    <div class="tile tile-subscribe">
+      <div class="section-label">Subscribe</div>
+      <p class="subscribe-desc">Get new posts delivered to your inbox. No spam, unsubscribe anytime.</p>
+      <form class="subscribe-form" id="newsletter-form">
+        <input type="email" id="newsletter-email" placeholder="you@example.com" required autocomplete="email">
+        <button type="submit" id="newsletter-submit">Subscribe</button>
+      </form>
+      <div class="form-message" id="form-message"></div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ========================================
+     FOOTER
+     ======================================== -->
+<footer class="site-footer">
+  Cheers! &mdash; akshaychugh.xyz
+</footer>
+
+<!-- ========================================
+     JAVASCRIPT
+     ======================================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // ── Dark Mode ──
+  var sunIcon = document.querySelector('.sun-icon');
+  var moonIcon = document.querySelector('.moon-icon');
+  var themeToggle = document.querySelector('.theme-toggle');
+
+  function updateThemeIcon(theme) {
+    if (theme === 'dark') {
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'block';
+    } else {
+      sunIcon.style.display = 'block';
+      moonIcon.style.display = 'none';
+    }
+  }
+
+  function initTheme() {
+    var saved = localStorage.getItem('theme');
+    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+      updateThemeIcon(saved);
+    } else if (systemDark) {
+      updateThemeIcon('dark');
+    } else {
+      updateThemeIcon('light');
+    }
+  }
+
+  function toggleTheme() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next;
+    if (current === 'dark') {
+      next = 'light';
+    } else if (current === 'light') {
+      next = 'dark';
+    } else {
+      next = systemDark ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateThemeIcon(next);
+  }
+
+  initTheme();
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    if (!localStorage.getItem('theme')) {
+      updateThemeIcon(e.matches ? 'dark' : 'light');
+    }
+  });
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+  }
+
+  // ── Hamburger Menu ──
+  var menuIcon = document.querySelector('.menu-icon');
+  var menuItems = document.querySelector('.menu-items');
+  var siteNav = document.querySelector('.site-nav');
+
+  if (menuIcon && menuItems) {
+    document.addEventListener('click', function(event) {
+      if (!siteNav.contains(event.target)) {
+        menuItems.classList.remove('active');
+        menuIcon.classList.remove('active');
+        menuIcon.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    menuIcon.addEventListener('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      var isExpanded = menuItems.classList.contains('active');
+      menuItems.classList.toggle('active');
+      menuIcon.classList.toggle('active');
+      menuIcon.setAttribute('aria-expanded', String(!isExpanded));
+    });
+
+    menuItems.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        menuItems.classList.remove('active');
+        menuIcon.classList.remove('active');
+        menuIcon.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // ── External Links in New Tab ──
+  var allLinks = document.querySelectorAll('a[href]');
+  var host = window.location.hostname;
+  allLinks.forEach(function(link) {
+    var href = link.getAttribute('href');
+    if (href && href.match(/^https?:\/\//) && !href.includes(host)) {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    }
+  });
+
+  // ── Newsletter Form ──
+  var newsletterForm = document.getElementById('newsletter-form');
+  if (newsletterForm) {
+    var emailInput = document.getElementById('newsletter-email');
+    var submitButton = document.getElementById('newsletter-submit');
+    var formMessage = document.getElementById('form-message');
+    var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxSCkJCVFlVvAPvVJOJ3OyG4pBnfGsqTXZ6Zgl4Fn5H0rdPZgWMoTzMzL8VuVJBQ7Nftw/exec';
+
+    newsletterForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var email = emailInput.value.trim();
+      if (!email) return;
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Subscribing...';
+      formMessage.textContent = '';
+      formMessage.className = 'form-message';
+
+      try {
+        await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
+        });
+        formMessage.textContent = 'Please check your inbox to confirm.';
+        formMessage.className = 'form-message success';
+        emailInput.value = '';
+      } catch (error) {
+        formMessage.textContent = 'Something went wrong. Please try again.';
+        formMessage.className = 'form-message error';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Subscribe';
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>

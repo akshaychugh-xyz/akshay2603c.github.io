@@ -1,10 +1,10 @@
 ---
 layout: default
-title: reflections
-permalink: /reflections/
+title: notes
+permalink: /notes/
 ---
 
-## My reflections on things I've consumed
+## Notes and Reflections from things I've consumed
 
 > Disclaimer: These posts are mainly my reflections from important books and non-books (articles/podcasts/videos etc). 
 > 

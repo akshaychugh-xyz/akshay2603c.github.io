@@ -1,9 +1,9 @@
 ---
 layout: default
 title: 'Catching the Big Fish'
-permalink: /reflections/books/catching-the-big-fish
+permalink: /notes/books/catching-the-big-fish
 tag: 3-star
-categories: [reflections, books]
+categories: [notes, books]
 ---
 <small>{{ page.date | date_to_string }}</small>
 

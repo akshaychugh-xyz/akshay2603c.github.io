@@ -8,10 +8,10 @@
         <span></span>
       </button>
       <div class="menu-items">
-        <a href="{{ "/writings" | relative_url }}">Writings</a>
-        <a href="{{ "/side-projects" | relative_url }}">Side Projects</a>
-        <a href="{{ "/reflections" | relative_url }}">Reflections</a>
-        <a href="{{ "/uses-this" | relative_url }}">Uses This</a>
+        <a href="{{ "/writings" | relative_url }}" {% if page.url contains '/writings' %}class="active"{% endif %}>Writings</a>
+        <a href="{{ "/side-projects" | relative_url }}" {% if page.url contains '/side-projects' %}class="active"{% endif %}>Side Projects</a>
+        <a href="{{ "/notes" | relative_url }}" {% if page.url contains '/notes' %}class="active"{% endif %}>Notes</a>
+        <a href="{{ "/til" | relative_url }}" {% if page.url contains '/til' %}class="active"{% endif %}>TIL</a>
       </div>
       <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
         <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

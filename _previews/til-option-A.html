@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIL — Option A: Clean List</title>
+<style>
+  :root {
+    --color-paper: #FFFCF0;
+    --color-base-50: #F2F0E5;
+    --color-base-100: #E6E4D9;
+    --color-base-200: #DAD8CE;
+    --color-base-300: #CECDC3;
+    --color-base-400: #B7B5AC;
+    --color-base-500: #9F9D94;
+    --color-base-600: #878580;
+    --color-base-700: #6F6E69;
+    --color-base-800: #575653;
+    --color-base-850: #403E3C;
+    --color-black: #100F0F;
+    --color-orange: #DA702C;
+    --color-yellow: #D0A215;
+    --color-blue: #4385BE;
+    --color-green: #879A39;
+    --bg-primary: var(--color-paper);
+    --bg-secondary: var(--color-base-50);
+    --text-primary: var(--color-black);
+    --text-secondary: var(--color-base-700);
+    --accent-secondary: var(--color-blue);
+    --border-color: var(--color-base-200);
+    --hr-color: var(--color-base-300);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* Mimic site header */
+  .site-header {
+    border-bottom: 1px solid var(--color-orange);
+    padding: 1rem 0 0.4rem 0;
+    margin-bottom: 2em;
+  }
+  .site-header .wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .site-header .site-title {
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  .site-header nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    margin-left: 15px;
+    font-weight: 400;
+  }
+  .site-header nav a.active {
+    color: var(--color-orange);
+  }
+
+  .option-badge {
+    display: inline-block;
+    background: var(--color-orange);
+    color: var(--color-paper);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 0.3em;
+  }
+
+  .page-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95em;
+    margin-bottom: 2.5em;
+  }
+
+  /* === OPTION A: Clean separated list === */
+  /* Matches Writings page pattern: flex row, title left, date right */
+  /* Simple, scannable, consistent with the rest of the site */
+
+  .til-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .til-item {
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.9em 0;
+  }
+
+  .til-item:first-child {
+    border-top: 1px solid var(--border-color);
+  }
+
+  .til-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1.5em;
+  }
+
+  .til-title {
+    flex: 1;
+    min-width: 0;
+    font-size: 1em;
+    line-height: 1.5;
+  }
+
+  .til-title a {
+    color: var(--accent-secondary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .til-title a:hover {
+    color: var(--color-orange);
+    text-decoration: underline;
+  }
+
+  .til-date {
+    color: var(--text-secondary);
+    font-size: 0.85em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Expandable details */
+  .til-item details {
+    width: 100%;
+  }
+
+  .til-item details summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .til-item details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .til-expand-hint {
+    display: inline-block;
+    color: var(--text-secondary);
+    font-size: 0.75em;
+    margin-left: 0.3em;
+    transition: transform 0.2s ease;
+  }
+
+  .til-item details[open] .til-expand-hint {
+    transform: rotate(90deg);
+  }
+
+  .til-details-content {
+    margin-top: 0.6em;
+    padding-left: 0;
+    color: var(--text-secondary);
+    font-size: 0.92em;
+    line-height: 1.65;
+  }
+
+  .til-details-content p {
+    margin: 0 0 0.5em 0;
+  }
+
+  .til-details-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .til-details-content code {
+    font-family: 'Source Code Pro', monospace;
+    background: var(--bg-secondary);
+    border: 1px solid var(--color-yellow);
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: 0.9em;
+  }
+
+  .til-details-content a {
+    color: var(--accent-secondary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .til-details-content a:hover {
+    color: var(--color-orange);
+  }
+
+  @media (max-width: 480px) {
+    .til-row {
+      flex-direction: column;
+      gap: 0.15em;
+    }
+    .til-date {
+      order: -1;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="#">Akshay Chugh</a>
+    <nav>
+      <a href="#">Writings</a>
+      <a href="#">Side Projects</a>
+      <a href="#">Notes</a>
+      <a href="#" class="active">TIL</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="option-badge">Option A — Clean List</div>
+
+  <h2>Today I Learned</h2>
+  <p class="page-subtitle">A running log of (small) things I learnt!</p>
+
+  <ul class="til-list">
+
+    <li class="til-item">
+      <div class="til-row">
+        <span class="til-title">A big share of Lego's sales now come from first-time Adult purchasers, buying for self — they call it Adult Fans of LEGO (AFOL) and lean into it with the 'Adults Welcome!' marketing</span>
+        <span class="til-date">15 Feb 2026</span>
+      </div>
+    </li>
+
+    <li class="til-item">
+      <details>
+        <summary>
+          <div class="til-row">
+            <span class="til-title"><a href="https://www.reddit.com/r/OnePlus7Pro/comments/bxw39c/psa_you_can_change_your_display_size_even_smaller/">Smallest width</a> developer settings on Android let you increase screen real-estate beyond what's normally possible <span class="til-expand-hint">&#9656;</span></span>
+            <span class="til-date">01 Feb 2026</span>
+          </div>
+        </summary>
+        <div class="til-details-content">
+          <p>A lot of other interesting settings in developer options too, including reducing animation speed that makes the phone so much more snappier.</p>
+        </div>
+      </details>
+    </li>
+
+    <li class="til-item">
+      <div class="til-row">
+        <span class="til-title">Netflix has a <a href="https://www.theguardian.com/tv-and-radio/2025/jan/17/not-second-screen-enough-is-netflix-deliberately-dumbing-down-tv-so-people-can-watch-while-scrolling">second-screen-viewability</a> score before it greenlights projects because people can't follow dense movies/tv series anymore</span>
+        <span class="til-date">31 Jan 2026</span>
+      </div>
+    </li>
+
+    <li class="til-item">
+      <details>
+        <summary>
+          <div class="til-row">
+            <span class="til-title">Bluetooth has a 'sniffing' mode to magically connect with switched-off devices <span class="til-expand-hint">&#9656;</span></span>
+            <span class="til-date">26 Jan 2026</span>
+          </div>
+        </summary>
+        <div class="til-details-content">
+          <p>Most Bluetooth devices even when "asleep" can receive your other BT device's connection request and magically "wake up". For e.g. your laptop can connect with your switched off bluetooth speaker.</p>
+          <p>The speaker is in "sniffing" mode where a tiny part of its bluetooth radio is kept on to periodically "sniff" for incoming BT connection requests. A pre-paired device remembers each other's BT addresses and can therefore connect to each other magically. This also ensures that no non-paired devices can just randomly wake up your bluetooth speaker.</p>
+        </div>
+      </details>
+    </li>
+
+    <li class="til-item">
+      <details>
+        <summary>
+          <div class="til-row">
+            <span class="til-title">Spotify allows you to paywall podcast access from other subscriptions <span class="til-expand-hint">&#9656;</span></span>
+            <span class="til-date">23 Jan 2026</span>
+          </div>
+        </summary>
+        <div class="til-details-content">
+          <p>Spotify now allows you to paywall protect podcasts with real time info-sharing of your subscriptions on other platforms. E.g. <a href="https://help.nytimes.com/30729304846612-link-your-new-york-times-account-to-other-podcast-platforms">this NYT podcast</a> that is only accessible to NYT subscribers, with in-app authentication possible on Spotify to vet your subscription status.</p>
+        </div>
+      </details>
+    </li>
+
+    <li class="til-item">
+      <details>
+        <summary>
+          <div class="til-row">
+            <span class="til-title">Your Mac has a built-in job scheduler! <span class="til-expand-hint">&#9656;</span></span>
+            <span class="til-date">22 Jan 2026</span>
+          </div>
+        </summary>
+        <div class="til-details-content">
+          <p>Knowing this means you can potentially "program" your laptop to do X things at Y time of the day every Z days. This fact, merged with Claude Code Skills, effectively means you can setup complicated workflows in a recurring manner all natively on your Mac, with no need to access any server based service like n8n, github actions etc.</p>
+          <p>There are 2 built-in job schedulers in Mac: <code>Cron</code> and <code>Launchd</code>. Cron will miss stuff out if your laptop is "off" at the time of the job. Launchd can queue in stuff so even if a job is missed, it will re-activate the next time your Mac wakes up.</p>
+        </div>
+      </details>
+    </li>
+
+  </ul>
+</div>
+
+</body>
+</html>

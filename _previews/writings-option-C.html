@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writings — Option C: Flat List with Tag Filters</title>
+<style>
+  :root {
+    --color-paper: #FFFCF0;
+    --color-base-50: #F2F0E5;
+    --color-base-100: #E6E4D9;
+    --color-base-200: #DAD8CE;
+    --color-base-300: #CECDC3;
+    --color-base-700: #6F6E69;
+    --color-black: #100F0F;
+    --color-orange: #DA702C;
+    --color-blue: #4385BE;
+    --bg-primary: var(--color-paper);
+    --bg-secondary: var(--color-base-50);
+    --text-primary: var(--color-black);
+    --text-secondary: var(--color-base-700);
+    --accent-secondary: var(--color-blue);
+    --border-color: var(--color-base-200);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 18px; line-height: 1.7;
+    color: var(--text-primary); background: var(--bg-primary);
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+  .site-header {
+    border-bottom: 1px solid var(--color-orange);
+    padding: 1rem 0 0.4rem 0; margin-bottom: 0;
+  }
+  .site-header .wrapper {
+    max-width: 800px; margin: 0 auto; padding: 0 20px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .site-header .site-title { font-size: 28px; font-weight: 400; color: var(--text-primary); text-decoration: none; }
+  .site-header nav a { color: var(--text-primary); text-decoration: none; margin-left: 15px; font-weight: 400; }
+  .site-header nav a.active { color: var(--color-orange); }
+  .option-badge {
+    display: inline-block; background: var(--color-orange); color: var(--color-paper);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 3px; margin-bottom: 1em;
+  }
+  h2 { font-size: 1.8em; font-weight: 600; margin-top: 1.8em; margin-bottom: 0.6em; }
+  a { color: var(--accent-secondary); text-decoration: none; font-weight: 500; }
+  a:hover { color: var(--color-orange); text-decoration: underline; }
+
+  /* === OPTION C: Flat list with inline tag filters at top === */
+  /* Similar to current layout but cleaner, with clickable filter pills */
+  .wr-filters {
+    display: flex; flex-wrap: wrap; gap: 0.4em;
+    margin-bottom: 1.8em;
+  }
+  .wr-filter {
+    font-family: inherit; font-size: 0.75em;
+    color: var(--text-secondary); background: none;
+    border: 1px solid var(--border-color); border-radius: 3px;
+    padding: 0.2em 0.6em; cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .wr-filter:hover { color: var(--color-orange); border-color: var(--color-orange); }
+  .wr-filter.active {
+    color: var(--color-paper); background: var(--color-orange);
+    border-color: var(--color-orange);
+  }
+
+  .wr-flat-list { list-style: none; padding: 0; margin: 0; }
+  .wr-flat-item {
+    padding: 0.6em 0;
+    border-bottom: 1px solid var(--color-base-100);
+  }
+  .wr-flat-item:first-child { border-top: 1px solid var(--color-base-100); }
+  .wr-flat-row {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1em;
+  }
+  .wr-flat-title { flex: 1; min-width: 0; line-height: 1.5; }
+  .wr-flat-meta {
+    flex-shrink: 0; white-space: nowrap;
+    color: var(--text-secondary); font-size: 0.82em;
+  }
+  .wr-flat-tag {
+    color: var(--text-secondary); font-style: italic;
+  }
+
+  .wr-flat-item.hidden { display: none; }
+
+  @media (max-width: 480px) {
+    .wr-flat-row { flex-direction: column; gap: 0.15em; }
+    .wr-flat-meta { order: -1; }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="#">akshay chugh</a>
+    <nav>
+      <a href="#" class="active">Writings</a>
+      <a href="#">Side Projects</a>
+      <a href="#">Notes</a>
+      <a href="#">TIL</a>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <div class="option-badge">Option C — Flat List + Tag Filters</div>
+  <h2>Fresh from the human brain, no AI used :)</h2>
+
+  <div class="wr-filters">
+    <button class="wr-filter active" onclick="filterWritings('all', this)">all</button>
+    <button class="wr-filter" onclick="filterWritings('png', this)">product & growth</button>
+    <button class="wr-filter" onclick="filterWritings('life', this)">life</button>
+    <button class="wr-filter" onclick="filterWritings('fitness', this)">fitness</button>
+    <button class="wr-filter" onclick="filterWritings('web3', this)">web3</button>
+  </div>
+
+  <ul class="wr-flat-list">
+    <li class="wr-flat-item" data-tag="life">
+      <div class="wr-flat-row">
+        <span class="wr-flat-title"><a href="#">You are average, but so are your problems</a></span>
+        <span class="wr-flat-meta">14 Feb 2026 <span class="wr-flat-tag hide-on-mobile">· life</span></span>
+      </div>
+    </li>
+    <li class="wr-flat-item" data-tag="png">
+      <div class="wr-flat-row">
+        <span class="wr-flat-title"><a href="#">How to level up with Claude Code</a></span>
+        <span class="wr-flat-meta">26 Jan 2026 <span class="wr-flat-tag hide-on-mobile">· product & growth</span></span>
+      </div>
+    </li>
+    <li class="wr-flat-item" data-tag="png">
+      <div class="wr-flat-row">
+        <span class="wr-flat-title"><a href="#">How I fixed a (small) bug in an app I use daily</a></span>
+        <span class="wr-flat-meta">16 Jan 2026 <span class="wr-flat-tag hide-on-mobile">· product & growth</span></span>
+      </div>
+    </li>
+    <li class="wr-flat-item" data-tag="life">
+      <div class="wr-flat-row">
+        <span class="wr-flat-title"><a href="#">Scratch your own itches with Claude code</a></span>
+        <span class="wr-flat-meta">23 Aug 2025 <span class="wr-flat-tag hide-on-mobile">· life</span></span>
+      </div>
+    </li>
+    <li class="wr-flat-item" data-tag="life">
+      <div class="wr-flat-row">
+        <span class="wr-flat-title"><a href="#">Difficult yet Simple</a></span>
+        <span class="wr-flat-meta">5 Aug 2025 <span class="wr-flat-tag hide-on-mobile">· life</span></span>
+      </div>
+    </li>
+    <li class="wr-flat-item" data-tag="png">
+      <div class="wr-flat-row">
+        <span class="wr-flat-title"><a href="#">How Zerodha grows</a></span>
+        <span class="wr-flat-meta">25 Jul 2025 <span class="wr-flat-tag hide-on-mobile">· product & growth</span></span>
+      </div>
+    </li>
+    <li class="wr-flat-item" data-tag="png">
+      <div class="wr-flat-row">
+        <span class="wr-flat-title"><a href="#">Granola AI - def a better note taker but not because of its AI</a></span>
+        <span class="wr-flat-meta">8 Feb 2025 <span class="wr-flat-tag hide-on-mobile">· product & growth</span></span>
+      </div>
+    </li>
+    <li class="wr-flat-item" data-tag="png">
+      <div class="wr-flat-row">
+        <span class="wr-flat-title"><a href="#">How I use Cursor</a></span>
+        <span class="wr-flat-meta">6 Nov 2024 <span class="wr-flat-tag hide-on-mobile">· product & growth</span></span>
+      </div>
+    </li>
+    <li class="wr-flat-item" data-tag="png">
+      <div class="wr-flat-row">
+        <span class="wr-flat-title"><a href="#">Maintain a decision log</a></span>
+        <span class="wr-flat-meta">6 Nov 2024 <span class="wr-flat-tag hide-on-mobile">· product & growth</span></span>
+      </div>
+    </li>
+    <li class="wr-flat-item" data-tag="png">
+      <div class="wr-flat-row">
+        <span class="wr-flat-title"><a href="#">Why is Jio giving away the IPL for free?</a></span>
+        <span class="wr-flat-meta">9 May 2023 <span class="wr-flat-tag hide-on-mobile">· product & growth</span></span>
+      </div>
+    </li>
+    <li class="wr-flat-item" data-tag="fitness">
+      <div class="wr-flat-row">
+        <span class="wr-flat-title"><a href="#">Long distance cycling: your go-to guide to do a 100km ride</a></span>
+        <span class="wr-flat-meta">21 Feb 2023 <span class="wr-flat-tag hide-on-mobile">· fitness</span></span>
+      </div>
+    </li>
+    <li class="wr-flat-item" data-tag="life">
+      <div class="wr-flat-row">
+        <span class="wr-flat-title"><a href="#">Reflections - Demystifying the Chief of Staff role</a></span>
+        <span class="wr-flat-meta">16 Jan 2023 <span class="wr-flat-tag hide-on-mobile">· life</span></span>
+      </div>
+    </li>
+    <li class="wr-flat-item" data-tag="png">
+      <div class="wr-flat-row">
+        <span class="wr-flat-title"><a href="#">Growth 101 - what is it and why is it important</a></span>
+        <span class="wr-flat-meta">24 Apr 2022 <span class="wr-flat-tag hide-on-mobile">· product & growth</span></span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<script>
+function filterWritings(tag, btn) {
+  document.querySelectorAll('.wr-filter').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.wr-flat-item').forEach(function(item) {
+    if (tag === 'all' || item.dataset.tag === tag) {
+      item.classList.remove('hidden');
+    } else {
+      item.classList.add('hidden');
+    }
+  });
+}
+</script>
+</body>
+</html>

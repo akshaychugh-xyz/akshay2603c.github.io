@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aesthetic 4: Brutalist Swiss — akshaychugh.xyz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ==============================
+     CSS CUSTOM PROPERTIES
+     ============================== */
+  :root {
+    --bg: #FFFFFF;
+    --bg-tile: #FFFFFF;
+    --text: #000000;
+    --text-secondary: #666666;
+    --accent: #E63028;
+    --border: #000000;
+    --border-width: 2px;
+  }
+
+  [data-theme="dark"] {
+    --bg: #111111;
+    --bg-tile: #111111;
+    --text: #FFFFFF;
+    --text-secondary: #999999;
+    --accent: #FF3B30;
+    --border: #FFFFFF;
+  }
+
+  /* ==============================
+     RESET & BASE
+     ============================== */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* ==============================
+     HEADER
+     ============================== */
+  .site-header {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 20px;
+    border-bottom: var(--border-width) solid var(--border);
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    transition: border-color 0.2s ease;
+  }
+
+  .site-title {
+    font-family: 'Bebas Neue', 'Impact', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+    transition: color 0.2s ease;
+  }
+
+  .site-title:hover { color: var(--accent); }
+
+  .site-nav {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .nav-links-desktop {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .nav-links-desktop a {
+    font-family: 'Bebas Neue', 'Impact', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 16px 18px;
+    border-left: var(--border-width) solid var(--border);
+    position: relative;
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .nav-links-desktop a:hover {
+    color: #FFFFFF;
+    background: var(--accent);
+  }
+
+  .theme-toggle {
+    background: none;
+    border: none;
+    border-left: var(--border-width) solid var(--border);
+    cursor: pointer;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .theme-toggle:hover {
+    color: #FFFFFF;
+    background: var(--accent);
+  }
+
+  .theme-toggle svg { width: 20px; height: 20px; }
+
+  /* ==============================
+     MOBILE MENU
+     ============================== */
+  .menu-icon {
+    display: none;
+    background: none;
+    border: none;
+    border-left: var(--border-width) solid var(--border);
+    cursor: pointer;
+    padding: 16px 18px;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .menu-icon.active span:nth-child(1) { transform: rotate(45deg) translateY(7px); }
+  .menu-icon.active span:nth-child(2) { opacity: 0; }
+  .menu-icon.active span:nth-child(3) { transform: rotate(-45deg) translateY(-7px); }
+
+  .nav-links-mobile {
+    display: none;
+    max-width: 860px;
+    margin: 0 auto;
+    border-bottom: var(--border-width) solid var(--border);
+  }
+
+  .nav-links-mobile.open { display: block; }
+
+  .nav-links-mobile a {
+    display: block;
+    font-family: 'Bebas Neue', 'Impact', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    text-decoration: none;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .nav-links-mobile a:last-child { border-bottom: none; }
+
+  .nav-links-mobile a:hover {
+    color: #FFFFFF;
+    background: var(--accent);
+  }
+
+  /* ==============================
+     BENTO GRID
+     ============================== */
+  .bento-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 20px 0;
+  }
+
+  .bento-outer-border {
+    border: var(--border-width) solid var(--border);
+    border-top: none; /* shared with header bottom border */
+    transition: border-color 0.2s ease;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 0;
+  }
+
+  /* ==============================
+     TILE BASE
+     ============================== */
+  .tile {
+    background: var(--bg-tile);
+    padding: 28px 24px;
+    position: relative;
+    transition: background-color 0.2s ease;
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideIn 0.5s ease forwards;
+  }
+
+  /* Staggered animation delays */
+  .tile:nth-child(1) { animation-delay: 0.05s; }
+  .tile:nth-child(2) { animation-delay: 0.15s; }
+  .tile:nth-child(3) { animation-delay: 0.25s; }
+  .tile:nth-child(4) { animation-delay: 0.35s; }
+  .tile:nth-child(5) { animation-delay: 0.45s; }
+
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* ==============================
+     GRID PLACEMENT & BORDERS
+     Grid gap:0 with internal borders for shared-border newspaper effect
+     ============================== */
+  .tile-intro {
+    grid-column: 1 / -1;
+    border-bottom: var(--border-width) solid var(--border);
+    padding: 40px 32px;
+  }
+
+  .tile-writing {
+    grid-column: 1 / 2;
+    border-bottom: var(--border-width) solid var(--border);
+    border-right: var(--border-width) solid var(--border);
+  }
+
+  .tile-project {
+    grid-column: 2 / 3;
+    border-bottom: var(--border-width) solid var(--border);
+  }
+
+  .tile-til {
+    grid-column: 1 / 2;
+    border-right: var(--border-width) solid var(--border);
+  }
+
+  .tile-subscribe {
+    grid-column: 2 / 3;
+  }
+
+  /* ==============================
+     TILE LABELS — BOLD SWISS POSTER HEADERS
+     ============================== */
+  .tile-label {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  .tile-label-text {
+    font-family: 'Bebas Neue', 'Impact', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .view-all {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.15s ease;
+  }
+
+  .view-all::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.25s ease;
+    transform-origin: left;
+  }
+
+  .view-all:hover::after { width: 100%; }
+
+  /* ==============================
+     INTRO TILE — SWISS POSTER HERO
+     ============================== */
+  .intro-name {
+    font-family: 'Bebas Neue', 'Impact', sans-serif;
+    font-size: 72px;
+    letter-spacing: 0.04em;
+    line-height: 0.95;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .intro-name .accent-dot {
+    color: var(--accent);
+  }
+
+  .intro-bio {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 560px;
+    margin-bottom: 24px;
+  }
+
+  .intro-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .intro-links a {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.15s ease;
+  }
+
+  .intro-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.25s ease;
+    transform-origin: left;
+  }
+
+  .intro-links a:hover { color: var(--accent); }
+  .intro-links a:hover::after { width: 100%; }
+
+  /* ==============================
+     LIST STYLES — CLEAN STACKED LINES
+     ============================== */
+  .tile-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tile-list li {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+  }
+
+  .tile-list li + li {
+    border-top: 1px solid var(--border);
+  }
+
+  .tile-list li a {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.15s ease;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .tile-list li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.25s ease;
+    transform-origin: left;
+  }
+
+  .tile-list li a:hover { color: var(--accent); }
+  .tile-list li a:hover::after { width: 100%; }
+
+  .list-date {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ==============================
+     PROJECT LIST
+     ============================== */
+  .project-item {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 2px !important;
+  }
+
+  .project-item .project-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .project-item .project-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+
+  /* ==============================
+     TIL LIST
+     ============================== */
+  .til-item {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
+
+  .til-text {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  .til-text a {
+    color: var(--text);
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+  }
+
+  .til-text a::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.25s ease;
+    transform-origin: left;
+  }
+
+  .til-text a:hover { color: var(--accent); }
+  .til-text a:hover::after { width: 100%; }
+
+  .til-date {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ==============================
+     SUBSCRIBE TILE
+     ============================== */
+  .subscribe-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-start;
+  }
+
+  .subscribe-text {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .subscribe-subtext {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+
+  .subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .subscribe-form input[type="email"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: var(--border-width) solid var(--border);
+    border-radius: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+
+  .subscribe-form input[type="email"]:focus {
+    border-color: var(--accent);
+  }
+
+  .subscribe-form input[type="email"]::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.5;
+  }
+
+  .subscribe-form button {
+    width: 100%;
+    padding: 10px 18px;
+    background: var(--accent);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 0;
+    font-family: 'Bebas Neue', 'Impact', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .subscribe-form button:hover {
+    background: #000000;
+  }
+
+  [data-theme="dark"] .subscribe-form button:hover {
+    background: #FFFFFF;
+    color: #111111;
+  }
+
+  .form-message {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    margin-top: 8px;
+    color: var(--text-secondary);
+    min-height: 18px;
+  }
+
+  /* ==============================
+     FOOTER
+     ============================== */
+  .site-footer {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    border-top: var(--border-width) solid var(--border);
+    transition: border-color 0.2s ease;
+  }
+
+  /* ==============================
+     RESPONSIVE — SINGLE COLUMN MOBILE
+     ============================== */
+  @media (max-width: 640px) {
+    .nav-links-desktop { display: none; }
+    .menu-icon { display: flex; }
+
+    .intro-name {
+      font-size: 48px;
+    }
+
+    .bento-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tile-intro,
+    .tile-writing,
+    .tile-project,
+    .tile-til,
+    .tile-subscribe {
+      grid-column: 1;
+      border-right: none;
+    }
+
+    .tile-writing,
+    .tile-project,
+    .tile-til {
+      border-bottom: var(--border-width) solid var(--border);
+    }
+
+    .tile { padding: 24px 20px; }
+    .tile-intro { padding: 32px 20px; }
+
+    .site-header { padding: 0 16px; }
+    .bento-container { padding: 0 16px; }
+  }
+
+  @media (max-width: 400px) {
+    .intro-name { font-size: 40px; }
+    .intro-links { flex-direction: column; gap: 12px; }
+  }
+
+  /* ==============================
+     RED RULE — decorative top line for Swiss poster feel
+     ============================== */
+  .red-rule {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .red-rule-inner {
+    height: 6px;
+    background: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+  <!-- Red rule — Swiss poster accent bar -->
+  <div class="red-rule"><div class="red-rule-inner"></div></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <a class="site-title" href="/">AKSHAY CHUGH</a>
+    <nav class="site-nav">
+      <div class="nav-links-desktop">
+        <a href="/writings">WRITINGS</a>
+        <a href="/side-projects">PROJECTS</a>
+        <a href="/notes">NOTES</a>
+        <a href="/til">TIL</a>
+      </div>
+      <button class="menu-icon" id="menu-icon" aria-label="Toggle menu" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <button class="theme-toggle" aria-label="Toggle dark mode" onclick="toggleTheme()">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" style="display:none;">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile nav -->
+  <div class="nav-links-mobile" id="mobile-nav">
+    <a href="/writings">WRITINGS</a>
+    <a href="/side-projects">PROJECTS</a>
+    <a href="/notes">NOTES</a>
+    <a href="/til">TIL</a>
+  </div>
+
+  <!-- Bento Grid -->
+  <main class="bento-container">
+    <div class="bento-outer-border">
+      <div class="bento-grid">
+
+        <!-- Intro (full width) -->
+        <div class="tile tile-intro">
+          <div class="intro-name">AKSHAY<br>CHUGH<span class="accent-dot">.</span></div>
+          <div class="intro-bio">
+            Product leader at Coinbase India. Builder. Writer. Claude Code obsessive.
+          </div>
+          <div class="intro-links">
+            <a href="https://x.com/akshaychugh_xyz" target="_blank" rel="noopener noreferrer">TWITTER/X</a>
+            <a href="https://www.linkedin.com/in/chughakshay/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+          </div>
+        </div>
+
+        <!-- Recent Writings -->
+        <div class="tile tile-writing">
+          <div class="tile-label">
+            <span class="tile-label-text">WRITINGS</span>
+            <a href="/writings/" class="view-all">VIEW ALL &rarr;</a>
+          </div>
+          <ul class="tile-list">
+            <li>
+              <a href="/writings/life/you-are-average-but-so-are-your-problems">You are average, but so are your problems</a>
+              <span class="list-date">FEB 2026</span>
+            </li>
+            <li>
+              <a href="/writings/png/how-to-level-up-with-claude-code">How to level up with Claude Code</a>
+              <span class="list-date">JAN 2026</span>
+            </li>
+            <li>
+              <a href="/writings/png/instapaper">How I fixed a (small) bug in an app I use daily</a>
+              <span class="list-date">JAN 2026</span>
+            </li>
+            <li>
+              <a href="/writings/life/scratch-your-itches">Scratch your own itches with Claude Code</a>
+              <span class="list-date">AUG 2025</span>
+            </li>
+            <li>
+              <a href="/writings/life/difficult-yet-simple">Difficult yet Simple</a>
+              <span class="list-date">AUG 2025</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Side Projects -->
+        <div class="tile tile-project">
+          <div class="tile-label">
+            <span class="tile-label-text">PROJECTS</span>
+            <a href="/side-projects/" class="view-all">VIEW ALL &rarr;</a>
+          </div>
+          <ul class="tile-list">
+            <li class="project-item">
+              <div class="project-top">
+                <a href="https://fourplay.fun" target="_blank" rel="noopener noreferrer">FourPlay</a>
+                <span class="list-date">FEB 2026</span>
+              </div>
+              <span class="project-desc">Wordle meets numbers &mdash; multiplayer guessing game</span>
+            </li>
+            <li class="project-item">
+              <div class="project-top">
+                <a href="https://blunderbuddy.pro/" target="_blank" rel="noopener noreferrer">BlunderBuddy</a>
+                <span class="list-date">JUL 2025</span>
+              </div>
+              <span class="project-desc">AI-powered personalized chess insights</span>
+            </li>
+            <li class="project-item">
+              <div class="project-top">
+                <a href="https://simpleeval.com/" target="_blank" rel="noopener noreferrer">Simple Eval</a>
+                <span class="list-date">JUN 2025</span>
+              </div>
+              <span class="project-desc">Auto-suggest evals for vibecoded apps</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Recent TILs -->
+        <div class="tile tile-til">
+          <div class="tile-label">
+            <span class="tile-label-text">TIL</span>
+            <a href="/til/" class="view-all">VIEW ALL &rarr;</a>
+          </div>
+          <ul class="tile-list">
+            <li class="til-item">
+              <span class="til-text">A big share of Lego's sales now come from first-time adult purchasers &mdash; they call it AFOL and lean into it with "Adults Welcome!" marketing.</span>
+              <span class="til-date">FEB 15, 2026</span>
+            </li>
+            <li class="til-item">
+              <span class="til-text"><a href="https://www.reddit.com/r/OnePlus7Pro/comments/bxw39c/">Smallest width</a> developer settings on Android let you increase screen real-estate beyond what's normally possible.</span>
+              <span class="til-date">FEB 1, 2026</span>
+            </li>
+            <li class="til-item">
+              <span class="til-text">The "doorway effect" &mdash; forgetting why you walked into a room &mdash; is a real cognitive phenomenon studied by researchers.</span>
+              <span class="til-date">JAN 31, 2026</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Subscribe -->
+        <div class="tile tile-subscribe">
+          <div class="subscribe-inner">
+            <div class="tile-label">
+              <span class="tile-label-text">NEWSLETTER</span>
+            </div>
+            <div class="subscribe-text">Get new posts in your inbox</div>
+            <div class="subscribe-subtext">No spam, unsubscribe anytime.</div>
+            <form class="subscribe-form" id="newsletter-form" onsubmit="handleSubscribe(event)">
+              <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required autocomplete="email">
+              <button type="submit" id="newsletter-submit">SUBSCRIBE</button>
+            </form>
+            <p class="form-message" id="form-message"></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">akshaychugh.xyz</footer>
+
+  <script>
+    /* ==============================
+       THEME TOGGLE
+       ============================== */
+    function getPreferredTheme() {
+      var stored = localStorage.getItem('theme');
+      if (stored) return stored;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      var sun = document.querySelector('.sun-icon');
+      var moon = document.querySelector('.moon-icon');
+      if (theme === 'dark') {
+        sun.style.display = 'none';
+        moon.style.display = 'block';
+      } else {
+        sun.style.display = 'block';
+        moon.style.display = 'none';
+      }
+    }
+
+    function toggleTheme() {
+      var current = document.documentElement.getAttribute('data-theme') || 'light';
+      var next = current === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      applyTheme(next);
+    }
+
+    applyTheme(getPreferredTheme());
+
+    /* ==============================
+       MOBILE MENU
+       ============================== */
+    function toggleMobileMenu() {
+      var nav = document.getElementById('mobile-nav');
+      var icon = document.getElementById('menu-icon');
+      nav.classList.toggle('open');
+      icon.classList.toggle('active');
+    }
+
+    /* ==============================
+       SUBSCRIBE FORM
+       ============================== */
+    function handleSubscribe(e) {
+      e.preventDefault();
+      var msg = document.getElementById('form-message');
+      var btn = document.getElementById('newsletter-submit');
+      btn.disabled = true;
+      btn.textContent = 'SUBSCRIBING...';
+      setTimeout(function() {
+        msg.textContent = 'Thanks for subscribing!';
+        msg.style.color = 'var(--accent)';
+        btn.textContent = 'SUBSCRIBED';
+      }, 800);
+    }
+  </script>
+</body>
+</html>

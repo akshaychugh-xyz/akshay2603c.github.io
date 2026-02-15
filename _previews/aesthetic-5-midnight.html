@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aesthetic 5: Midnight & Gold — Dark Luxury</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ======== CSS Variables ======== */
+  :root {
+    --bg-page: #0C0C0C;
+    --bg-tile: #151515;
+    --text-primary: #E8E4DC;
+    --text-secondary: #8A8580;
+    --accent: #C9A96E;
+    --accent-hover: #DFC08A;
+    --accent-deep: #B89A5E;
+    --border: #252220;
+    --glow: rgba(201, 169, 110, 0.06);
+    --glow-hover: rgba(201, 169, 110, 0.12);
+    --glow-strong: rgba(201, 169, 110, 0.3);
+    --input-bg: transparent;
+    --intro-gradient: linear-gradient(135deg, #1A1714 0%, #151515 60%);
+    --grain-opacity: 0.035;
+  }
+
+  [data-theme="light"] {
+    --bg-page: #FAF8F5;
+    --bg-tile: #FFFFFF;
+    --text-primary: #1A1814;
+    --text-secondary: #7A756E;
+    --accent: #9E7C3C;
+    --accent-hover: #B8923F;
+    --accent-deep: #876A30;
+    --border: #E8E4DC;
+    --glow: rgba(158, 124, 60, 0.04);
+    --glow-hover: rgba(158, 124, 60, 0.08);
+    --glow-strong: rgba(158, 124, 60, 0.2);
+    --input-bg: transparent;
+    --intro-gradient: linear-gradient(135deg, #F5F0E8 0%, #FFFFFF 60%);
+    --grain-opacity: 0.02;
+  }
+
+  /* ======== Reset & Base ======== */
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--text-primary);
+    background: var(--bg-page);
+    transition: background-color 0.4s ease, color 0.4s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* Grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: var(--grain-opacity);
+    pointer-events: none;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  /* ======== Info Banner ======== */
+  .info-banner {
+    background: var(--bg-tile);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 20px;
+    text-align: center;
+    font-size: 11px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+  }
+
+  /* ======== Header ======== */
+  .site-header {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 28px 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-logo {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+    transition: color 0.3s ease;
+  }
+
+  .header-logo:hover {
+    color: var(--accent);
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .header-nav a {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: 0.03em;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .header-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  .header-nav a:hover {
+    color: var(--accent);
+  }
+
+  .header-nav a:hover::after {
+    width: 100%;
+  }
+
+  /* Theme toggle */
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+    width: 28px;
+    height: 28px;
+  }
+
+  .theme-toggle:hover {
+    color: var(--accent);
+  }
+
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .theme-toggle .sun-icon { display: none; }
+  .theme-toggle .moon-icon { display: block; }
+  [data-theme="light"] .theme-toggle .sun-icon { display: block; }
+  [data-theme="light"] .theme-toggle .moon-icon { display: none; }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: var(--text-secondary);
+    border-radius: 1px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  /* Mobile nav */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-page);
+    z-index: 100;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .mobile-nav.open {
+    display: flex;
+    opacity: 1;
+  }
+
+  .mobile-nav a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+  }
+
+  .mobile-nav a:hover {
+    color: var(--accent);
+  }
+
+  .mobile-nav-close {
+    position: absolute;
+    top: 28px;
+    right: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-nav-close svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* ======== Main Container ======== */
+  .main-container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+  }
+
+  /* ======== Bento Grid ======== */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* ======== Tile Base ======== */
+  .tile {
+    background: var(--bg-tile);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 32px;
+    transition: all 0.4s ease-out;
+    position: relative;
+    overflow: hidden;
+    /* Animation initial state */
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .tile::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    box-shadow: 0 0 0 0 var(--glow);
+    transition: box-shadow 0.4s ease-out;
+    pointer-events: none;
+  }
+
+  .tile:hover {
+    border-color: var(--accent-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 24px var(--glow-hover);
+  }
+
+  .tile:hover::before {
+    box-shadow: inset 0 0 40px var(--glow);
+  }
+
+  .tile.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ======== Intro Tile ======== */
+  .tile-intro {
+    grid-column: 1 / -1;
+    background: var(--intro-gradient);
+    padding: 40px 36px 36px;
+  }
+
+  .intro-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 0;
+  }
+
+  .intro-gold-line {
+    width: 80px;
+    height: 1.5px;
+    background: var(--accent);
+    margin: 14px 0 20px;
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .tile-intro.visible .intro-gold-line {
+    transform: scaleX(1);
+  }
+
+  .intro-bio {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15.5px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+
+  .intro-social {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .intro-social a {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13.5px;
+    font-weight: 400;
+    color: var(--accent);
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .intro-social a::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent-hover);
+    transition: width 0.3s ease;
+  }
+
+  .intro-social a:hover {
+    color: var(--accent-hover);
+  }
+
+  .intro-social a:hover::after {
+    width: 100%;
+  }
+
+  .intro-social .dot {
+    color: var(--border);
+    font-size: 11px;
+    margin: 0 6px;
+    user-select: none;
+  }
+
+  /* ======== Section Labels ======== */
+  .tile-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--accent);
+    margin-bottom: 20px;
+    letter-spacing: 0.01em;
+  }
+
+  /* ======== Item Lists ======== */
+  .item-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .item-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .item-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .item-list li:first-child {
+    padding-top: 0;
+  }
+
+  .item-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .item-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+    line-height: 1.45;
+  }
+
+  .item-link:hover .item-title {
+    color: var(--accent);
+  }
+
+  .item-date {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--accent-deep);
+    white-space: nowrap;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .item-desc {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin-top: 3px;
+    line-height: 1.45;
+  }
+
+  /* TIL items - title only, no link behavior */
+  .til-item-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13.5px;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
+
+  .til-item-title a {
+    color: var(--accent);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+
+  .til-item-title a:hover {
+    border-bottom-color: var(--accent);
+  }
+
+  /* View all links */
+  .view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: var(--accent);
+    margin-top: 16px;
+    transition: color 0.3s ease, gap 0.3s ease;
+    opacity: 0.8;
+  }
+
+  .view-all:hover {
+    color: var(--accent-hover);
+    gap: 7px;
+    opacity: 1;
+  }
+
+  .view-all span {
+    transition: transform 0.3s ease;
+  }
+
+  /* ======== Subscribe Tile ======== */
+  .tile-subscribe {
+    grid-column: 1 / -1;
+  }
+
+  .subscribe-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+  }
+
+  .subscribe-left {
+    flex: 1;
+  }
+
+  .subscribe-form {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    flex: 1;
+    max-width: 420px;
+  }
+
+  .subscribe-input-wrap {
+    flex: 1;
+    position: relative;
+  }
+
+  .subscribe-input {
+    width: 100%;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-primary);
+    background: var(--input-bg);
+    border: none;
+    border-bottom: 1px solid var(--accent-deep);
+    padding: 8px 0;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+
+  .subscribe-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
+  }
+
+  .subscribe-input:focus {
+    border-bottom-color: var(--accent);
+  }
+
+  .subscribe-btn {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #0C0C0C;
+    background: var(--accent);
+    border: none;
+    border-radius: 4px;
+    padding: 9px 22px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.35s ease;
+  }
+
+  .subscribe-btn:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 0 20px var(--glow-strong);
+  }
+
+  .subscribe-desc {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin-top: 10px;
+    opacity: 0.7;
+  }
+
+  .form-message {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    margin-top: 10px;
+    min-height: 20px;
+  }
+
+  .form-message.success { color: var(--accent); }
+  .form-message.error { color: #C17070; }
+
+  /* ======== Footer ======== */
+  .site-footer {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px 48px;
+    text-align: center;
+  }
+
+  .footer-line {
+    width: 40px;
+    height: 1px;
+    background: var(--border);
+    margin: 0 auto 20px;
+  }
+
+  .footer-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+  }
+
+  .footer-text a {
+    color: var(--accent);
+    transition: color 0.3s ease;
+  }
+
+  .footer-text a:hover {
+    color: var(--accent-hover);
+  }
+
+  /* ======== Tile Entrance Animation ======== */
+  @keyframes tileFloat {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ======== Responsive ======== */
+  @media (max-width: 680px) {
+    .bento-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .tile {
+      padding: 24px;
+    }
+
+    .tile-intro {
+      padding: 32px 24px 28px;
+    }
+
+    .intro-name {
+      font-size: 32px;
+    }
+
+    .intro-bio {
+      font-size: 14.5px;
+    }
+
+    .site-header {
+      padding: 20px 20px 0;
+    }
+
+    .header-nav {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .main-container {
+      padding: 24px 20px 48px;
+    }
+
+    .subscribe-row {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .subscribe-form {
+      max-width: 100%;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .subscribe-btn {
+      width: 100%;
+      padding: 12px 22px;
+    }
+
+    .item-link {
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .item-date {
+      font-size: 11px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .intro-name {
+      font-size: 28px;
+    }
+
+    .tile {
+      padding: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Info Banner -->
+<div class="info-banner">Preview — Aesthetic 5: Midnight & Gold</div>
+
+<!-- Header -->
+<header class="site-header">
+  <a href="/" class="header-logo">akshay chugh</a>
+  <div class="header-right">
+    <nav class="header-nav">
+      <a href="/writings">Writings</a>
+      <a href="/side-projects">Projects</a>
+      <a href="/notes">Notes</a>
+      <a href="/til">TIL</a>
+    </nav>
+    <button class="hamburger" aria-label="Toggle menu" onclick="toggleMobileNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+      <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="5"/>
+        <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22"/>
+      </svg>
+      <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+  <a href="/writings" onclick="closeMobileNav()">Writings</a>
+  <a href="/side-projects" onclick="closeMobileNav()">Projects</a>
+  <a href="/notes" onclick="closeMobileNav()">Notes</a>
+  <a href="/til" onclick="closeMobileNav()">TIL</a>
+</div>
+
+<!-- Main -->
+<main class="main-container">
+  <div class="bento-grid">
+
+    <!-- Intro Tile -->
+    <div class="tile tile-intro" data-tile="0">
+      <h1 class="intro-name">Akshay Chugh</h1>
+      <div class="intro-gold-line"></div>
+      <p class="intro-bio">Welcome to my little garden on the Internet. I currently lead Product for Coinbase India and am obsessed with Claude Code on the side.</p>
+      <div class="intro-social">
+        <a href="https://x.com/akshaychugh_xyz" target="_blank" rel="noopener noreferrer">Twitter/X</a>
+        <span class="dot">&middot;</span>
+        <a href="https://www.linkedin.com/in/chughakshay/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+
+    <!-- Writings Tile -->
+    <div class="tile tile-writings" data-tile="1">
+      <div class="tile-label">Recent writings</div>
+      <ul class="item-list">
+        <li>
+          <a href="/writings/life/you-are-average-but-so-are-your-problems" class="item-link">
+            <span class="item-title">You are average, but so are your problems</span>
+            <span class="item-date">Feb 2026</span>
+          </a>
+        </li>
+        <li>
+          <a href="/writings/png/how-to-level-up-with-claude-code" class="item-link">
+            <span class="item-title">How to level up with Claude Code</span>
+            <span class="item-date">Jan 2026</span>
+          </a>
+        </li>
+        <li>
+          <a href="/writings/png/instapaper" class="item-link">
+            <span class="item-title">How I fixed a (small) bug in an app I use daily</span>
+            <span class="item-date">Jan 2026</span>
+          </a>
+        </li>
+        <li>
+          <a href="/writings/life/scratch-your-itches" class="item-link">
+            <span class="item-title">Scratch your own itches with Claude Code</span>
+            <span class="item-date">Aug 2025</span>
+          </a>
+        </li>
+        <li>
+          <a href="/writings/life/difficult-yet-simple" class="item-link">
+            <span class="item-title">Difficult yet Simple</span>
+            <span class="item-date">Aug 2025</span>
+          </a>
+        </li>
+      </ul>
+      <a href="/writings/" class="view-all">View all <span>&rarr;</span></a>
+    </div>
+
+    <!-- Projects Tile -->
+    <div class="tile tile-projects" data-tile="2">
+      <div class="tile-label">Side projects</div>
+      <ul class="item-list">
+        <li>
+          <a href="https://fourplay.fun" target="_blank" rel="noopener noreferrer" class="item-link">
+            <div>
+              <span class="item-title">FourPlay</span>
+              <div class="item-desc">Wordle meets numbers - multiplayer guessing game, specially fun for couples.</div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://blunderbuddy.pro/" target="_blank" rel="noopener noreferrer" class="item-link">
+            <div>
+              <span class="item-title">BlunderBuddy</span>
+              <div class="item-desc">AI-powered personalized chess insights that actually make sense.</div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://simpleeval.com/" target="_blank" rel="noopener noreferrer" class="item-link">
+            <div>
+              <span class="item-title">Simple Eval</span>
+              <div class="item-desc">Connect your vibecoded app & get auto-suggest evals to improve performance.</div>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <a href="/side-projects/" class="view-all">View all <span>&rarr;</span></a>
+    </div>
+
+    <!-- TIL Tile -->
+    <div class="tile tile-til" data-tile="3">
+      <div class="tile-label">Recent TILs</div>
+      <ul class="item-list">
+        <li>
+          <div class="til-item-title">A big share of Lego's sales now come from first-time Adult purchasers, buying for self - they call it AFOL</div>
+          <span class="item-date" style="display: block; margin-top: 3px;">Feb 2026</span>
+        </li>
+        <li>
+          <div class="til-item-title"><a href="https://www.reddit.com/r/OnePlus7Pro/comments/bxw39c/psa_you_can_change_your_display_size_even_smaller/" target="_blank" rel="noopener noreferrer">Smallest width</a> developer settings on Android let you increase screen real-estate beyond what's normally possible</div>
+          <span class="item-date" style="display: block; margin-top: 3px;">Feb 2026</span>
+        </li>
+        <li>
+          <div class="til-item-title">Netflix has a second-screen-viewability score before it greenlights projects</div>
+          <span class="item-date" style="display: block; margin-top: 3px;">Jan 2026</span>
+        </li>
+      </ul>
+      <a href="/til/" class="view-all">View all <span>&rarr;</span></a>
+    </div>
+
+    <!-- Subscribe Tile -->
+    <div class="tile tile-subscribe" data-tile="4">
+      <div class="tile-label">Newsletter</div>
+      <div class="subscribe-row">
+        <div class="subscribe-left">
+          <form class="subscribe-form" id="newsletter-form" onsubmit="handleSubscribe(event)">
+            <div class="subscribe-input-wrap">
+              <input type="email" class="subscribe-input" id="newsletter-email" name="email" placeholder="your@email.com" required autocomplete="email">
+            </div>
+            <button type="submit" class="subscribe-btn" id="newsletter-submit">Subscribe</button>
+          </form>
+          <div class="subscribe-desc">Get new posts delivered to your inbox. No spam, ever.</div>
+          <p class="form-message" id="form-message"></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-line"></div>
+  <p class="footer-text">Cheers! &mdash; <a href="/">akshaychugh.xyz</a></p>
+</footer>
+
+<script>
+  // ======== Theme Toggle ========
+  (function() {
+    var saved = localStorage.getItem('theme-midnight');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+    // Default is dark, already set in HTML
+  })();
+
+  function toggleTheme() {
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme-midnight', next);
+  }
+
+  // ======== Mobile Nav ========
+  function toggleMobileNav() {
+    var nav = document.getElementById('mobileNav');
+    var hamburger = document.querySelector('.hamburger');
+    if (nav.classList.contains('open')) {
+      closeMobileNav();
+    } else {
+      nav.style.display = 'flex';
+      requestAnimationFrame(function() {
+        nav.classList.add('open');
+      });
+      hamburger.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeMobileNav() {
+    var nav = document.getElementById('mobileNav');
+    var hamburger = document.querySelector('.hamburger');
+    nav.classList.remove('open');
+    hamburger.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(function() {
+      if (!nav.classList.contains('open')) {
+        nav.style.display = 'none';
+      }
+    }, 350);
+  }
+
+  // ======== Tile Entrance Animation ========
+  (function() {
+    var tiles = document.querySelectorAll('.tile');
+    tiles.forEach(function(tile, i) {
+      var delay = i * 80;
+      tile.style.transition = 'opacity 0.6s ease-out ' + delay + 'ms, transform 0.6s ease-out ' + delay + 'ms, border-color 0.4s ease-out, box-shadow 0.4s ease-out';
+    });
+
+    // Use IntersectionObserver for triggering, or just fire on load
+    function revealTiles() {
+      tiles.forEach(function(tile) {
+        tile.classList.add('visible');
+      });
+    }
+
+    if (document.readyState === 'complete') {
+      setTimeout(revealTiles, 80);
+    } else {
+      window.addEventListener('load', function() {
+        setTimeout(revealTiles, 80);
+      });
+    }
+  })();
+
+  // ======== Subscribe Form ========
+  function handleSubscribe(e) {
+    e.preventDefault();
+    var email = document.getElementById('newsletter-email').value;
+    var msg = document.getElementById('form-message');
+    var btn = document.getElementById('newsletter-submit');
+
+    if (!email) return;
+
+    btn.disabled = true;
+    btn.textContent = '...';
+    msg.textContent = '';
+    msg.className = 'form-message';
+
+    fetch('https://akshaychugh-xyz-newsletter.akshaychugh.workers.dev/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.success) {
+        msg.textContent = 'You\'re in. Welcome.';
+        msg.className = 'form-message success';
+        document.getElementById('newsletter-email').value = '';
+      } else {
+        msg.textContent = data.error || 'Something went wrong.';
+        msg.className = 'form-message error';
+      }
+    })
+    .catch(function() {
+      msg.textContent = 'Network error. Please try again.';
+      msg.className = 'form-message error';
+    })
+    .finally(function() {
+      btn.disabled = false;
+      btn.textContent = 'Subscribe';
+    });
+  }
+</script>
+
+</body>
+</html>

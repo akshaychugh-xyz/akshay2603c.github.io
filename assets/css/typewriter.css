@@ -801,10 +801,17 @@ body {
   overflow: hidden;
 }
 
-[data-theme="dark"] .bento-tile,
+[data-theme="dark"] .bento-tile {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .bento-tile {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.15);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -814,7 +821,15 @@ body {
 }
 
 [data-theme="dark"] .bento-tile:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.25);
+  border-color: var(--color-base-300);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .bento-tile:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.25);
+    border-color: var(--color-base-300);
+  }
 }
 
 /* Intro tile */

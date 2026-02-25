@@ -27,6 +27,7 @@ My goal with this post is to:
 
 > *My setup for ref: VS Code with Claude Code running on native terminal (not on the VS Code extension), considering Conductor but not convinced yet*
 
+<a id="interview-skill"></a>
 1. **Interview skill using `AskUserQuestion` tool**
 
 	This is hands-down the BIGGEST value of life upgrade with Claude Code. A simple 3 line skill where you essentially productionize the act of asking clarifying questions with the seamless UX of asking questions natively in CC. The reason this works is because as humans we have two flaws:
@@ -39,6 +40,27 @@ My goal with this post is to:
 	![](/assets/images/claude-code/claude-code-1.png)
 
 	h/t Thariq from Claude Code team for [ref](https://x.com/trq212/status/2005315275026260309).
+
+	**How to set it up:** Ask Claude Code to save this text as a "skill" in your root user directory:
+
+	```
+	---
+	name: interview
+	description: Interview the user in-depth about a specification file to gather
+	comprehensive implementation details. Use this when the user wants to flesh out
+	specs, discuss technical implementation, UI/UX decisions, tradeoffs, or concerns
+	about a feature specification.
+	---
+
+	read this spec file and interview me in detail using the AskUserQuestionTool
+	about literally anything: technical implementation, UI & UX, concerns, tradeoffs,
+	etc. but make sure the questions are not obvious
+
+	be very in-depth and continue interviewing me continually until it's complete,
+	then write the spec to the file.
+	```
+
+	Then whenever you want, just tell Claude Code to "interview" you for more clarifications and context.
 
 2. **Git Worktree Command *(with local env migration and package json run baked in)***
 

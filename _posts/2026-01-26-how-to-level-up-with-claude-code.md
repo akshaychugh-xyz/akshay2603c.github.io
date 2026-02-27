@@ -86,7 +86,7 @@ My goal with this post is to:
 
 4. Additional honorable mentions that will get a deepdive maybe in the future:
 	- Enable MacOS notifications for Claude Code to ping you when it's waiting for a response or done
-	- Frontend design skill - HUGE!
+	- <a id="frontend-design-skill"></a>Frontend design skill - HUGE! Ask Claude Code to install [this official plugin from Claude Code](https://github.com/anthropics/claude-code/tree/main/plugins/frontend-design/skills/frontend-design).
 	- Switch on 'repositories' mode in VSCode's source control tab to see multiple worktree changes
 	- Custom `sync-permissions` skill that goes through your past chats, see which permissions you allowed and adds it to your `permissions` list so you never approve the same command twice
 	- AI slop removal command after each big coding session

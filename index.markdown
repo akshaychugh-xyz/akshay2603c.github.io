@@ -20,6 +20,10 @@ layout: default
     </div>
     <ul class="bento-list">
       <li>
+        <a href="/writings/png/how-claude-code-chooses">How Claude Code Chooses - A deep dive on email providers</a>
+        <div class="bento-item-date">Feb 2026</div>
+      </li>
+      <li>
         <a href="/writings/life/you-are-average-but-so-are-your-problems">You are average, but so are your problems</a>
         <div class="bento-item-date">Feb 2026</div>
       </li>
@@ -33,10 +37,6 @@ layout: default
       </li>
       <li>
         <a href="/writings/life/scratch-your-itches">Scratch your own itches with Claude Code</a>
-        <div class="bento-item-date">Aug 2025</div>
-      </li>
-      <li>
-        <a href="/writings/life/difficult-yet-simple">Difficult yet Simple</a>
         <div class="bento-item-date">Aug 2025</div>
       </li>
     </ul>

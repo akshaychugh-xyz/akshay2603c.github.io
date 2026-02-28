@@ -1306,3 +1306,12 @@ body {
     grid-column: 1;
   }
 }
+
+/* Post hero image: light/dark theme swap */
+.post-hero-dark { display: none; }
+[data-theme="dark"] .post-hero-light { display: none; }
+[data-theme="dark"] .post-hero-dark { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .post-hero-light { display: none; }
+  :root:not([data-theme="light"]) .post-hero-dark { display: block; }
+}

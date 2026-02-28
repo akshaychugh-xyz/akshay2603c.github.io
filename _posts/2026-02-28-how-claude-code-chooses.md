@@ -31,8 +31,8 @@ And then Amplifying.AI released a [report on what tools Claude Code picks across
 So I went deep on one category - email providers - to actually understand what is driving the choice. I ran 12 agent sessions across 3 tech stacks on a mock SaaS app.
 
 **tl;dr:**
-- *Training data is driving recommendations - and asking Claude to web search will not fix it
-- *Your tech stack is determining your recommendation more than your requirements
+- *Training data is driving recommendations - and asking Claude to web search will not fix it*
+- *Your tech stack is determining your recommendation more than your requirements*
 - *Every dev tool is sitting on one of three tiers in Claude's head: Invisible, Known but actively advised against, or Dominant*
 
 ---

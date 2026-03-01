@@ -842,6 +842,19 @@ body {
 .bento-intro-wave { font-size: 28px; line-height: 1; margin-bottom: 8px; }
 .bento-intro-name { font-size: 22px; font-weight: 700; margin-bottom: 6px; line-height: 1.3; }
 
+/* GitHub contribution graph inside intro */
+.bento-github-section {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+
+.bento-github-chart {
+  width: 100%;
+  border-radius: 4px;
+}
+
 .bento-intro-bio {
   font-size: 15px;
   line-height: 1.65;
@@ -1291,6 +1304,12 @@ body {
 
 .til-tl-body p:last-child {
   margin-bottom: 0;
+}
+
+.til-tl-body img {
+  max-width: 300px;
+  border-radius: 6px;
+  margin-top: 0.5em;
 }
 
 @media (max-width: 480px) {

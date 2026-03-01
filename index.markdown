@@ -8,13 +8,23 @@ layout: default
     <div class="bento-intro-wave">&#x1F44B;</div>
     <div class="bento-intro-name">Hi, I am Akshay.</div>
     <div class="bento-intro-bio">Welcome to my little garden on the Internet! I currently lead Product for Coinbase India and am obsessed with Claude Code on the side.</div>
+    <div class="bento-github-section">
+      <div class="bento-label">
+        <span class="bento-label-left">
+          <span class="bento-label-dot"></span>
+          Proudest about, IYKYK :)
+        </span>
+        <a href="https://github.com/akshaychugh-xyz" target="_blank" rel="noopener noreferrer" class="bento-view-all">GitHub &rarr;</a>
+      </div>
+      <img src="https://ghchart.rshah.org/2EA44E/akshaychugh-xyz" alt="GitHub contribution graph" class="bento-github-chart" />
+    </div>
   </div>
 
   <div class="bento-tile">
     <div class="bento-label">
       <span class="bento-label-left">
         <span class="bento-label-dot"></span>
-        Recent Writings
+        Writings
       </span>
       <a href="/writings/" class="bento-view-all">View all &rarr;</a>
     </div>
@@ -70,7 +80,7 @@ layout: default
     <div class="bento-label">
       <span class="bento-label-left">
         <span class="bento-label-dot"></span>
-        Recent TILs
+        Today I Learnt
       </span>
       <a href="/til/" class="bento-view-all">View all &rarr;</a>
     </div>

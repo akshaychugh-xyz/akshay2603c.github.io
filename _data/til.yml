@@ -1,3 +1,31 @@
+- date: 2026-03-01
+  title: "CRED hijacks the UPI remarks field to advertise inside GPay's transaction history - *'Paid via CRED and got cashback'* shows up in the receiver's app"
+  details: |
+    UPI transactions have a remarks/transaction note field that travels across the entire UPI ecosystem, as mandated by NPCI. When CRED initiates a payment, it sets this remark to *'Paid via CRED and got cashback'* - and GPay, PhonePe, or any UPI app simply renders it as-is in your transaction history. 
+    
+    Free smart distribution inside a competitor's app, similar to 'Sent from iPhone' in email signatures.
+
+    ![CRED remarks showing up in GPay transaction history](/assets/images/til/cred-gpay-remarks.png)
+
+- date: 2026-02-25
+  title: "Uninstalling an app on macOS doesn't delete all its data - apps like Spotify and Prime Video can leave behind 10+ GB of *orphaned* data"
+  details: |
+    Unlike windows, macOS has no formal uninstall process - "uninstalling" is just dragging the .app to trash. The OS has no hook to clean up associated data, and app data is scattered across ~/Library/Application Support/, ~/Library/Containers/, ~/Library/Caches/, ~/Library/Preferences/ etc.
+
+    I was cleaning up storage with Claude Code and discovered [AppCleaner](https://freemacsoft.net/appcleaner/) - free and SUPER useful!
+
+- date: 2026-02-20
+  title: "If you 'undo' a highlight on a Kindle, temporary ghosting remains on the page that only disappears on full page turn. This is because e-ink displays use 'partial refresh' for small actions like removing highlights"
+  details: |
+    E-ink pixels are tiny capsules filled with black and white particles that move with electric charge. 
+    
+    A **full refresh** (the brief black flash on page turns) slams all particles to their correct positions - showing a crisp display. A **partial refresh** only nudges the changed pixels, which is faster and avoids the flash, but some particles don't fully migrate - causing that faded/ghosted look.
+
+- date: 2026-02-18
+  title: "When you copy an image from Google Docs to markdown, to give ahead to an LLM tool, your context will almost always bloat out. This is because the image gets converted to a massive Base64-encoded data and a single image can blow up into a 15+ page Google doc"
+  details: |
+    Instead of referencing an external URL (`![alt](https://example.com/image.png)`), the image's binary data gets encoded as a long ASCII string embedded inline (`![alt](data:image/png;base64,iVBORw0KGgo...)`). It makes the content self-contained but massively bloated.
+
 - date: 2026-02-15
   title: "A big share of Lego's sales now come from first-time Adult purchasers, buying for self - they call it Adult Fans of LEGO (AFOL) and lean into it with the 'Adults Welcome!' marketing"
 

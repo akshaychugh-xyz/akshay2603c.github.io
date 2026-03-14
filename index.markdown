@@ -30,6 +30,10 @@ layout: default
     </div>
     <ul class="bento-list">
       <li>
+        <a href="/writings/png/how-does-g2-survive">How does G2 survive?</a>
+        <div class="bento-item-date">Mar 2026</div>
+      </li>
+      <li>
         <a href="/writings/png/how-claude-code-chooses">How Claude Code Chooses - A deep dive on email providers</a>
         <div class="bento-item-date">Feb 2026</div>
       </li>
@@ -44,10 +48,6 @@ layout: default
       <li>
         <a href="/writings/png/instapaper">How I fixed a (small) bug in an app I use daily</a>
         <div class="bento-item-date">Jan 2026</div>
-      </li>
-      <li>
-        <a href="/writings/life/scratch-your-itches">Scratch your own itches with Claude Code</a>
-        <div class="bento-item-date">Aug 2025</div>
       </li>
     </ul>
   </div>

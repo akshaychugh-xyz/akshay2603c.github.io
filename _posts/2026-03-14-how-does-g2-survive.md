@@ -18,7 +18,7 @@ A lot of software websites I visit have the same badge:
 
 But I literally don't know a single person who uses G2 to make purchase decisions anymore.
 
-![G2 badges](/assets/images/how-does-g2-survive-1.jpeg)
+![G2 badges](https://akshaychugh.xyz/assets/images/how-does-g2-survive-1.jpeg)
 
 A few weeks ago, G2 acquired Capterra, Software Advice, and GetApp. Combined - 6 million verified reviews, 200M+ annual buyers, revenue probably north of $150M.
 

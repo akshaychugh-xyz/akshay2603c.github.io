@@ -4,6 +4,7 @@ Reference /Users/akshaychugh/GitHub/akshay2603c.github.io/_posts for what past p
 You will find some images in the link i give you
 The images are always stored in /Users/akshaychugh/Documents/Akshay Chugh/Collateral
 You have to copy the images to /Users/akshaychugh/GitHub/akshay2603c.github.io/assets/images and rename them in the format of <post-name-1>, <post-name-2> etc.
+IMPORTANT: Always use absolute URLs for images in posts (e.g., https://akshaychugh.xyz/assets/images/...) instead of relative paths (e.g., /assets/images/...). Relative paths break in newsletter emails.
 Create a new file at /Users/akshaychugh/GitHub/akshay2603c.github.io/_posts
 DO NOT change the contents of the post at all!
 Before creating the post file, ask the user these questions:

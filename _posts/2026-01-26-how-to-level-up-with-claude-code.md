@@ -79,7 +79,7 @@ My goal with this post is to:
 
 3. **Multiple terminals split in the same VS-code window**
 
-	h/t [Boris' tweet](https://x.com/bcherny/status/2007179833990885678). Once worktrees is working, you can split different Claude Code instances into different VS Code splits in the same window, such that you can automatically move b/w them with the ⌘+1/2/3 shortcut. Makes multi-tasking so much more easier!
+	h/t [Boris' tweet](https://x.com/bcherny/status/2007179833990885678). Once worktrees is working, you can split different Claude Code instances into different VS Code splits in the same window, such that you can automatically move b/w them with the ⌘+1/2/3 shortcut. Makes multi-tasking so much easier!
 
 	There is also the `Maximise Group` shortcut that can maximise just your current view if you want to deep focus on just one problem.
 	![](/assets/images/claude-code/claude-code-2.png)

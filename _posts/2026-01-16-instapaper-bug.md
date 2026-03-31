@@ -22,7 +22,7 @@ I had been a [Pocket](https://getpocket.com/home) user for the past 4-5 years as
 
 I, of course, got worried about what will happen to my *bazillion* saved-for-later articles/blogs/twitter-threads and all the magical information that is just waiting for me to consume and transform myself.
 
-After some research, I landed on [Instapaper](https://instapaper.com/). It has the typical chrome extension flow that can you can click on and save to your read-later queue, with the ability to add tags on the link *(remember tags for they are the hero of the story)*
+After some research, I landed on [Instapaper](https://instapaper.com/). It has the typical chrome extension flow that you can click on and save to your read-later queue, with the ability to add tags on the link *(remember tags for they are the hero of the story)*
 
 ![](/assets/images/instapaper/instapaper-2.png)
 

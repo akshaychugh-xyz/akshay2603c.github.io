@@ -453,6 +453,9 @@ body {
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 1em;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   th, td {
@@ -465,6 +468,7 @@ body {
   th {
     background-color: var(--bg-secondary);
     transition: background-color 0.3s ease;
+    white-space: nowrap;
   }
 
   /* Images */
@@ -639,6 +643,11 @@ body {
   .site-nav a {
     padding: 8px 0;
     font-size: 1.1em;
+  }
+
+  th, td {
+    padding: 8px 10px;
+    font-size: 0.85em;
   }
 }
 

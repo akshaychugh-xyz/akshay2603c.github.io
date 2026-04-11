@@ -30,6 +30,8 @@ That felt wrong. So I went deep into the source code with Claude.
 
 ---
 
+{% include subscribe-inline.html %}
+
 ## Problem 1: The consent is fake
 
 First, the ask itself. The Vercel plugin helps with deployments, framework guidance, and skill injection. Why does it need to read every prompt you type? Across every project? That's not analytics for improving the plugin - that's way outside its scope for a tool that's supposed to help you ship to Vercel.

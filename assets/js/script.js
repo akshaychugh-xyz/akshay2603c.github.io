@@ -116,15 +116,13 @@ document.addEventListener('DOMContentLoaded', function() {
     console.error('Menu icon or menu items not found');
   }
 
-  // Newsletter form handling
-  const newsletterForm = document.getElementById('newsletter-form');
-  if (newsletterForm) {
-    const emailInput = document.getElementById('newsletter-email');
-    const submitButton = document.getElementById('newsletter-submit');
-    const formMessage = document.getElementById('form-message');
+  // Newsletter form handling (supports multiple forms on the same page)
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxSCkJCVFlVvAPvVJOJ3OyG4pBnfGsqTXZ6Zgl4Fn5H0rdPZgWMoTzMzL8VuVJBQ7Nftw/exec';
 
-    // TODO: Replace with your Google Apps Script deployment URL
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxSCkJCVFlVvAPvVJOJ3OyG4pBnfGsqTXZ6Zgl4Fn5H0rdPZgWMoTzMzL8VuVJBQ7Nftw/exec';
+  document.querySelectorAll('.newsletter-form').forEach(function(newsletterForm) {
+    const emailInput = newsletterForm.querySelector('.newsletter-email');
+    const submitButton = newsletterForm.querySelector('.newsletter-submit');
+    const formMessage = newsletterForm.parentElement.querySelector('.form-message');
 
     newsletterForm.addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -135,11 +133,13 @@ document.addEventListener('DOMContentLoaded', function() {
       // Update UI to loading state
       submitButton.disabled = true;
       submitButton.textContent = 'Subscribing...';
-      formMessage.textContent = '';
-      formMessage.className = 'form-message';
+      if (formMessage) {
+        formMessage.textContent = '';
+        formMessage.className = 'form-message';
+      }
 
       try {
-        const response = await fetch(APPS_SCRIPT_URL, {
+        await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors', // Apps Script requires this
           headers: {
@@ -149,17 +149,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // With no-cors, we can't read the response, so assume success
-        formMessage.textContent = 'Please check your inbox to confirm.';
-        formMessage.className = 'form-message success';
+        if (formMessage) {
+          formMessage.textContent = 'Please check your inbox to confirm.';
+          formMessage.className = 'form-message success';
+        }
         emailInput.value = '';
       } catch (error) {
-        formMessage.textContent = 'Something went wrong. Please try again.';
-        formMessage.className = 'form-message error';
+        if (formMessage) {
+          formMessage.textContent = 'Something went wrong. Please try again.';
+          formMessage.className = 'form-message error';
+        }
         console.error('Newsletter subscription error:', error);
       } finally {
         submitButton.disabled = false;
         submitButton.textContent = 'Subscribe';
       }
     });
-  }
+  });
 });

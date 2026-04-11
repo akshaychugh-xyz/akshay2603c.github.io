@@ -102,11 +102,11 @@ layout: default
       </span>
     </div>
     <div class="bento-subscribe-text">Get new posts delivered to your inbox. No spam, unsubscribe anytime.</div>
-    <form class="bento-subscribe-form" id="newsletter-form">
-      <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required autocomplete="email">
-      <button type="submit" id="newsletter-submit">Subscribe</button>
+    <form class="bento-subscribe-form newsletter-form">
+      <input type="email" name="email" placeholder="your@email.com" required autocomplete="email">
+      <button type="submit">Subscribe</button>
     </form>
-    <p class="form-message" id="form-message"></p>
+    <p class="form-message"></p>
   </div>
 
 </div>

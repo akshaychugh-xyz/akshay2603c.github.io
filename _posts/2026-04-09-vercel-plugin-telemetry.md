@@ -28,6 +28,27 @@ That felt wrong. So I went deep into the source code with Claude.
 - *"Anonymous usage data" includes your full bash command strings sent to Vercel's servers. You're never told this is optional.*
 - *All of this runs on every project, not just Vercel ones. The plugin has framework detection built in - it just doesn't use it to gate telemetry.*
 
+<div class="subscribe-section" data-variant="3">
+  <form class="newsletter-form">
+    <div class="subscribe-content">
+      <span class="subscribe-text">I'm a PM who ships with AI tools and writes about what I find inside them. One email when I publish, nothing else.</span>
+      <div class="subscribe-form-row">
+        <input
+          type="email"
+          name="email"
+          placeholder="your@email.com"
+          required
+          autocomplete="email"
+        >
+        <button type="submit">Subscribe</button>
+        <span class="subscribe-divider">·</span>
+        <a href="https://x.com/akshaychugh_xyz" class="subscribe-x-link" target="_blank" rel="noopener noreferrer">Follow on X →</a>
+      </div>
+    </div>
+  </form>
+  <p class="form-message"></p>
+</div>
+
 ---
 
 ## Problem 1: The consent is fake

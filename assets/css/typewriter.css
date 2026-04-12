@@ -715,8 +715,7 @@ body {
 .subscribe-section[data-variant="3"] .subscribe-form-row {
   display: flex;
   align-items: center;
-  gap: 0.4em 0.6em;
-  flex-wrap: wrap;
+  gap: 0.4em;
 }
 
 .subscribe-section[data-variant="3"] input[type="email"] {
@@ -751,11 +750,6 @@ body {
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease;
-  /* Opt out of the global 44x44 touch-target override for this compact inline button.
-     Tap area is provided via padding instead. */
-  min-height: 0;
-  min-width: 0;
-  line-height: 1.5;
 }
 
 .subscribe-section[data-variant="3"] button[type="submit"]:hover {
@@ -765,32 +759,6 @@ body {
 .subscribe-section button[type="submit"]:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-.subscribe-section[data-variant="3"] .subscribe-divider {
-  color: var(--text-secondary);
-  opacity: 0.5;
-  font-size: 0.95em;
-  padding: 0 0.2em;
-}
-
-.subscribe-section[data-variant="3"] a.subscribe-x-link {
-  font-size: 0.95em;
-  font-family: inherit;
-  color: var(--color-orange);
-  text-decoration: none;
-  transition: transform 0.2s ease;
-  display: inline-block;
-  line-height: 1.5;
-  /* Opt out of the global 44x44 touch-target override for this compact inline link. */
-  min-height: 0;
-  min-width: 0;
-}
-
-.subscribe-section[data-variant="3"] a.subscribe-x-link:hover {
-  transform: translateX(2px);
-  color: var(--color-orange);
-  text-decoration: none;
 }
 
 @media screen and (max-width: 480px) {
@@ -804,37 +772,21 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5em;
-    width: 100%;
   }
 
   .subscribe-section[data-variant="3"] .subscribe-text {
     font-size: 0.8em;
   }
 
-  .subscribe-section[data-variant="3"] .subscribe-form-row {
-    width: 100%;
-    row-gap: 0.5em;
-  }
-
   .subscribe-section[data-variant="3"] input[type="email"] {
-    flex: 1 1 140px;
-    min-width: 0;
-    width: auto;
-    font-size: 0.85em;
-    padding: 0.35em 0.5em;
+    width: 130px;
+    font-size: 0.8em;
+    padding: 0.3em 0.5em;
   }
 
   .subscribe-section[data-variant="3"] button[type="submit"] {
-    font-size: 0.9em;
-    padding: 0.35em 0.5em;
-  }
-
-  .subscribe-section[data-variant="3"] a.subscribe-x-link {
-    font-size: 0.9em;
-  }
-
-  .subscribe-section[data-variant="3"] .subscribe-divider {
-    font-size: 0.9em;
+    font-size: 0.85em;
+    padding: 0.25em 0.4em;
   }
 }
 

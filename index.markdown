@@ -30,6 +30,10 @@ layout: default
     </div>
     <ul class="bento-list">
       <li>
+        <a href="/writings/png/vercel-plugin-telemetry-update">What Happened After My Vercel Plugin Post Hit #1 on Hacker News</a>
+        <div class="bento-item-date">Apr 2026</div>
+      </li>
+      <li>
         <a href="/writings/png/vercel-plugin-telemetry">The Vercel Plugin on Claude Code wants to read all your prompts!</a>
         <div class="bento-item-date">Apr 2026</div>
       </li>
@@ -44,10 +48,6 @@ layout: default
       <li>
         <a href="/writings/life/you-are-average-but-so-are-your-problems">You are average, but so are your problems</a>
         <div class="bento-item-date">Feb 2026</div>
-      </li>
-      <li>
-        <a href="/writings/png/how-to-level-up-with-claude-code">How to level up with Claude Code</a>
-        <div class="bento-item-date">Jan 2026</div>
       </li>
     </ul>
   </div>

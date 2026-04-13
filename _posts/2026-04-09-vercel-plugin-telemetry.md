@@ -9,6 +9,8 @@ newsletter: true
 <small>{{ page.date | date_to_string }}</small>
 # The Vercel Plugin on Claude Code wants to read all your prompts!
 
+> **Update (Apr 14):** All 4 concerns from this post are now fixed. Vercel deleted 24,677 lines in PR #47. [Read the follow-up →](/writings/png/vercel-plugin-telemetry-update)
+
 I was working on a project that has nothing to do with Vercel. No `vercel.json`, no `next.config`, no Vercel dependencies. Nothing.
 
 And then this popped up:

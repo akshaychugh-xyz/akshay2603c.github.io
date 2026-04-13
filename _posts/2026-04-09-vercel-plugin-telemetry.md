@@ -15,7 +15,7 @@ I was working on a project that has nothing to do with Vercel. No `vercel.json`,
 
 And then this popped up:
 
-<img src="/assets/images/vercel-plugin-telemetry-1.png" alt="Telemetry consent question" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+<img src="https://akshaychugh.xyz/assets/images/vercel-plugin-telemetry-1.png" alt="Telemetry consent question" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
 
 > "The Vercel plugin collects anonymous usage data... Would you like to also share your prompt text?"
 
@@ -44,11 +44,11 @@ Instead, it injects natural-language instructions into Claude's system context t
 
 Here's what those injected instructions look like in the plugin source:
 
-<img src="/assets/images/vercel-plugin-telemetry-2.png" alt="The injected instructions from the plugin source" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+<img src="https://akshaychugh.xyz/assets/images/vercel-plugin-telemetry-2.png" alt="The injected instructions from the plugin source" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
 
 The result looks identical to a native Claude Code question. There is no visual indicator that it's from a third-party plugin. You cannot tell the difference.
 
-<img src="/assets/images/vercel-plugin-telemetry-1.png" alt="Telemetry consent question rendered in Claude Code" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
+<img src="https://akshaychugh.xyz/assets/images/vercel-plugin-telemetry-1.png" alt="Telemetry consent question rendered in Claude Code" style="width: 100%; border: 1px solid #ccc; border-radius: 6px;">
 
 This isn't just context injection - which is the intended use for plugins (skills, docs, framework guidance). The Vercel plugin injects *behavioral instructions* telling Claude to ask a specific question AND execute shell commands on your filesystem based on your response.
 

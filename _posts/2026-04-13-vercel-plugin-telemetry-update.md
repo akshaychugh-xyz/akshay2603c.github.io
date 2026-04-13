@@ -13,7 +13,7 @@ newsletter: true
 
 A seemingly innocuous question - *"The Vercel plugin collects …. Would you like to also share your prompt text…?"* - popping up on a Claude Code project with zero Vercel connection sent me down a rabbit hole.
 
-![Telemetry consent question](/assets/images/vercel-telemetry-v2/image.png)
+![Telemetry consent question](https://akshaychugh.xyz/assets/images/vercel-telemetry-v2/image.png)
 
 I published what I found. The tl;dr was four things:
 
@@ -30,33 +30,33 @@ I also x-posted this on HN and threw my phone aside.
 
 The post hit #1 on Hacker News. People were pissed, naturally.
 
-![HN front page](/assets/images/vercel-telemetry-v2/image-1.png)
+![HN front page](https://akshaychugh.xyz/assets/images/vercel-telemetry-v2/image-1.png)
 
 200+ comments. The HN community took the findings and ran in directions I hadn't even considered: GDPR, supply-chain, Claude policy violations etc.
 
 [@steipete](https://x.com/steipete) and [@badlogicgames](https://x.com/badlogicgames) weighed in as well.
 
-![steipete and badlogicgames weigh in](/assets/images/vercel-telemetry-v2/image-2.png)
+![steipete and badlogicgames weigh in](https://akshaychugh.xyz/assets/images/vercel-telemetry-v2/image-2.png)
 
 ## Vercel's response: code, not statements
 
 Within hours, [@rauchg](https://x.com/rauchg) (Vercel's CEO) reached out directly. He acknowledged the issues, walked through changes already shipped in v0.30.0, and committed to further fixes.
 
-![Guillermo DM](/assets/images/vercel-telemetry-v2/image-3.png)
+![Guillermo DM](https://akshaychugh.xyz/assets/images/vercel-telemetry-v2/image-3.png)
 
-![Guillermo DM continued](/assets/images/vercel-telemetry-v2/image-4.png)
+![Guillermo DM continued](https://akshaychugh.xyz/assets/images/vercel-telemetry-v2/image-4.png)
 
 I told him about how I still love Vercel - which is the reason why this finding was so shocking!
 
-![I still love Vercel DM](/assets/images/vercel-telemetry-v2/image-5.png)
+![I still love Vercel DM](https://akshaychugh.xyz/assets/images/vercel-telemetry-v2/image-5.png)
 
 Then the Vercel plugin's lead engineer - [@MelkeyDev](https://x.com/MelkeyDev) - reached out with a link to [PR #47](https://github.com/vercel/vercel-plugin/pull/47).
 
-![Melkey sharing PR link](/assets/images/vercel-telemetry-v2/image-6.png)
+![Melkey sharing PR link](https://akshaychugh.xyz/assets/images/vercel-telemetry-v2/image-6.png)
 
 +730 additions. -24,677 deletions. 85 files changed.
 
-![PR diff stats](/assets/images/vercel-telemetry-v2/image-7.png)
+![PR diff stats](https://akshaychugh.xyz/assets/images/vercel-telemetry-v2/image-7.png)
 
 Not just a corporate band-aid -- a real company taking real action. Quickly!
 

@@ -11,14 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    if (savedTheme) {
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      updateThemeIcon(savedTheme);
-    } else if (systemPrefersDark) {
-      updateThemeIcon('dark');
-    } else {
-      updateThemeIcon('light');
-    }
+    const activeTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', activeTheme);
+    updateThemeIcon(activeTheme);
   }
 
   function updateThemeIcon(theme) {
@@ -33,18 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    let newTheme;
-    if (currentTheme === 'dark') {
-      newTheme = 'light';
-    } else if (currentTheme === 'light') {
-      newTheme = 'dark';
-    } else {
-      // No explicit theme set, use opposite of system preference
-      newTheme = systemPrefersDark ? 'light' : 'dark';
-    }
-    
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(newTheme);
@@ -56,7 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Listen for system theme changes
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
     if (!localStorage.getItem('theme')) {
-      updateThemeIcon(e.matches ? 'dark' : 'light');
+      const newTheme = e.matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      updateThemeIcon(newTheme);
     }
   });
 

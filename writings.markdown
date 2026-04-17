@@ -11,7 +11,6 @@ permalink: /writings/
 <button class="wr-filter" onclick="filterWritings('png', this)">product & growth</button>
 <button class="wr-filter" onclick="filterWritings('life', this)">life</button>
 <button class="wr-filter" onclick="filterWritings('fitness', this)">fitness</button>
-<button class="wr-filter" onclick="filterWritings('web3', this)">web3</button>
 </div>
 
 {% assign empty_array = "" | split: "," %}

@@ -6,20 +6,20 @@ permalink: /side-projects/
 
 ## Things I've built, with my bestie Claude Code 🧡
 
-- <a href="https://fourplay.fun" target="_blank" rel="noopener noreferrer">FourPlay</a> <span style="float: right; color: #888;"><small>15 Feb 2026</small></span>
-  <div style="color: #666;">Wordle meets numbers - multiplayer guessing game, specially fun for couples :).</div>
+- <a href="https://fourplay.fun" target="_blank" rel="noopener noreferrer">FourPlay</a> <span style="float: right; color: var(--text-secondary);"><small>15 Feb 2026</small></span>
+  <div style="color: var(--text-secondary);">Wordle meets numbers - multiplayer guessing game, specially fun for couples :).</div>
 
-- <a href="https://blunderbuddy.pro/" target="_blank" rel="noopener noreferrer">BlunderBuddy</a> <span style="float: right; color: #888;"><small>01 Jul 2025</small></span>
-  <div style="color: #666;">AI-powered personalized chess insights that actually make sense.</div>
+- <a href="https://blunderbuddy.pro/" target="_blank" rel="noopener noreferrer">BlunderBuddy</a> <span style="float: right; color: var(--text-secondary);"><small>01 Jul 2025</small></span>
+  <div style="color: var(--text-secondary);">AI-powered personalized chess insights that actually make sense.</div>
 
-- <a href="https://simpleeval.com/" target="_blank" rel="noopener noreferrer">Simple Eval</a> <span style="float: right; color: #888;"><small>01 Jun 2025</small></span>
-  <div style="color: #666;">Connect your vibecoded app & get auto-suggest evals to improve performance.</div>
+- <a href="https://simpleeval.com/" target="_blank" rel="noopener noreferrer">Simple Eval</a> <span style="float: right; color: var(--text-secondary);"><small>01 Jun 2025</small></span>
+  <div style="color: var(--text-secondary);">Connect your vibecoded app & get auto-suggest evals to improve performance.</div>
 
-- <a href="https://quickyap.akshaychugh.xyz/" target="_blank" rel="noopener noreferrer">quickyap</a> <span style="float: right; color: #888;"><small>01 Dec 2024</small></span>
-  <div style="color: #666;">Get your computer to work at the speed of your thoughts. Just speak and get instant text in any app.</div>
+- <a href="https://quickyap.akshaychugh.xyz/" target="_blank" rel="noopener noreferrer">quickyap</a> <span style="float: right; color: var(--text-secondary);"><small>01 Dec 2024</small></span>
+  <div style="color: var(--text-secondary);">Get your computer to work at the speed of your thoughts. Just speak and get instant text in any app.</div>
 
-- <a href="https://better-reads.akshaychugh.xyz/" target="_blank" rel="noopener noreferrer">better-reads</a> <span style="float: right; color: #888;"><small>05 Nov 2024</small></span>
-  <div style="color: #666;">A better way to discover book recommendations from your endless goodreads library!</div>
+- <a href="https://better-reads.akshaychugh.xyz/" target="_blank" rel="noopener noreferrer">better-reads</a> <span style="float: right; color: var(--text-secondary);"><small>05 Nov 2024</small></span>
+  <div style="color: var(--text-secondary);">A better way to discover book recommendations from your endless goodreads library!</div>
 
 
 

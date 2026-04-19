@@ -20,7 +20,15 @@ layout: default
     </div>
   </div>
 
-  <div class="bento-tile">
+  {% assign empty_array = "" | split: "," %}
+  {% assign writings_posts = empty_array %}
+  {% if site.categories.png %}{% assign writings_posts = writings_posts | concat: site.categories.png %}{% endif %}
+  {% if site.categories.fitness %}{% assign writings_posts = writings_posts | concat: site.categories.fitness %}{% endif %}
+  {% if site.categories.life %}{% assign writings_posts = writings_posts | concat: site.categories.life %}{% endif %}
+  {% if site.categories.web3 %}{% assign writings_posts = writings_posts | concat: site.categories.web3 %}{% endif %}
+  {% assign writings_posts = writings_posts | sort: 'date' | reverse %}
+
+  <div class="bento-tile bento-tile--scroll">
     <div class="bento-label">
       <span class="bento-label-left">
         <span class="bento-label-dot"></span>
@@ -28,31 +36,17 @@ layout: default
       </span>
       <a href="/writings/" class="bento-view-all">View all &rarr;</a>
     </div>
-    <ul class="bento-list">
+    <ul class="bento-list bento-list--scroll">
+      {% for post in writings_posts %}
       <li>
-        <a href="/writings/png/vercel-plugin-telemetry-update">What Happened After My Vercel Plugin Post Hit #1 on Hacker News</a>
-        <div class="bento-item-date">Apr 2026</div>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        <div class="bento-item-date">{{ post.date | date: "%b %Y" }}</div>
       </li>
-      <li>
-        <a href="/writings/png/vercel-plugin-telemetry">The Vercel Plugin on Claude Code wants to read all your prompts!</a>
-        <div class="bento-item-date">Apr 2026</div>
-      </li>
-      <li>
-        <a href="/writings/png/how-does-g2-survive">How does G2 survive?</a>
-        <div class="bento-item-date">Mar 2026</div>
-      </li>
-      <li>
-        <a href="/writings/png/how-claude-code-chooses">How Claude Code Chooses - A deep dive on email providers</a>
-        <div class="bento-item-date">Feb 2026</div>
-      </li>
-      <li>
-        <a href="/writings/life/you-are-average-but-so-are-your-problems">You are average, but so are your problems</a>
-        <div class="bento-item-date">Feb 2026</div>
-      </li>
+      {% endfor %}
     </ul>
   </div>
 
-  <div class="bento-tile">
+  <div class="bento-tile bento-tile--scroll">
     <div class="bento-label">
       <span class="bento-label-left">
         <span class="bento-label-dot"></span>
@@ -60,23 +54,18 @@ layout: default
       </span>
       <a href="/side-projects/" class="bento-view-all">View all &rarr;</a>
     </div>
-    <ul class="bento-list">
+    <ul class="bento-list bento-list--scroll">
+      {% assign projects = site.data.projects | sort: 'date' | reverse %}
+      {% for project in projects %}
       <li>
-        <a href="https://fourplay.fun" target="_blank" rel="noopener noreferrer">FourPlay</a>
-        <div class="bento-project-desc">Wordle meets numbers - multiplayer guessing game, specially fun for couples :).</div>
+        <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer">{{ project.name }}</a>
+        <div class="bento-project-desc">{{ project.description }}</div>
       </li>
-      <li>
-        <a href="https://blunderbuddy.pro/" target="_blank" rel="noopener noreferrer">BlunderBuddy</a>
-        <div class="bento-project-desc">AI-powered personalized chess insights that actually make sense.</div>
-      </li>
-      <li>
-        <a href="https://simpleeval.com/" target="_blank" rel="noopener noreferrer">Simple Eval</a>
-        <div class="bento-project-desc">Connect your vibecoded app & get auto-suggest evals to improve performance.</div>
-      </li>
+      {% endfor %}
     </ul>
   </div>
 
-  <div class="bento-tile">
+  <div class="bento-tile bento-tile--scroll">
     <div class="bento-label">
       <span class="bento-label-left">
         <span class="bento-label-dot"></span>
@@ -84,8 +73,9 @@ layout: default
       </span>
       <a href="/til/" class="bento-view-all">View all &rarr;</a>
     </div>
-    <ul class="bento-list">
-      {% for til in site.data.til limit:2 %}
+    <ul class="bento-list bento-list--scroll bento-list--scroll-sm">
+      {% assign tils = site.data.til | sort: 'date' | reverse %}
+      {% for til in tils %}
       <li>
         <div class="bento-til-text">{{ til.title | markdownify | remove: '<p>' | remove: '</p>' }}</div>
         <div class="bento-item-date">{{ til.date | date: "%b %-d, %Y" }}</div>
@@ -94,19 +84,21 @@ layout: default
     </ul>
   </div>
 
-  <div class="bento-tile">
+  <div class="bento-tile bento-tile--subscribe">
     <div class="bento-label">
       <span class="bento-label-left">
         <span class="bento-label-dot"></span>
         Subscribe
       </span>
     </div>
+    <div class="bento-subscribe-body">
     <div class="bento-subscribe-text">Get new posts delivered to your inbox. No spam, unsubscribe anytime.</div>
     <form class="bento-subscribe-form" id="newsletter-form">
       <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required autocomplete="email">
       <button type="submit" id="newsletter-submit">Subscribe</button>
     </form>
     <p class="form-message" id="form-message"></p>
+    </div>
   </div>
 
 </div>

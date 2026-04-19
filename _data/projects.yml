@@ -1,0 +1,24 @@
+- name: FourPlay
+  url: https://fourplay.fun
+  date: 2026-02-15
+  description: "Wordle meets numbers - multiplayer guessing game, specially fun for couples :)."
+
+- name: BlunderBuddy
+  url: https://blunderbuddy.pro/
+  date: 2025-07-01
+  description: "AI-powered personalized chess insights that actually make sense."
+
+- name: Simple Eval
+  url: https://simpleeval.com/
+  date: 2025-06-01
+  description: "Connect your vibecoded app & get auto-suggest evals to improve performance."
+
+- name: quickyap
+  url: https://quickyap.akshaychugh.xyz/
+  date: 2024-12-01
+  description: "Get your computer to work at the speed of your thoughts. Just speak and get instant text in any app."
+
+- name: better-reads
+  url: https://better-reads.akshaychugh.xyz/
+  date: 2024-11-05
+  description: "A better way to discover book recommendations from your endless goodreads library!"

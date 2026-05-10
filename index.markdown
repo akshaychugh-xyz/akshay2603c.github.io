@@ -6,10 +6,10 @@ layout: default
 
   <div class="bento-tile bento-tile--intro">
     <div class="bento-intro-wave">&#x1F44B;</div>
-    <div class="bento-intro-name">Hi, I am Akshay.</div>
+    <div class="bento-intro-name" data-handwriting="Hi, I am Akshay." data-handwriting-size="2.4rem">Hi, I am Akshay.</div>
     <div class="bento-intro-bio">Welcome to my little garden on the Internet! I currently lead Product for Coinbase India and am obsessed with Claude Code on the side.</div>
     <div class="bento-github-section">
-      <div class="bento-label">
+      <div class="bento-label bento-label--handwritten">
         <span class="bento-label-left">
           <span class="bento-label-dot"></span>
           Proudest about, IYKYK :)
@@ -29,7 +29,7 @@ layout: default
   {% assign writings_posts = writings_posts | sort: 'date' | reverse %}
 
   <div class="bento-tile bento-tile--scroll">
-    <div class="bento-label">
+    <div class="bento-label bento-label--handwritten">
       <span class="bento-label-left">
         <span class="bento-label-dot"></span>
         Writings
@@ -47,7 +47,7 @@ layout: default
   </div>
 
   <div class="bento-tile bento-tile--scroll">
-    <div class="bento-label">
+    <div class="bento-label bento-label--handwritten">
       <span class="bento-label-left">
         <span class="bento-label-dot"></span>
         Side Projects
@@ -66,7 +66,7 @@ layout: default
   </div>
 
   <div class="bento-tile bento-tile--scroll">
-    <div class="bento-label">
+    <div class="bento-label bento-label--handwritten">
       <span class="bento-label-left">
         <span class="bento-label-dot"></span>
         Today I Learnt
@@ -85,7 +85,7 @@ layout: default
   </div>
 
   <div class="bento-tile bento-tile--subscribe">
-    <div class="bento-label">
+    <div class="bento-label bento-label--handwritten">
       <span class="bento-label-left">
         <span class="bento-label-dot"></span>
         Subscribe
@@ -102,3 +102,41 @@ layout: default
   </div>
 
 </div>
+
+{% raw %}
+<script type="module">
+  import { registerTegakiElement, TegakiEngine } from "https://esm.sh/tegaki@0.17.1/wc";
+  import caveat from "https://esm.sh/tegaki@0.17.1/fonts/caveat";
+
+  TegakiEngine.registerBundle(caveat);
+  registerTegakiElement();
+
+  const HW_DURATION = 1.7;
+  const accent = () =>
+    getComputedStyle(document.documentElement).getPropertyValue("--color-orange").trim() || "#DA702C";
+
+  function makeTegaki(slot) {
+    const text = slot.dataset.handwriting || slot.textContent.trim();
+    const fontSize = slot.dataset.handwritingSize || "1.1rem";
+    slot.textContent = "";
+    const el = document.createElement("tegaki-renderer");
+    el.setAttribute("text", text);
+    el.setAttribute("duration", String(HW_DURATION));
+    el.style.fontSize = fontSize;
+    el.style.color = accent();
+    el.font = caveat;
+    slot.appendChild(el);
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        makeTegaki(entry.target);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4, rootMargin: "0px 0px -5% 0px" });
+
+  document.querySelectorAll("[data-handwriting]").forEach((el) => io.observe(el));
+</script>
+{% endraw %}

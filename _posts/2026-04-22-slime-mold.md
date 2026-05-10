@@ -12,7 +12,6 @@ source: "https://komoroske.com/slime-mold/"
 **Original Link:** [komoroske.com/slime-mold/](https://komoroske.com/slime-mold/)
 
 ---
-# Slime Mold
 
 ## My Reflections
 

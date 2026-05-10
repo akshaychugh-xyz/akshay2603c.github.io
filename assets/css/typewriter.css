@@ -946,6 +946,48 @@ body {
 
 .bento-view-all:hover { color: var(--color-orange); }
 
+/* Static handwritten styling for tile labels — Caveat font, orange, no animation */
+.bento-label--handwritten {
+  font-family: "Caveat", cursive;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 20px;
+  color: var(--color-orange);
+}
+.bento-label--handwritten .bento-view-all {
+  font-family: "Caveat", cursive;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--color-orange);
+}
+.bento-label--handwritten .bento-view-all:hover { color: var(--color-orange); opacity: 0.75; }
+
+.bento-intro-name tegaki-renderer { vertical-align: baseline; }
+
+/* Caveat handwriting treatment for site title, nav menu + footer */
+.site-title {
+  font-family: "Caveat", cursive !important;
+  font-weight: 600 !important;
+  font-size: 2rem !important;
+  letter-spacing: 0 !important;
+}
+.menu-items a {
+  font-family: "Caveat", cursive;
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: 0;
+}
+.site-footer .footer-text,
+.site-footer .footer-text i,
+.site-footer .footer-text a {
+  font-family: "Caveat", cursive;
+  font-weight: 400;
+  font-size: 1.15rem;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
 /* Bento content lists */
 .bento-list {
   list-style: none;

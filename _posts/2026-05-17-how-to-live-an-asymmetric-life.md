@@ -12,6 +12,7 @@ source: "https://youtu.be/dZxbVGhpEkI"
 **Original Link:** [Stanford GSB Last Lecture Series on YouTube](https://youtu.be/dZxbVGhpEkI)
 
 ---
+# How to Live an Asymmetric Life
 
 ## My Reflections
 

@@ -5,6 +5,7 @@ permalink: /notes/
 ---
 
 ## Notes and Reflections from things I've consumed
+{: data-handwriting="Notes and Reflections from things I've consumed" }
 
 > Disclaimer: These posts are mainly my reflections from important books and non-books (articles/podcasts/videos etc). 
 > 
@@ -12,7 +13,7 @@ permalink: /notes/
 
 
 
-### Books
+## Books
 
 Check out my [Goodreads profile](https://www.goodreads.com/user/show/47835814-akshay-chugh) for all my book recommendations (maintained since 2021 Jan).
 
@@ -24,7 +25,7 @@ Check out my [Goodreads profile](https://www.goodreads.com/user/show/47835814-ak
   {% endfor %}
 </ul>
 
-### Non-Books
+## Non-Books
 
 <ul>
   {% for post in site.categories.non-books %}

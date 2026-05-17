@@ -5,7 +5,7 @@ permalink: /til/
 ---
 
 <div class="til-header">
-<h2>A running log of (small) things I learnt!</h2>
+<h2 data-handwriting="A running log of (small) things I learnt!">A running log of (small) things I learnt!</h2>
 <button class="til-toggle" onclick="toggleAllTil(this)"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg> expand all</button>
 </div>
 

@@ -152,8 +152,17 @@ body {
     transition: color 0.3s ease;
   }
 
-  h1 { font-size: 2.2em; }
-  h2 { font-size: 1.8em; }
+  h1, h2 {
+    font-family: "Caveat", cursive;
+    font-weight: 600;
+    color: var(--color-orange);
+    letter-spacing: 0;
+    line-height: 1.15;
+  }
+
+
+  h1 { font-size: 2.8em; }
+  h2 { font-size: 2.2em; }
   h3 {
     font-size: 0.85em;
     font-weight: 500;
@@ -708,8 +717,12 @@ body {
 }
 
 .subscribe-section[data-variant="3"] .subscribe-text {
-  font-size: 0.88em;
-  color: var(--text-secondary);
+  font-family: "Caveat", cursive;
+  font-size: 1.25em;
+  font-weight: 600;
+  color: var(--color-orange);
+  letter-spacing: 0;
+  line-height: 1.1;
 }
 
 .subscribe-section[data-variant="3"] .subscribe-form-row {
@@ -742,9 +755,12 @@ body {
 }
 
 .subscribe-section[data-variant="3"] button[type="submit"] {
-  padding: 0.35em 0.6em;
-  font-size: 0.95em;
-  font-family: inherit;
+  padding: 0.2em 0.6em 0.35em;
+  font-size: 1.2em;
+  font-family: "Caveat", cursive;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.1;
   color: var(--color-orange);
   background: transparent;
   border: none;
@@ -932,6 +948,42 @@ body {
   border-radius: 50%;
   background: var(--color-orange);
   flex-shrink: 0;
+  transform-origin: center;
+}
+
+@keyframes hw-ink-in {
+  0%   { transform: scale(0);   opacity: 0; }
+  60%  { transform: scale(1.4); opacity: 1; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+.bento-label-dot.is-in-view {
+  animation: hw-ink-in 0.6s cubic-bezier(.2,.8,.2,1) backwards;
+}
+
+.wr-year-label.is-in-view::before,
+.til-month-label.is-in-view::before {
+  animation: hw-ink-in 0.6s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+.wr-year-label,
+.til-month-label {
+  position: relative;
+  padding-left: 14px;
+}
+
+.wr-year-label::before,
+.til-month-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-orange);
+  transform: scale(0);
+  opacity: 0;
 }
 
 .bento-view-all {
@@ -1127,10 +1179,12 @@ body {
 
 .bento-subscribe-form button {
   width: 100%;
-  padding: 10px 20px;
-  font-size: 14px;
+  padding: 8px 20px 10px;
+  font-size: 20px;
   font-weight: 600;
-  font-family: inherit;
+  font-family: "Caveat", cursive;
+  letter-spacing: 0;
+  line-height: 1.2;
   color: #FFFFFF;
   background: var(--color-orange);
   border: none;
@@ -1170,17 +1224,21 @@ body {
   flex-wrap: wrap;
   gap: 0.4em;
   margin-bottom: 1.8em;
+  position: relative;
 }
 
 .wr-filter {
-  font-family: inherit;
-  font-size: 0.75em;
+  font-family: "Caveat", cursive;
+  font-size: 1.05em;
+  font-weight: 600;
   color: var(--text-secondary);
   background: none;
   border: 1px solid var(--border-color);
-  border-radius: 3px;
-  padding: 0.2em 0.6em;
+  border-radius: 4px;
+  padding: 0.05em 0.7em 0.15em;
   cursor: pointer;
+  letter-spacing: 0;
+  line-height: 1.2;
   transition: all 0.2s ease;
 }
 
@@ -1190,9 +1248,9 @@ body {
 }
 
 .wr-filter.active {
-  color: var(--color-paper);
-  background: var(--color-orange);
-  border-color: var(--color-orange);
+  color: var(--color-orange);
+  background: transparent;
+  border-color: transparent;
 }
 
 .wr-year-group {
@@ -1204,11 +1262,13 @@ body {
 }
 
 .wr-year-label {
-  font-size: 1.6em;
+  font-family: "Caveat", cursive;
+  font-size: 2em;
   font-weight: 600;
   color: var(--color-orange);
-  margin-bottom: 0.5em;
-  letter-spacing: -0.01em;
+  margin-bottom: 0.4em;
+  letter-spacing: 0;
+  line-height: 1.1;
 }
 
 .wr-year-list {
@@ -1285,15 +1345,17 @@ body {
 }
 
 .til-toggle {
-  font-family: inherit;
-  font-size: 0.72em;
+  font-family: "Caveat", cursive;
+  font-size: 1.05em;
+  font-weight: 600;
   color: var(--text-secondary);
   background: none;
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  padding: 0.25em 0.7em;
+  padding: 0.05em 0.7em 0.15em;
   cursor: pointer;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
+  line-height: 1.2;
   white-space: nowrap;
   transition: all 0.2s ease;
   display: flex;
@@ -1320,14 +1382,16 @@ body {
 }
 
 .til-month-label {
-  font-size: 0.8em;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-secondary);
-  margin-bottom: 0.8em;
-  padding-bottom: 0.3em;
+  font-family: "Caveat", cursive;
+  font-size: 1.55em;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--color-orange);
+  margin-bottom: 0.5em;
+  padding-bottom: 0.25em;
   border-bottom: 1px solid var(--border-color);
+  line-height: 1.1;
 }
 
 .til-timeline {

@@ -20,7 +20,7 @@
   </script>
   {% endif %}
 </head>
-<body>
+<body{% if page.categories.size > 0 %} class="is-post"{% endif %}>
   {% include header.html %}
   <div class="container">
     {{ content }}
@@ -30,5 +30,6 @@
   </div>
   {% include footer.html %}
   <script src="{{ "/assets/js/script.js" | relative_url }}"></script>
+  <script type="module" src="{{ "/assets/js/handwriting.js" | relative_url }}"></script>
 </body>
 </html>

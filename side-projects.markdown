@@ -5,6 +5,7 @@ permalink: /side-projects/
 ---
 
 ## Things I've built, with my bestie Claude Code 🧡
+{: data-handwriting="Things I've built, with my bestie Claude Code" data-handwriting-suffix="🧡" }
 
 {% assign projects = site.data.projects | sort: 'date' | reverse %}
 {% for project in projects %}

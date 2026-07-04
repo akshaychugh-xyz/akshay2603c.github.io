@@ -4,7 +4,7 @@ title: uses this
 permalink: /uses-this/
 ---
 
-<small>Last updated: May 2026</small>
+<small>Last updated: July 2026</small>
 
 # uses this
 
@@ -20,6 +20,7 @@ A running list of the hardware and software I actually use day to day. Inspired 
 - **Webcam:** [Logitech C920 HD Pro](https://www.amazon.in/dp/B006JH8T3S)
 - **Standing desk:** [IKEA Trotten](https://www.ikea.com/in/en/p/trotten-desk-sit-stand-white-s59429603/) (manually cranked, 120×70cm)
 - **Desk mat:** DailyObjects
+- **Floor lamp:** [Homecentre Kyoto Study Metal Floor Lamp](https://www.homecentre.in/in/en/Decor/Lighting/Floor-Lamps/HOMECENTRE-Kyoto-Study-Metal-Floor-Lamp/p/1000015317583)
 - **Speakers:** Bose
 - **Phone:** Pixel 9
 - **Earbuds:** Pixel Buds

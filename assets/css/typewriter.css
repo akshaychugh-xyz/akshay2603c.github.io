@@ -877,6 +877,9 @@ body {
 
 .bento-github-chart {
   width: 100%;
+  /* The img carries width/height attributes to reserve space and avoid layout
+     shift; height:auto keeps the aspect ratio once width:100% takes over. */
+  height: auto;
   border-radius: 4px;
   transition: filter 0.3s ease;
 }

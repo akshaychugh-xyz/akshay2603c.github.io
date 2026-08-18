@@ -50,6 +50,7 @@ bundle exec jekyll build
 - **Mobile navigation**: Collapsible hamburger menu for screens <600px
 - **Custom styling**: Extensive CSS overrides in `assets/css/typewriter.css`
 - **JavaScript functionality**: Theme switching and mobile menu in `assets/js/script.js`
+- **GitHub contribution chart**: `assets/images/github-contributions.svg`, regenerated daily by the `Update GitHub Contribution Chart` workflow (`.github/scripts/build-github-chart.js`). Self-hosted rather than hotlinked, so a third-party outage can't blank the homepage. Don't edit the SVG by hand — it is overwritten on each run.
 
 ## Content Guidelines
 

@@ -16,7 +16,7 @@ layout: default
         </span>
         <a href="https://github.com/akshaychugh-xyz" target="_blank" rel="noopener noreferrer" class="bento-view-all">GitHub &rarr;</a>
       </div>
-      <img src="{{ '/assets/images/github-contributions.svg' | relative_url }}" width="686" height="88" alt="GitHub contribution graph" class="bento-github-chart" />
+      <img src="{{ '/assets/images/github-contributions.svg' | relative_url }}" width="686" height="88" alt="GitHub contribution graph" class="bento-github-chart" onerror="this.onerror=null; this.src='https://ghchart.rshah.org/2EA44E/akshaychugh-xyz';" />
     </div>
   </div>
 

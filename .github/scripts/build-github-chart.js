@@ -72,15 +72,33 @@ async function fetchFromPublicHTML(login) {
   if (!res.ok) throw new Error(`Contributions page responded ${res.status}`);
 
   const html = await res.text();
+
+  // Counts live in <tool-tip for="cell-id">N contributions on DATE</tool-tip>
+  // elements linked to each cell by id, so map id -> count first. GitHub also
+  // still emits an aria-label on many cells; both are handled below. The bare
+  // number is what we want ("No contributions" -> 0).
+  const countById = new Map();
+  for (const [, id, text] of html.matchAll(/<tool-tip[^>]*\bfor="([^"]+)"[^>]*>(.*?)<\/tool-tip>/gs)) {
+    countById.set(id, /^\s*no contribution/i.test(text) ? 0 : Number(text.match(/(\d[\d,]*)/)?.[1]?.replace(/,/g, '') ?? 0));
+  }
+
   const days = [];
-  const cellPattern = /<td[^>]*\bdata-date="(\d{4}-\d{2}-\d{2})"[^>]*>/g;
+  // The day cells are <td> today, but GitHub has shipped <rect> in the past;
+  // accept either so a future markup swap degrades to colors-only, not zero days.
+  const cellPattern = /<(?:td|rect)[^>]*\bdata-date="(\d{4}-\d{2}-\d{2})"[^>]*>/g;
 
   for (const [tag, date] of html.matchAll(cellPattern)) {
-    days.push({
-      date,
-      count: Number(tag.match(/data-count="(\d+)"/)?.[1] ?? 0),
-      level: Number(tag.match(/data-level="(\d)"/)?.[1] ?? 0),
-    });
+    // Prefer the linked tooltip; fall back to an aria-label on the cell, then
+    // to the legacy data-count attribute. Colors come from data-level, which
+    // is the one field that has stayed put across every markup revision.
+    const id = tag.match(/\bid="([^"]+)"/)?.[1];
+    const ariaCount = tag.match(/aria-label="(?:no contribution|(\d[\d,]*))/i);
+    const count =
+      (id && countById.has(id)) ? countById.get(id)
+      : ariaCount ? Number((ariaCount[1] ?? '0').replace(/,/g, ''))
+      : Number(tag.match(/data-count="(\d+)"/)?.[1] ?? 0);
+
+    days.push({ date, count, level: Number(tag.match(/data-level="(\d)"/)?.[1] ?? 0) });
   }
 
   if (!days.length) throw new Error('Could not parse any days from the contributions page');

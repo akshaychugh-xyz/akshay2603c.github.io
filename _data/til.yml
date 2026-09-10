@@ -1,3 +1,10 @@
+- date: 2026-09-10
+  title: "The three squares in the corners of every QR code use a fixed 1:1:3:1:1 black-white ratio - picked in 1994 by measuring stacks of magazines and boxes to find the one pattern that almost never shows up in normal print, so a scanner locks on instantly and never mistakes a busy cereal box for a code"
+  details: |
+    That 1:1:3:1:1 rule is why the ratio survives no matter how you rotate the code - scan a line through any of the three corner squares from any angle, and you hit black-white-black-white-black in that same proportion. The scanner isn't looking for a shape, it's looking for that rhythm, and the 1994 team chose it precisely because it's rare in ordinary print.
+
+    The other half of the magic is error correction. A QR code carries so much backup data that you can tear, smudge, or cover up to ~30% of it and it still scans - which is exactly how a brand stamps its logo in the middle without breaking the code.
+
 - date: 2026-09-05
   title: "The Cmd+Tab switcher only ever lists 'Regular' apps - which is why menu-bar utilities like Rectangle or 1Password's helper run the whole time but never show up when you tab through. macOS lets an app declare itself an *Accessory* and stay invisible instead"
   details: |

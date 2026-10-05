@@ -7,8 +7,21 @@
   <title>{% if page.title %}{{ page.title | escape }} | {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Handwriting assets are self-hosted and preloaded so they arrive in one hop from this site (no Google Fonts / esm.sh chain) -->
+  <link rel="preload" href="{{ "/assets/fonts/caveat-latin.woff2" | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ "/assets/lib/tegaki/fonts/caveat-3dc76002.ttf" | relative_url }}" as="font" type="font/ttf" crossorigin>
+  <link rel="modulepreload" href="{{ "/assets/js/handwriting.js" | relative_url }}">
+  <link rel="modulepreload" href="{{ "/assets/lib/tegaki/wc.bundle.mjs" | relative_url }}">
+  <link rel="modulepreload" href="{{ "/assets/lib/tegaki/dist/core-Cbi21OMg.mjs" | relative_url }}">
+  <link rel="modulepreload" href="{{ "/assets/lib/tegaki/fonts/caveat.bundle.mjs" | relative_url }}">
+  <style>@font-face{font-family:"Caveat";font-style:normal;font-weight:400 700;font-display:block;src:url("{{ "/assets/fonts/caveat-latin.woff2" | relative_url }}") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}</style>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ "/assets/css/typewriter.css" | relative_url }}">
+  <!-- Handwriting headings stay invisible (space kept) until the animation starts, so they don't flash serif -> Newsreader -> handwriting.
+       Safety net: reveal the plain text after 2.5s if the script is slow or fails; and always without JS. -->
+  <style>[data-handwriting]:not(.hw-ready){color:transparent}</style>
+  <noscript><style>[data-handwriting]{color:inherit !important}</style></noscript>
+  <script>setTimeout(function(){document.querySelectorAll('[data-handwriting]').forEach(function(e){e.classList.add('hw-ready')})},2500)</script>
   {% seo %}
 
   {% if site.google_analytics %}

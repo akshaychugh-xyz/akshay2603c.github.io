@@ -1,5 +1,5 @@
-import { registerTegakiElement, TegakiEngine } from "https://esm.sh/tegaki@0.17.1/wc";
-import caveat from "https://esm.sh/tegaki@0.17.1/fonts/caveat";
+import { registerTegakiElement, TegakiEngine } from "../lib/tegaki/wc.bundle.mjs";
+import caveat from "../lib/tegaki/fonts/caveat.bundle.mjs";
 
 TegakiEngine.registerBundle(caveat);
 registerTegakiElement();
@@ -19,6 +19,7 @@ function makeTegaki(slot) {
                    clamp(text.length * 0.035, 0.6, 1.4);
 
   slot.textContent = "";
+  slot.classList.add("hw-ready");
 
   const el = document.createElement("tegaki-renderer");
   el.setAttribute("text", text);

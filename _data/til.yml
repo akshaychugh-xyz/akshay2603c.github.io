@@ -1,3 +1,12 @@
+- date: 2026-10-05
+  title: "Send a WhatsApp link too fast and it goes out without a preview, and stays bare on the other person's phone too. Your own phone builds the preview before it sends, so if you hit enter early, there's nothing for them to show"
+  details: |
+    WhatsApp builds link previews on the sender's side: your phone opens the link, grabs the title, description and thumbnail, and ships them inside the encrypted message. The receiver's phone never touches the link. That's a privacy choice: if the receiver's app fetched it, anyone could learn your IP just by sending you a link to their server.
+
+    Telegram does the opposite. Its servers build the preview, which is why it fills in even when you send instantly. Even in Telegram's encrypted Secret Chats, turning on previews shows this warning: "Note that link previews are generated on Telegram servers."
+
+    I noticed this sending a YouTube link to a friend: the one I sent instantly stayed a bare "youtube.com" on both our phones, the one I sent a few seconds later had the full card.
+
 - date: 2026-09-10
   title: "The three squares in the corners of every QR code use a fixed 1:1:3:1:1 black-white ratio - picked in 1994 by measuring stacks of magazines and boxes to find the one pattern that almost never shows up in normal print, so a scanner locks on instantly and never mistakes a busy cereal box for a code"
   details: |

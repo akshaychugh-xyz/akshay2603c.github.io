@@ -51,30 +51,101 @@ function doGet(e) {
 
 /**
  * Handle POST requests (subscribe)
+ *
+ * Every outcome returns the same generic success body, so a bot can't tell
+ * whether it was dropped. Only submissions that pass passesSpamGuard() reach
+ * the sheet or trigger a confirmation email.
  */
 function doPost(e) {
   try {
-    const data = JSON.parse(e.postData.contents);
-    const email = data.email;
+    const data = JSON.parse((e && e.postData && e.postData.contents) || '{}');
+    const email = String(data.email || '').trim();
 
     if (!email || !isValidEmail(email)) {
-      return ContentService.createTextOutput(
-        JSON.stringify({ success: false, error: 'Invalid email' })
-      ).setMimeType(ContentService.MimeType.JSON);
+      return genericOk();
     }
 
-    const result = handleSubscribe(email);
+    const verdict = passesSpamGuard(data, email.toLowerCase());
+    if (!verdict.ok) {
+      // Domain + reason only; no full address in logs.
+      console.log('Subscribe dropped: ' + verdict.reason + ' (@' + email.split('@').pop() + ')');
+      return genericOk();
+    }
 
-    return ContentService.createTextOutput(JSON.stringify(result)).setMimeType(
-      ContentService.MimeType.JSON
-    );
+    handleSubscribe(email);
+    return genericOk();
   } catch (error) {
     console.error('Error in doPost:', error);
-    return ContentService.createTextOutput(
-      JSON.stringify({ success: false, error: error.message })
-    ).setMimeType(ContentService.MimeType.JSON);
+    return genericOk();
   }
 }
+
+// ============== SPAM GUARD (BEGIN) ==============
+const SPAM_GUARD = {
+  MIN_ELAPSED_MS: 2500,          // humans need > 2.5s to type an email and click
+  MAX_ELAPSED_MS: 24 * 60 * 60 * 1000, // ignore absurd values (forged / stale)
+  GLOBAL_MAX_PER_WINDOW: 5,      // signups allowed site-wide per window
+  GLOBAL_WINDOW_SEC: 600,        // 10 minutes
+  PER_EMAIL_WINDOW_SEC: 21600,   // 6h (CacheService max): 1 confirmation mail per address
+  MAX_GMAIL_DOTS: 2,             // a.b.c.d@gmail.com = 3 dots = bot pattern
+  BLOCKED_DOMAINS: [
+    // SMS / MMS email-to-text gateways
+    'txt.att.net', 'mms.att.net', 'vtext.com', 'vzwpix.com', 'tmomail.net',
+    'messaging.sprintpcs.com', 'pm.sprint.com', 'mymetropcs.com',
+    'sms.myboostmobile.com', 'myboostmobile.com', 'sms.cricketwireless.net',
+    'mms.cricketwireless.net', 'msg.fi.google.com', 'email.uscc.net',
+    'mms.uscc.net', 'vmobl.com', 'text.republicwireless.com',
+    'txt.bell.ca', 'pcs.rogers.com', 'msg.telus.com',
+  ],
+};
+
+function passesSpamGuard(data, email) {
+  // 1. Honeypot: hidden field humans never see. Anything in it = bot.
+  if (data.website) return { ok: false, reason: 'honeypot' };
+
+  // 2. Must come from the current form (v2 sends elapsed_ms). Direct POSTs of
+  //    just {email} to this public URL fail here.
+  if (data.v !== 2) return { ok: false, reason: 'missing-form-fields' };
+  const elapsed = Number(data.elapsed_ms);
+  if (!isFinite(elapsed) || elapsed < SPAM_GUARD.MIN_ELAPSED_MS || elapsed > SPAM_GUARD.MAX_ELAPSED_MS) {
+    return { ok: false, reason: 'timing' };
+  }
+
+  // 3. Address patterns bots use.
+  const at = email.lastIndexOf('@');
+  const local = email.slice(0, at).split('+')[0];
+  const domain = email.slice(at + 1);
+  if ((domain === 'gmail.com' || domain === 'googlemail.com') &&
+      (local.match(/\./g) || []).length > SPAM_GUARD.MAX_GMAIL_DOTS) {
+    return { ok: false, reason: 'dotted-gmail' };
+  }
+  if (SPAM_GUARD.BLOCKED_DOMAINS.indexOf(domain) !== -1) {
+    return { ok: false, reason: 'sms-gateway' };
+  }
+
+  // 4. Rate limits (CacheService; best effort, no lock needed at this volume).
+  const cache = CacheService.getScriptCache();
+  const emailKey = 'sub:' + Utilities.base64EncodeWebSafe(
+    Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, email)
+  ).slice(0, 40);
+  if (cache.get(emailKey)) return { ok: false, reason: 'per-email-rate' };
+
+  const bucket = Math.floor(Date.now() / (SPAM_GUARD.GLOBAL_WINDOW_SEC * 1000));
+  const globalKey = 'subs:' + bucket;
+  const count = Number(cache.get(globalKey) || 0);
+  if (count >= SPAM_GUARD.GLOBAL_MAX_PER_WINDOW) return { ok: false, reason: 'global-rate' };
+
+  cache.put(globalKey, String(count + 1), SPAM_GUARD.GLOBAL_WINDOW_SEC);
+  cache.put(emailKey, '1', SPAM_GUARD.PER_EMAIL_WINDOW_SEC);
+  return { ok: true };
+}
+
+function genericOk() {
+  return ContentService.createTextOutput(
+    JSON.stringify({ success: true, message: 'Check your inbox to confirm.' })
+  ).setMimeType(ContentService.MimeType.JSON);
+}
+// ============== SPAM GUARD (END) ==============
 
 /**
  * Handle new subscription

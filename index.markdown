@@ -133,6 +133,10 @@ body_class: home
       <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required autocomplete="email">
       <button type="submit" id="newsletter-submit">Subscribe &rarr;</button>
     </span>
+    <span class="hp-field" aria-hidden="true">
+      <label for="newsletter-website">Leave this field empty</label>
+      <input type="text" id="newsletter-website" name="website" tabindex="-1" autocomplete="off" value="">
+    </span>
     <p class="form-message" id="form-message"></p>
   </form>
 

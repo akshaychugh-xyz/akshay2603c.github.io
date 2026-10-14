@@ -687,6 +687,16 @@ body {
   }
 }
 
+/* Newsletter honeypot: off-screen field humans never see; bots that fill it get dropped server-side */
+.hp-field {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /* Newsletter Subscribe Form - Multiple Variations */
 /* Change data-variant="1" through "5" in HTML to switch */
 

@@ -109,6 +109,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitButton = document.getElementById('newsletter-submit');
     const formMessage = document.getElementById('form-message');
     const submitLabel = submitButton.textContent;
+    const honeypotInput = document.getElementById('newsletter-website');
+    // When the form became usable. The server drops submissions that arrive
+    // too fast (< 3s) or without this, which is what scripted POSTs look like.
+    const formRenderedAt = Date.now();
 
     // TODO: Replace with your Google Apps Script deployment URL
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxSCkJCVFlVvAPvVJOJ3OyG4pBnfGsqTXZ6Zgl4Fn5H0rdPZgWMoTzMzL8VuVJBQ7Nftw/exec';
@@ -118,6 +122,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
       const email = emailInput.value.trim();
       if (!email) return;
+
+      // UX only, not security: catch the dotted-gmail pattern bots use
+      // (a.b.c.d@gmail.com) so a real typo gets a hint. The server re-checks.
+      if (looksLikeBotEmail(email)) {
+        formMessage.textContent = 'Please double-check your email address.';
+        formMessage.className = 'form-message error';
+        return;
+      }
 
       // Update UI to loading state
       submitButton.disabled = true;
@@ -132,7 +144,12 @@ document.addEventListener('DOMContentLoaded', function() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ email: email })
+          body: JSON.stringify({
+            email: email,
+            website: honeypotInput ? honeypotInput.value : '',
+            elapsed_ms: Date.now() - formRenderedAt,
+            v: 2
+          })
         });
 
         // With no-cors, we can't read the response, so assume success
@@ -148,6 +165,14 @@ document.addEventListener('DOMContentLoaded', function() {
         submitButton.textContent = submitLabel;
       }
     });
+  }
+
+  function looksLikeBotEmail(email) {
+    const parts = email.toLowerCase().split('@');
+    if (parts.length !== 2) return false;
+    const local = parts[0].split('+')[0];
+    const isGmail = parts[1] === 'gmail.com' || parts[1] === 'googlemail.com';
+    return isGmail && (local.match(/\./g) || []).length >= 3;
   }
 
   // Homepage TIL tile: cycle through entries with the "Another one" button

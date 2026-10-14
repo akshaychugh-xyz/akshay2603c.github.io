@@ -1,24 +1,41 @@
+# tagline, color and icon are used by the homepage Side Projects tile.
+# icon is the `d` of a 24x24 stroke SVG path; color is the tile background.
 - name: FourPlay
   url: https://fourplay.fun
   date: 2026-02-15
   description: "Wordle meets numbers - multiplayer guessing game, specially fun for couples :)."
+  tagline: "Wordle meets numbers. Multiplayer, specially fun for couples :)"
+  color: "#5E409D"
+  icon: "M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"
 
 - name: BlunderBuddy
   url: https://blunderbuddy.pro/
   date: 2025-07-01
   description: "AI-powered personalized chess insights that actually make sense."
+  tagline: "AI chess insights that actually make sense."
+  color: "#66800B"
+  icon: "M12 3a3 3 0 1 1 0 6a3 3 0 1 1 0-6zM9 11h6M10 11l-2 7M14 11l2 7M5 18h14v2.5H5z"
 
 - name: Simple Eval
   url: https://simpleeval.com/
   date: 2025-06-01
   description: "Connect your vibecoded app & get auto-suggest evals to improve performance."
+  tagline: "Auto-suggested evals for your vibecoded app."
+  color: "#205EA6"
+  icon: "M4 7l2 2 3.5-3.5M4 16l2 2 3.5-3.5M13 7.5h7M13 16.5h7"
 
 - name: quickyap
   url: https://quickyap.akshaychugh.xyz/
   date: 2024-12-01
   description: "Get your computer to work at the speed of your thoughts. Just speak and get instant text in any app."
+  tagline: "Just speak, and get instant text in any app."
+  color: "#A02F6F"
+  icon: "M12 3a3 3 0 0 1 3 3v5a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"
 
 - name: better-reads
   url: https://better-reads.akshaychugh.xyz/
   date: 2024-11-05
   description: "A better way to discover book recommendations from your endless goodreads library!"
+  tagline: "Better book recs from your Goodreads library."
+  color: "#24837B"
+  icon: "M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19"

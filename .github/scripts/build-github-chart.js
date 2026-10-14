@@ -13,8 +13,9 @@ import path from 'path';
 const LOGIN = process.env.GITHUB_CHART_LOGIN || 'akshaychugh-xyz';
 const OUTPUT = process.env.GITHUB_CHART_OUTPUT || 'assets/images/github-contributions.svg';
 
-// GitHub's standard green ramp, indexed by contribution level 0-4. The site's
-// dark mode inverts this image via CSS, so keep the light-mode palette here.
+// GitHub's standard green ramp, indexed by contribution level 0-4. The homepage
+// inlines this SVG and recolours each level per theme by matching these exact
+// fill values in CSS (.home-gh-cal), so keep them lowercase and unchanged.
 const LEVEL_COLORS = ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'];
 const LEVEL_NAMES = { NONE: 0, FIRST_QUARTILE: 1, SECOND_QUARTILE: 2, THIRD_QUARTILE: 3, FOURTH_QUARTILE: 4 };
 

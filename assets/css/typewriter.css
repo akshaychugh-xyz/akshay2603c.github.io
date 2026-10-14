@@ -823,141 +823,549 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   Homepage Bento Grid — Elevated Cards (D3 Seamless)
+   Homepage — writing-first bento
+   Intro + GitHub calendar on top; Writings (2/3 width) beside
+   TIL and Side Projects; subscribe as a single line at the end.
+   The homepage is wider than the reading column: index.markdown
+   sets `body_class: home`.
    ═══════════════════════════════════════════════════════════ */
 
-.bento-grid {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 14px;
+body.home .container,
+body.home .site-header .wrapper,
+body.home .site-footer .wrapper {
+  max-width: 1120px;
 }
 
-.bento-tile {
-  background: var(--bg-primary);
+.home {
+  /* #BC5215 / #E2793A keep small orange text above 4.5:1 on the tiles */
+  --home-accent: #BC5215;
+  --home-tile-bg: var(--bg-primary);
+  --home-rule: var(--color-base-100);
+  --gh-0: #E6E4D9;
+  --gh-1: #9BE9A8;
+  --gh-2: #40C463;
+  --gh-3: #30A14E;
+  --gh-4: #216E39;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+[data-theme="dark"] .home {
+  --home-accent: #E2793A;
+  --home-tile-bg: var(--bg-secondary);
+  --gh-0: #403E3C;
+  --gh-1: #0E4429;
+  --gh-2: #006D32;
+  --gh-3: #26A641;
+  --gh-4: #39D353;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .home {
+    --home-accent: #E2793A;
+    --home-tile-bg: var(--bg-secondary);
+    --gh-0: #403E3C;
+    --gh-1: #0E4429;
+    --gh-2: #006D32;
+    --gh-3: #26A641;
+    --gh-4: #39D353;
+  }
+}
+
+/* Reset the article typography the container applies */
+.home h1,
+.home h2,
+.home p { margin: 0; }
+.home ul,
+.home ol { list-style: none; margin: 0; padding: 0; }
+.home li { margin: 0; }
+.home a { color: inherit; text-decoration: none; }
+.home a:hover { color: var(--home-accent); }
+
+.home-tile {
+  background: var(--home-tile-bg);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: none;
+  border-radius: 16px;
+  padding: 26px 28px;
+  box-sizing: border-box;
+  min-width: 0;
   transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.home-tile:hover { border-color: var(--color-base-300); }
+
+[data-theme="dark"] .home-tile { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .home-tile { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
+}
+
+/* Tile labels */
+.home-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.home-label-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.home-view-all {
+  font-size: 15px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* Intro */
+.home-intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px 48px;
+  padding: 28px 32px;
+}
+
+.home-intro-text {
+  flex: 999 1 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.home-intro-wave {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.home-intro-name {
+  font-family: var(--font-hand);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0;
+  color: var(--color-orange);
+}
+
+.home-intro-name tegaki-renderer { vertical-align: baseline; }
+
+.home-intro-bio {
+  max-width: 560px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* GitHub calendar: the inlined SVG is a year wide; only the newest
+   26 weeks (335px) show, and older weeks clip first on small screens. */
+.home-gh {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+
+.home-gh-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.home-gh-iykyk {
+  font-family: var(--font-hand);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.home-gh-link {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.home-gh:hover .home-gh-link { color: var(--home-accent); }
+
+.home-gh-cal {
+  display: flex;
+  justify-content: flex-end;
+  width: 335px;
+  max-width: 100%;
   overflow: hidden;
 }
 
-[data-theme="dark"] .bento-tile {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+.home-gh-cal svg {
+  flex: none;
+  display: block;
+  width: auto;
+  height: 88px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .bento-tile {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  }
-}
+.home-gh-cal rect[fill="#ebedf0"] { fill: var(--gh-0); }
+.home-gh-cal rect[fill="#9be9a8"] { fill: var(--gh-1); }
+.home-gh-cal rect[fill="#40c463"] { fill: var(--gh-2); }
+.home-gh-cal rect[fill="#30a14e"] { fill: var(--gh-3); }
+.home-gh-cal rect[fill="#216e39"] { fill: var(--gh-4); }
 
-.bento-tile:hover {
-  border-color: var(--color-base-300);
-}
-
-[data-theme="dark"] .bento-tile:hover {
-  border-color: var(--color-base-300);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .bento-tile:hover {
-    border-color: var(--color-base-300);
-  }
-}
-
-/* Intro tile */
-.bento-tile--intro {
-  grid-column: 1 / -1;
-  padding: 32px 28px;
-  border-bottom: 2px solid var(--color-orange);
-}
-
-.bento-intro-wave { font-size: 28px; line-height: 1; margin-bottom: 8px; }
-.bento-intro-name { font-size: 22px; font-weight: 700; margin-bottom: 6px; line-height: 1.3; }
-
-/* GitHub contribution graph inside intro */
-.bento-github-section {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border-color);
-}
-
-
-.bento-github-chart {
-  width: 100%;
-  /* The img carries width/height attributes to reserve space and avoid layout
-     shift; height:auto keeps the aspect ratio once width:100% takes over. */
-  height: auto;
-  border-radius: 4px;
-  transition: filter 0.3s ease;
-}
-
-[data-theme="dark"] .bento-github-chart {
-  filter: invert(1) hue-rotate(180deg) brightness(1.1) saturate(1.35) contrast(0.92);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .bento-github-chart {
-    filter: invert(1) hue-rotate(180deg) brightness(1.1) saturate(1.35) contrast(0.92);
-  }
-}
-
-.bento-intro-bio {
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--text-secondary);
-  margin-bottom: 16px;
-  max-width: 580px;
-}
-
-.bento-intro-links { display: flex; gap: 10px; flex-wrap: wrap; }
-
-.bento-intro-links a {
-  font-size: 14px;
-  color: var(--color-orange);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 14px;
-  border-radius: 20px;
-  border: 1px solid var(--color-orange);
-  background: transparent;
-  transition: background-color 0.2s ease, color 0.2s ease;
-  font-weight: 500;
-}
-
-.bento-intro-links a:hover {
-  background: var(--color-orange);
-  color: #FFFFFF;
-}
-
-.bento-intro-links a svg { width: 15px; height: 15px; flex-shrink: 0; }
-
-/* Tile labels */
-.bento-label {
-  font-size: 0.7em;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-secondary);
-  margin-bottom: 14px;
+/* Writings (2/3) beside TIL + Side Projects (1/3) */
+.home-main {
   display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 18px;
+}
+
+.home-writing {
+  flex: 999 1 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.home-side {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 22px;
+}
+
+.home-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.home-feature-img {
+  display: block;
+  width: 100%;
+  height: 170px;
+  box-sizing: border-box;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: #FFFFFF;
+}
+
+.home-feature-img--blank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--home-rule);
+  font-family: var(--font-hand);
+  font-size: 30px;
+  color: var(--text-secondary);
+}
+
+.home-kicker {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--home-accent);
+}
+
+.home-feature-title {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.home-meta {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.home-meta--mono {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+}
+
+.home-posts li { border-top: 1px solid var(--home-rule); }
+
+.home-post {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 0;
+}
+
+.home-post-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.home-post-title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.home-feature:hover .home-feature-title,
+.home-post:hover .home-post-title,
+.home-project:hover .home-project-name { color: var(--home-accent); }
+
+.home-badge {
+  margin-left: 6px;
+  padding: 2px 7px;
+  border: 1px solid var(--home-accent);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--home-accent);
+  white-space: nowrap;
+  vertical-align: 2px;
+}
+
+.home-post-thumb {
+  flex: none;
+  width: 84px;
+  height: 52px;
+  box-sizing: border-box;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: #FFFFFF;
+}
+
+/* Today I learnt: one entry at a time, "Another one" cycles (script.js) */
+.home-til {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.home-til-count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.home-til-list { min-height: 190px; }
+
+.home-til-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.home-til-item[hidden],
+.home-til-next[hidden] { display: none; }
+
+.home-til-text {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--text-primary);
+}
+
+.home-til-text a {
+  text-decoration: underline;
+  text-decoration-color: var(--color-base-300);
+  text-underline-offset: 0.15em;
+}
+
+.home-til-date {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.home-til-actions {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 8px 16px;
 }
 
-.bento-label-left {
+.home-til-next {
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--home-accent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--home-accent);
+  font-family: var(--font-serif);
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.home-til-next:hover {
+  background: var(--home-accent);
+  color: #FFFCF0;
+}
+
+/* Side projects */
+.home-projects {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.home-project-list li { border-top: 1px solid var(--home-rule); }
+
+.home-project {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 14px;
+  padding: 11px 0;
 }
 
+.home-project-icon {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFCF0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.home-project-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.home-project-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.home-project-name {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.home-project-year {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.home-project-desc {
+  font-size: 14.5px;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+/* Subscribe: a single line under the tiles */
+.home-subscribe {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px 14px;
+  padding: 6px 0 18px;
+}
+
+.home-subscribe label {
+  font-size: 17px;
+  color: var(--text-secondary);
+}
+
+.home-subscribe-field {
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.2s ease;
+}
+
+.home-subscribe-field:focus-within { border-bottom-color: var(--home-accent); }
+
+.home-subscribe input[type="email"] {
+  width: 220px;
+  max-width: 52vw;
+  height: 44px;
+  padding: 0 2px;
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-serif);
+  font-size: 16px;
+  outline: none;
+}
+
+.home-subscribe input[type="email"]::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.home-subscribe button {
+  height: 44px;
+  padding: 0 2px 0 10px;
+  border: 0;
+  background: transparent;
+  color: var(--home-accent);
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.home-subscribe button:disabled { opacity: 0.6; cursor: default; }
+
+.home-subscribe .form-message {
+  flex-basis: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 15px;
+}
+
+.home-subscribe .form-message:empty { display: none; }
+.home-subscribe .form-message.success { color: var(--home-accent); }
+.home-subscribe .form-message.error { color: var(--color-red); }
+
+@media (max-width: 640px) {
+  .home-tile { padding: 22px 20px; border-radius: 14px; }
+  .home-intro { padding: 24px 20px; }
+  .home-feature-img { height: 150px; }
+}
+
+/* Ink-in dot used on homepage tile labels and the writings / TIL group labels */
 .bento-label-dot {
   width: 6px;
   height: 6px;
@@ -1002,39 +1410,6 @@ body {
   opacity: 0;
 }
 
-.bento-view-all {
-  font-size: 13px;
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-weight: 500;
-  text-transform: none;
-  letter-spacing: 0;
-  transition: color 0.2s ease;
-}
-
-.bento-view-all:hover { color: var(--color-orange); }
-
-/* Quiet section labels — small uppercase gray, with a small orange dot accent */
-.bento-label--handwritten {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.72em;
-  color: var(--text-secondary);
-}
-.bento-label--handwritten .bento-view-all {
-  font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: 0.8em;
-  text-transform: none;
-  letter-spacing: 0;
-  color: var(--text-secondary);
-}
-.bento-label--handwritten .bento-view-all:hover { color: var(--color-orange); }
-
-.bento-intro-name tegaki-renderer { vertical-align: baseline; }
-
 /* The one handwritten mark: the site-title wordmark stays in Caveat */
 .site-title {
   font-family: var(--font-hand) !important;
@@ -1061,184 +1436,6 @@ body {
 .site-footer .footer-text i,
 .site-footer .footer-text a {
   color: var(--text-secondary);
-}
-
-/* Bento content lists */
-.bento-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* Scrollable list inside tiles that have a lot of content */
-.bento-tile--scroll {
-  display: flex;
-  flex-direction: column;
-}
-
-.bento-list--scroll {
-  max-height: 420px;
-  overflow-y: auto;
-  padding-right: 8px;
-  margin-right: -8px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-base-200) transparent;
-  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 24px), transparent 100%);
-          mask-image: linear-gradient(to bottom, black calc(100% - 24px), transparent 100%);
-}
-
-.bento-list--scroll-sm {
-  max-height: 200px;
-}
-
-.bento-list--scroll::-webkit-scrollbar { width: 6px; }
-.bento-list--scroll::-webkit-scrollbar-track { background: transparent; }
-.bento-list--scroll::-webkit-scrollbar-thumb {
-  background: var(--color-base-200);
-  border-radius: 3px;
-}
-.bento-list--scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--color-base-300);
-}
-
-.bento-list li {
-  padding: 8px 0;
-  border-bottom: 1px solid var(--color-base-50);
-}
-
-[data-theme="dark"] .bento-list li {
-  border-bottom-color: var(--color-base-100);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .bento-list li {
-    border-bottom-color: var(--color-base-100);
-  }
-}
-
-.bento-list li:last-child { border-bottom: none; padding-bottom: 0; }
-.bento-list li:first-child { padding-top: 0; }
-
-.bento-list a {
-  color: var(--text-primary);
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.45;
-  transition: color 0.2s ease;
-  display: block;
-}
-
-.bento-list a:hover { color: var(--color-orange); }
-
-.bento-list .bento-item-date {
-  font-size: 12px;
-  color: var(--text-secondary);
-  margin-top: 1px;
-}
-
-.bento-list .bento-project-desc {
-  font-size: 13px;
-  color: var(--text-secondary);
-  margin-top: 2px;
-  line-height: 1.4;
-}
-
-.bento-list .bento-til-text {
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--text-primary);
-}
-
-.bento-list .bento-til-text a {
-  display: inline;
-  font-size: inherit;
-}
-
-/* Subscribe tile in bento — center content vertically when row stretches */
-.bento-tile--subscribe {
-  display: flex;
-  flex-direction: column;
-}
-
-.bento-subscribe-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.bento-subscribe-text {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.55;
-  margin-bottom: 14px;
-}
-
-.bento-subscribe-form { display: flex; flex-direction: column; gap: 10px; }
-
-.bento-subscribe-form input[type="email"] {
-  width: 100%;
-  padding: 10px 14px;
-  font-size: 14px;
-  font-family: inherit;
-  border: 1px solid var(--color-base-200);
-  border-radius: 8px;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  outline: none;
-  transition: border-color 0.2s ease;
-  box-sizing: border-box;
-}
-
-.bento-subscribe-form input[type="email"]:focus {
-  border-color: var(--color-orange);
-}
-
-.bento-subscribe-form input[type="email"]::placeholder {
-  color: var(--text-secondary);
-  opacity: 0.7;
-}
-
-.bento-subscribe-form button {
-  width: 100%;
-  padding: 9px 20px;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: var(--font-serif);
-  letter-spacing: 0;
-  line-height: 1.2;
-  color: #FFFFFF;
-  background: var(--color-orange);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.15s ease;
-  box-sizing: border-box;
-}
-
-.bento-subscribe-form button:hover { opacity: 0.9; transform: translateY(-1px); }
-
-/* Bento responsive */
-@media (max-width: 640px) {
-  .bento-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .bento-tile--intro {
-    grid-column: 1;
-    padding: 24px 20px;
-  }
-
-  .bento-tile { padding: 20px; }
-}
-
-@media (max-width: 400px) {
-  .bento-intro-links {
-    flex-direction: column;
-    gap: 8px;
-  }
-  .bento-intro-links a { justify-content: center; }
 }
 
 /* Writings Section — Year Groups + Filters */

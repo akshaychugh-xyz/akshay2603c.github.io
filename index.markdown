@@ -35,6 +35,7 @@ body_class: home
 
   <section class="home-tile home-intro" aria-label="Intro">
     <div class="home-intro-text">
+      <div class="home-intro-wave" aria-hidden="true">&#x1F44B;</div>
       <h1 class="home-intro-name" data-handwriting="Hi, I am Akshay." data-handwriting-size="2.4rem" data-handwriting-duration="1.7">Hi, I am Akshay.</h1>
       <p class="home-intro-bio">Welcome to my little garden on the Internet! I currently lead Product for Coinbase India and am obsessed with Claude Code on the side.</p>
     </div>
@@ -53,13 +54,12 @@ body_class: home
     <section class="home-tile home-writing" aria-labelledby="home-writing-label">
       <div class="home-label">
         <h2 class="home-label-title" id="home-writing-label"><span class="bento-label-dot"></span>Writings</h2>
-        <a href="{{ '/writings/' | relative_url }}" class="home-view-all">All {{ writings_posts.size }} &rarr;</a>
+        <a href="{{ '/writings/' | relative_url }}" class="home-view-all">All &rarr;</a>
       </div>
 
       <div class="home-features">
         {% for post in writings_posts limit: 2 %}
         {% capture img %}{% include first-image.html post=post %}{% endcapture %}{% assign img = img | strip %}
-        {% assign mins = post.content | strip_html | number_of_words | plus: 229 | divided_by: 230 %}
         {% if post.categories[1] == "png" %}{% assign cat = "Product & growth" %}{% else %}{% assign cat = post.categories[1] | capitalize %}{% endif %}
         <a class="home-feature" href="{{ post.url | relative_url }}">
           {% if img != "" %}
@@ -69,7 +69,7 @@ body_class: home
           {% endif %}
           <span class="home-kicker">{% if forloop.first %}Latest &middot; {% endif %}{{ cat }}</span>
           <span class="home-feature-title">{{ post.title }}</span>
-          <span class="home-meta">{{ post.date | date: "%-d %b %Y" }} &middot; {{ mins }} min read</span>
+          <span class="home-meta">{{ post.date | date: "%-d %b %Y" }}</span>
         </a>
         {% endfor %}
       </div>
@@ -77,12 +77,11 @@ body_class: home
       <ol class="home-posts">
         {% for post in writings_posts offset: 2 limit: 6 %}
         {% capture img %}{% include first-image.html post=post %}{% endcapture %}{% assign img = img | strip %}
-        {% assign mins = post.content | strip_html | number_of_words | plus: 229 | divided_by: 230 %}
         <li>
           <a class="home-post" href="{{ post.url | relative_url }}">
             <span class="home-post-text">
               <span class="home-post-title">{{ post.title }}{% if post.badge %} <span class="home-badge">{{ post.badge }}</span>{% endif %}</span>
-              <span class="home-meta home-meta--mono">{{ post.date | date: "%b %Y" }} &middot; {{ mins }} min</span>
+              <span class="home-meta home-meta--mono">{{ post.date | date: "%b %Y" }}</span>
             </span>
             {% if img != "" %}<img class="home-post-thumb" src="{{ img }}" alt="" loading="lazy" onerror="this.remove()">{% endif %}
           </a>

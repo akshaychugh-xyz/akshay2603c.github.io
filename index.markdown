@@ -13,23 +13,10 @@ body_class: home
 
 {% comment %}
   GitHub calendar: the SVG written daily by the "Update GitHub Contribution Chart"
-  workflow is inlined at build time, so CSS can recolour it per theme. Only the last
-  26 weeks show (the rest is clipped), so sum just those days for the caption.
-  Columns are 13px apart (CELL + GAP in .github/scripts/build-github-chart.js).
+  workflow is inlined at build time, so CSS can recolour it per theme. CSS shows
+  only the newest 26 weeks and clips the rest.
 {% endcomment %}
 {% capture gh_svg %}{% include_relative assets/images/github-contributions.svg %}{% endcapture %}
-{% assign gh_rects = gh_svg | split: "<rect " %}
-{% assign gh_last_x = gh_rects | last | split: '"' %}
-{% assign gh_from_x = gh_last_x[1] | plus: 0 | minus: 325 %}
-{% assign gh_total = 0 %}
-{% for gh_rect in gh_rects offset: 1 %}
-  {% assign gh_x = gh_rect | split: '"' %}
-  {% assign gh_x = gh_x[1] | plus: 0 %}
-  {% if gh_x >= gh_from_x %}
-    {% assign gh_n = gh_rect | split: "<title>" | last | split: " " | first | plus: 0 %}
-    {% assign gh_total = gh_total | plus: gh_n %}
-  {% endif %}
-{% endfor %}
 
 <div class="home">
 
@@ -39,13 +26,12 @@ body_class: home
       <h1 class="home-intro-name" data-handwriting="Hi, I am Akshay." data-handwriting-size="2.4rem" data-handwriting-duration="1.7">Hi, I am Akshay.</h1>
       <p class="home-intro-bio">Welcome to my little garden on the Internet! I currently lead Product for Coinbase India and am obsessed with Claude Code on the side.</p>
     </div>
-    <a class="home-gh" href="https://github.com/akshaychugh-xyz" aria-label="GitHub: {{ gh_total }} contributions in the last 6 months">
+    <a class="home-gh" href="https://github.com/akshaychugh-xyz" aria-label="GitHub profile">
       <span class="home-gh-head">
         <span class="home-gh-iykyk">proudest about, IYKYK :)</span>
         <span class="home-gh-link">GitHub &rarr;</span>
       </span>
       <span class="home-gh-cal" aria-hidden="true">{{ gh_svg }}</span>
-      <span class="home-gh-caption">{{ gh_total }} contributions in the last 6 months</span>
     </a>
   </section>
 
@@ -108,7 +94,7 @@ body_class: home
         </ul>
         <div class="home-til-actions">
           <button type="button" class="home-til-next" data-til-next hidden>Another one &#x21BB;</button>
-          <a href="{{ '/til/' | relative_url }}" class="home-view-all">All TILs &rarr;</a>
+          <a href="{{ '/til/' | relative_url }}" class="home-view-all">All &rarr;</a>
         </div>
       </section>
 

@@ -50,7 +50,7 @@ bundle exec jekyll build
 - **Mobile navigation**: Collapsible hamburger menu for screens <600px
 - **Custom styling**: Extensive CSS overrides in `assets/css/typewriter.css`
 - **JavaScript functionality**: Theme switching and mobile menu in `assets/js/script.js`
-- **GitHub contribution chart**: `assets/images/github-contributions.svg`, generated daily by the `Update GitHub Contribution Chart` workflow (`.github/scripts/build-github-chart.js`) and committed into the repo. Self-hosted rather than hotlinked, so a third-party outage can't blank the homepage. The homepage inlines it at build time with `include_relative` (so the file must exist or the build fails), shows only the newest 26 weeks, sums those days for its caption in Liquid, and recolours each level per theme in CSS by matching the script's exact `fill` values. Don't edit the SVG by hand — it is overwritten on each run.
+- **GitHub contribution chart**: `assets/images/github-contributions.svg`, generated daily by the `Update GitHub Contribution Chart` workflow (`.github/scripts/build-github-chart.js`) and committed into the repo. Self-hosted rather than hotlinked, so a third-party outage can't blank the homepage. The homepage inlines it at build time with `include_relative` (so the file must exist or the build fails), shows only the newest 26 weeks, and recolours each level per theme in CSS by matching the script's exact `fill` values. Don't edit the SVG by hand — it is overwritten on each run.
 
 ### Homepage
 - `index.markdown` sets `body_class: home`, which widens the container, header and footer to 1120px on the homepage only (other pages keep the 700px reading width).

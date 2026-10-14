@@ -995,8 +995,7 @@ body.home .site-footer .wrapper {
   line-height: 1;
 }
 
-.home-gh-link,
-.home-gh-caption {
+.home-gh-link {
   font-family: var(--font-mono);
   font-size: 12px;
 }

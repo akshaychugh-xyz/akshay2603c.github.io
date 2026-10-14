@@ -35,7 +35,7 @@
   </script>
   {% endif %}
 </head>
-<body{% if page.categories.size > 0 %} class="is-post"{% endif %}>
+<body{% if page.categories.size > 0 %} class="is-post"{% elsif page.body_class %} class="{{ page.body_class }}"{% endif %}>
   {% include header.html %}
   <div class="container">
     {{ content }}

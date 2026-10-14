@@ -1,0 +1,19 @@
+{%- comment -%}
+  Outputs the URL of a post's first image, for homepage previews.
+  Usage: {% capture img %}{% include first-image.html post=post %}{% endcapture %}
+  A `thumbnail:` in the post's front matter wins (for posts whose first image is a
+  poor preview, e.g. a wide text banner). Otherwise takes the first <img> in the
+  rendered post body, then the post's own `image:` front matter (the site-wide
+  default OG image is a hash and is skipped).
+  Absolute links to this site are made root-relative so they also work locally.
+{%- endcomment -%}
+{%- assign _src = include.post.thumbnail | default: "" -%}
+{%- assign _parts = include.post.content | split: "<img" -%}
+{%- if _src == "" and _parts.size > 1 -%}
+  {%- assign _tail = _parts[1] | split: 'src="' -%}
+  {%- if _tail.size > 1 -%}{%- assign _src = _tail[1] | split: '"' | first -%}{%- endif -%}
+{%- endif -%}
+{%- if _src == "" and include.post.image and include.post.image.path == nil -%}
+  {%- assign _src = include.post.image -%}
+{%- endif -%}
+{{- _src | replace: site.url, "" | strip -}}

@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const emailInput = document.getElementById('newsletter-email');
     const submitButton = document.getElementById('newsletter-submit');
     const formMessage = document.getElementById('form-message');
+    const submitLabel = submitButton.textContent;
 
     // TODO: Replace with your Google Apps Script deployment URL
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxSCkJCVFlVvAPvVJOJ3OyG4pBnfGsqTXZ6Zgl4Fn5H0rdPZgWMoTzMzL8VuVJBQ7Nftw/exec';
@@ -144,8 +145,27 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Newsletter subscription error:', error);
       } finally {
         submitButton.disabled = false;
-        submitButton.textContent = 'Subscribe';
+        submitButton.textContent = submitLabel;
       }
     });
+  }
+
+  // Homepage TIL tile: cycle through entries with the "Another one" button
+  const tilTile = document.querySelector('[data-til]');
+  if (tilTile) {
+    const tilItems = tilTile.querySelectorAll('.home-til-item');
+    const tilNext = tilTile.querySelector('[data-til-next]');
+    const tilCount = tilTile.querySelector('[data-til-count]');
+    let tilIndex = 0;
+
+    if (tilNext && tilItems.length > 1) {
+      tilNext.hidden = false;
+      tilNext.addEventListener('click', function() {
+        tilItems[tilIndex].hidden = true;
+        tilIndex = (tilIndex + 1) % tilItems.length;
+        tilItems[tilIndex].hidden = false;
+        if (tilCount) tilCount.textContent = (tilIndex + 1) + ' / ' + tilItems.length;
+      });
+    }
   }
 });

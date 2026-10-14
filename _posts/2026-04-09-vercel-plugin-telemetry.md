@@ -4,6 +4,8 @@ title: "The Vercel Plugin on Claude Code wants to read all your prompts!"
 permalink: /writings/png/vercel-plugin-telemetry
 categories: [writings, png]
 newsletter: true
+badge: "#1 on HN"
+thumbnail: /assets/images/vercel-telemetry-v2/image-1.png
 ---
 
 <small>{{ page.date | date_to_string }}</small>

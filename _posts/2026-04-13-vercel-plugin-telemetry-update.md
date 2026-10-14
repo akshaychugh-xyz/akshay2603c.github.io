@@ -4,6 +4,7 @@ title: "What Happened After My Vercel Plugin Post Hit #1 on Hacker News"
 permalink: /writings/png/vercel-plugin-telemetry-update
 categories: [writings, png]
 newsletter: true
+thumbnail: /assets/images/vercel-telemetry-v2/image-2.png
 ---
 
 <small>{{ page.date | date_to_string }}</small>

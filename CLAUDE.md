@@ -41,6 +41,7 @@ bundle exec jekyll build
 
 ### Theme System
 - Uses Flexoki color palette with CSS custom properties
+- Fonts (Newsreader, Source Code Pro, Caveat) are self-hosted in `assets/fonts/` with `@font-face` rules in `_layouts/default.html`, preloaded and set to `font-display: block`. Don't switch back to Google Fonts with `display=swap`: Safari painted every refresh in fallback Georgia, which reads larger, then shrank to Newsreader
 - Supports both light and dark modes with system preference detection
 - Theme persistence via localStorage
 - Responsive design with mobile hamburger menu

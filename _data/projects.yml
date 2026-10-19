@@ -1,5 +1,13 @@
 # tagline, color and icon are used by the homepage Side Projects tile.
 # icon is the `d` of a 24x24 stroke SVG path; color is the tile background.
+- name: calm-tv
+  url: /side-projects/calm-tv/
+  date: 2026-10-17
+  description: "An ad-free, fast home screen for Android TV. Built in one evening with Claude Code."
+  tagline: "Ad-free, fast home screen for Android TV."
+  color: "#BC5215"
+  icon: "M3 5h18v12H3zM8 21h8M12 17v4"
+
 - name: FourPlay
   url: https://fourplay.fun
   date: 2026-02-15

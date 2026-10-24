@@ -969,10 +969,12 @@ body.home .site-footer .wrapper {
   color: var(--text-secondary);
 }
 
-/* GitHub calendar: the inlined SVG is a year wide; only the newest
-   26 weeks (335px) show, and older weeks clip first on small screens. */
+/* GitHub calendar: the inlined SVG is a year wide; beside the intro only the
+   newest 26 weeks (335px) show. When the intro wraps (phones, narrow windows)
+   the chart takes the full row and shows as many weeks as fit, newest on the
+   right, so the tile has no empty space beside it. */
 .home-gh {
-  flex: 0 1 auto;
+  flex: 1 1 335px;
   min-width: 0;
   max-width: 100%;
   display: flex;
@@ -1005,8 +1007,7 @@ body.home .site-footer .wrapper {
 .home-gh-cal {
   display: flex;
   justify-content: flex-end;
-  width: 335px;
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
 }
 

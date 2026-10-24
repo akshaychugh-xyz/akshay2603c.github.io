@@ -28,7 +28,6 @@ body_class: home
     </div>
     <a class="home-gh" href="https://github.com/akshaychugh-xyz" aria-label="GitHub profile">
       <span class="home-gh-head">
-        <span class="home-gh-iykyk">proudest about, IYKYK :)</span>
         <span class="home-gh-link">GitHub &rarr;</span>
       </span>
       <span class="home-gh-cal" aria-hidden="true">{{ gh_svg }}</span>

@@ -969,12 +969,13 @@ body.home .site-footer .wrapper {
   color: var(--text-secondary);
 }
 
-/* GitHub calendar: the inlined SVG is a year wide; beside the intro only the
-   newest 26 weeks (335px) show. When the intro wraps (phones, narrow windows)
-   the chart takes the full row and shows as many weeks as fit, newest on the
-   right, so the tile has no empty space beside it. */
+/* GitHub calendar: the inlined SVG is a year wide; only the newest 26 weeks
+   (335px) show, and older weeks clip first on small screens. Beside the intro
+   it sits on the right of the intro on every screen size (see the 880px rule
+   below for phones). */
 .home-gh {
-  flex: 1 1 335px;
+  flex: 0 1 335px;
+  margin-left: auto;
   min-width: 0;
   max-width: 100%;
   display: flex;
@@ -985,16 +986,9 @@ body.home .site-footer .wrapper {
 
 .home-gh-head {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: baseline;
   gap: 12px;
-}
-
-.home-gh-iykyk {
-  font-family: var(--font-hand);
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1;
 }
 
 .home-gh-link {
@@ -1008,6 +1002,7 @@ body.home .site-footer .wrapper {
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  max-width: 335px;
   overflow: hidden;
 }
 
@@ -1016,6 +1011,34 @@ body.home .site-footer .wrapper {
   display: block;
   width: auto;
   height: 88px;
+}
+
+/* Narrow windows (641-880px) keep the desktop layout with the newest 13 weeks.
+   Phones keep the chart beside the bio too, trimmed to the newest 5 weeks
+   (about a month), with its top row level with
+   the first line of the bio. The intro becomes a two-column grid and the text
+   column's children (wave, name, bio) sit in its rows, so the chart can be
+   placed on the bio's row. The "GitHub" label is dropped; the chart is still
+   the link. */
+@media (min-width: 641px) and (max-width: 880px) {
+  .home-intro { flex-wrap: nowrap; }
+  .home-intro-text { flex: 1 1 auto; min-width: 0; }
+  .home-gh { flex: 0 0 166px; }
+  .home-gh-cal { max-width: 166px; }
+}
+
+@media (max-width: 640px) {
+  .home-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 62px;
+    column-gap: 20px;
+    row-gap: 8px;
+  }
+  .home-intro-text { display: contents; }
+  .home-intro-text > * { grid-column: 1; margin: 0; }
+  .home-gh { grid-column: 2; grid-row: 3; align-self: start; margin-top: 7px; }
+  .home-gh-head { display: none; }
+  .home-gh-cal { max-width: 62px; }
 }
 
 .home-gh-cal rect[fill="#ebedf0"] { fill: var(--gh-0); }
